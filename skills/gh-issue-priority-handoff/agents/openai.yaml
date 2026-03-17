@@ -1,0 +1,3 @@
+interface:
+  display_name: "GH Issue Priority Handoff"
+  short_description: "Rank GitHub issues by impact and generate copy-paste delegation briefs"
