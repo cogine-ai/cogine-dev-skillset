@@ -4,23 +4,23 @@ This document records which local skills should be part of `cogine-dev-skillset`
 
 ## Included In V1
 
-- `planmode-ceo`: High-value plan review workflow for founder/product direction.
+- `gh-issue-priority-handoff`: Good for issue triage and delegation.
+- `get-pr-comments`: Useful for PR iteration and feedback intake.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
+- `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
+- `new-branch-and-pr`: Good for standard branch and PR workflow.
+- `check-compiler-errors`: Strong general development utility.
+- `deslop`: Useful for cleaning generated or messy code.
+- `vercel-react-best-practices`: Explicitly retained React and Next.js performance guidance.
 - `get-cookies`: Useful for authenticated QA and browser-session reuse.
 - `site-design-audit`: Valuable report-only UI and design audit workflow.
 - `site-design-fix`: Valuable design audit plus fix loop for frontend work.
-- `check-compiler-errors`: Strong general development utility.
-- `deslop`: Useful for cleaning generated or messy code.
-- `fix-ci`: High-frequency engineering workflow.
-- `fix-merge-conflicts`: High-frequency engineering workflow.
-- `get-pr-comments`: Useful for PR iteration.
-- `gh-issue-priority-handoff`: Good for issue triage and delegation.
-- `loop-on-ci`: Strong CI closure loop.
-- `new-branch-and-pr`: Good for standard branch/PR workflow.
-- `review-and-ship`: Good end-to-end shipping flow.
 - `run-smoke-tests`: Valuable verification workflow.
 - `security-best-practices`: Useful security review checklist.
-- `vercel-react-best-practices`: Explicitly retained React and Next.js performance guidance.
+- `fix-ci`: High-frequency engineering workflow.
+- `fix-merge-conflicts`: High-frequency engineering workflow.
+- `loop-on-ci`: Strong CI closure loop.
+- `review-and-ship`: Good end-to-end shipping flow.
 
 ## Useful But Not For This Repo
 
