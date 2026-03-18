@@ -21,6 +21,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `fix-merge-conflicts`: High-frequency engineering workflow.
 - `loop-on-ci`: Strong CI closure loop.
 - `review-and-ship`: Good end-to-end shipping flow.
+- `clawpacker`: Useful for packaging and transferring portable OpenClaw agent bundles.
 
 ## Useful But Not For This Repo
 

@@ -64,6 +64,7 @@ Recommended order for day-to-day engineering work:
 | `fix-merge-conflicts` | Resolve merge conflicts safely | included |
 | `loop-on-ci` | Watch CI and iterate to green | included |
 | `review-and-ship` | Review, fix, and ship via PR | included |
+| `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 
 ## Notes
 
