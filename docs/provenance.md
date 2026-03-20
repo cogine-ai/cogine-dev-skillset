@@ -8,6 +8,7 @@ This repository is intended for public publication, so skill provenance matters.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.
 - `security-best-practices` ships with reference material and a bundled license file, so it needs a dedicated provenance review before publication.
 - `vercel-react-best-practices` is derived from a public Vercel-authored skill and should retain attribution and compatible licensing treatment before publication.
+- `supabase-postgres-best-practices` is derived from a public Supabase-authored skill and should retain attribution and compatible licensing treatment before publication.
 
 ## Before Publishing
 
@@ -25,5 +26,6 @@ Confirm for every included skill:
 - Keep the `clawpacker` canonical URL current and verify that the referenced raw GitHub path remains valid.
 - Review `security-best-practices` provenance, bundled references, and `LICENSE.txt` handling before publication.
 - Review `vercel-react-best-practices` provenance and decide whether to keep its bundled supporting files as-is or trim them to the minimum publishable set.
+- Review `supabase-postgres-best-practices` provenance and decide whether to keep its bundled support files as-is or trim them to the minimum publishable set.
 - Keep the repo-level Apache-2.0 license and maintain [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) as additional third-party skills are added.
 - Run a real install test with `npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill <name>` before publishing.

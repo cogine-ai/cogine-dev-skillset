@@ -13,6 +13,11 @@ Unless otherwise noted, original material in this repository is licensed under A
   Upstream repository license: MIT
   Note: Retain upstream attribution and review any additional generated or support files before publishing updates.
 
+- `skills/supabase-postgres-best-practices/`
+  Source: Supabase-authored Postgres best-practices skill
+  Upstream repository license: MIT
+  Note: Retain upstream attribution and review bundled reference files before publishing updates.
+
 - `skills/security-best-practices/`
   Contains its own [LICENSE.txt](./skills/security-best-practices/LICENSE.txt)
   Note: This directory ships bundled reference material and should keep its in-directory license and notices intact.

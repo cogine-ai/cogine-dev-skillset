@@ -55,6 +55,7 @@ Recommended order for day-to-day engineering work:
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |
 | `vercel-react-best-practices` | React and Next.js performance guidance | included |
+| `supabase-postgres-best-practices` | Supabase and Postgres schema, query, and performance guidance | included |
 | `get-cookies` | Import browser cookies for authenticated QA | included |
 | `site-design-audit` | Report-only live site design audit | included |
 | `site-design-fix` | Design audit and targeted fix loop | included |

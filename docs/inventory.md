@@ -12,6 +12,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.
 - `vercel-react-best-practices`: Explicitly retained React and Next.js performance guidance.
+- `supabase-postgres-best-practices`: Explicitly retained Supabase and Postgres performance guidance.
 - `get-cookies`: Useful for authenticated QA and browser-session reuse.
 - `site-design-audit`: Valuable report-only UI and design audit workflow.
 - `site-design-fix`: Valuable design audit plus fix loop for frontend work.
