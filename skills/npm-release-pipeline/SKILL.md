@@ -36,7 +36,7 @@ Check these before publishing:
 - Relevant PRs are merged.
 - Relevant CI checks are green.
 - The intended npm release channel is clear (`latest`, `next`, or another tag).
-- `npm view <package-name> version` does not already equal the target version for the target channel.
+- Set `<channel>` to the intended npm release tag (`latest`, `next`, or another tag) and verify the target channel does not already point at the release version by checking `npm view <package-name>@<channel> version` or `npm view <package-name> dist-tags.<channel>`.
 - If a changelog or release notes process exists, confirm the new version is documented or draftable from merged PRs.
 - If `prepublishOnly` exists, treat it as a final guardrail, not a substitute for proactive verification.
 
@@ -65,10 +65,14 @@ git rev-parse origin/<default-branch>
 
 ```bash
 npm whoami
-npm view <package-name> version
 npm view <package-name> versions --json
 npm dist-tag ls <package-name>
+npm view <package-name>@<channel> version
+# or
+npm view <package-name> dist-tags.<channel>
 ```
+
+Set `<channel>` to the intended release tag such as `latest`, `next`, or a custom tag before using the channel-specific checks above.
 
 ### Run prepublish verification
 

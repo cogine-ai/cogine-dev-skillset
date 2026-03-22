@@ -49,4 +49,4 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `weekly-review`
 - `what-did-i-get-done`
 
-These are intentionally outside this repo's current 16-skill scope. Some are marketing or content oriented, and some are useful engineering skills that were still excluded to keep this collection aligned with the agreed V1 boundary.
+These are intentionally outside this repo's current included-skill scope. Some are marketing or content oriented, and some are useful engineering skills that were still excluded to keep this collection aligned with the agreed V1 boundary.
