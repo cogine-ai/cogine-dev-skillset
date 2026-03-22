@@ -23,6 +23,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `loop-on-ci`: Strong CI closure loop.
 - `review-and-ship`: Good end-to-end shipping flow.
 - `clawpacker`: Useful for packaging and transferring portable OpenClaw agent bundles.
+- `npm-release-pipeline`: Useful generic npm release workflow covering readiness checks, package-content validation, publish, tags, GitHub Release, and release issue closure.
 
 ## Useful But Not For This Repo
 
