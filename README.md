@@ -22,12 +22,6 @@ Install a single skill when you only want a narrow workflow:
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill gh-issue-priority-handoff
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill check-compiler-errors
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill security-best-practices
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill vercel-react-best-practices
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill npm-release-pipeline
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-api-client-skill
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-product-manager-skill
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-automation-skill
 ```
 
 The `skills` CLI supports installing a whole repository collection with `npx skills add owner/repo` or `npx skills add <github-url>`. See the official [CLI docs](https://skills.sh/docs/cli), [FAQ](https://skills.sh/docs/faq), and a concrete collection example in [Trigger.dev's docs](https://trigger.dev/docs/skills).
