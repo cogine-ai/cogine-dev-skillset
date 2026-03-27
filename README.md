@@ -45,7 +45,7 @@ docs/
 
 All publishable skill names use `kebab-case`.
 
-## Included Skills
+## Included Engineer Skills
 
 Recommended order for day-to-day engineering work:
 
@@ -71,9 +71,6 @@ Recommended order for day-to-day engineering work:
 | `review-and-ship` | Review, fix, and ship via PR | included |
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
-| `xianyu-api-client-skill` | Base Xianyu/Goofish API client skill for authenticated platform communication, signing, and error handling | included |
-| `xianyu-product-manager-skill` | Xianyu product listing management skill for creating, templating, and optimizing AI service offerings | included |
-| `xianyu-automation-skill` | Xianyu store automation skill for lifecycle operations, monitoring, and operational workflows | included |
 
 ## Xianyu Skill Bundle
 
