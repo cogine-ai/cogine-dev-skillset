@@ -25,6 +25,9 @@ npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill security-best-practices
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill vercel-react-best-practices
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill npm-release-pipeline
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-api-client-skill
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-product-manager-skill
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill xianyu-automation-skill
 ```
 
 The `skills` CLI supports installing a whole repository collection with `npx skills add owner/repo` or `npx skills add <github-url>`. See the official [CLI docs](https://skills.sh/docs/cli), [FAQ](https://skills.sh/docs/faq), and a concrete collection example in [Trigger.dev's docs](https://trigger.dev/docs/skills).
@@ -68,6 +71,17 @@ Recommended order for day-to-day engineering work:
 | `review-and-ship` | Review, fix, and ship via PR | included |
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
+| `xianyu-api-client-skill` | Base Xianyu/Goofish API client skill for authenticated platform communication, signing, and error handling | included |
+| `xianyu-product-manager-skill` | Xianyu product listing management skill for creating, templating, and optimizing AI service offerings | included |
+| `xianyu-automation-skill` | Xianyu store automation skill for lifecycle operations, monitoring, and operational workflows | included |
+
+## Xianyu Skill Bundle
+
+These three skills form a small Xianyu workflow stack:
+
+- `xianyu-api-client-skill`: foundational API client and auth/signing layer.
+- `xianyu-product-manager-skill`: product creation, listing management, and optimization workflows.
+- `xianyu-automation-skill`: higher-level store automation and operations built on the other two skills.
 
 ## Notes
 
