@@ -11,6 +11,8 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `new-branch-and-pr`: Good for standard branch and PR workflow.
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.
+- `slow-is-fast`: Good evidence-first workflow for moderate and complex engineering tasks.
+- `investigate`: Strong root-cause debugging workflow for failures and flaky behavior.
 - `vercel-react-best-practices`: Explicitly retained React and Next.js performance guidance.
 - `supabase-postgres-best-practices`: Explicitly retained Supabase and Postgres performance guidance.
 - `get-cookies`: Useful for authenticated QA and browser-session reuse.
@@ -21,6 +23,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `fix-ci`: High-frequency engineering workflow.
 - `fix-merge-conflicts`: High-frequency engineering workflow.
 - `loop-on-ci`: Strong CI closure loop.
+- `peer-review`: Useful second-opinion review workflow using Codex CLI.
 - `review-and-ship`: Good end-to-end shipping flow.
 - `clawpacker`: Useful for packaging and transferring portable OpenClaw agent bundles.
 - `npm-release-pipeline`: Useful generic npm release workflow covering readiness checks, package-content validation, publish, tags, GitHub Release, and release issue closure.

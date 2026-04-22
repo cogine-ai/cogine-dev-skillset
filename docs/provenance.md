@@ -4,7 +4,7 @@ This repository is intended for public publication, so skill provenance matters.
 
 ## Current V1 Assumption
 
-- `planmode-ceo`, `planmode-engineer`, `get-cookies`, `site-design-audit`, `site-design-fix`, `check-compiler-errors`, `deslop`, `fix-ci`, `fix-merge-conflicts`, `get-pr-comments`, `gh-issue-priority-handoff`, `loop-on-ci`, `new-branch-and-pr`, `review-and-ship`, and `run-smoke-tests` are copied from local development skills and should be reviewed for original source and redistribution expectations before publication.
+- `planmode-ceo`, `planmode-engineer`, `get-cookies`, `site-design-audit`, `site-design-fix`, `check-compiler-errors`, `deslop`, `fix-ci`, `fix-merge-conflicts`, `get-pr-comments`, `gh-issue-priority-handoff`, `investigate`, `loop-on-ci`, `new-branch-and-pr`, `peer-review`, `review-and-ship`, `run-smoke-tests`, and `slow-is-fast` are copied from local development skills and should be reviewed for original source and redistribution expectations before publication.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.
 - `npm-release-pipeline` is a locally authored generic npm-release workflow skill and should be reviewed as Cogine-authored material before publication.
 - `xianyu-api-client-skill`, `xianyu-product-manager-skill`, and `xianyu-automation-skill` appear to be Cogine-authored Xianyu-specific workflow skills and should be reviewed as original internal material before public publication.

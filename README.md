@@ -52,6 +52,8 @@ Recommended order for day-to-day engineering work:
 | `new-branch-and-pr` | Standard branch and PR workflow | included |
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |
+| `slow-is-fast` | Research, plan, then code with evidence-based workflow | included |
+| `investigate` | Root-cause debugging workflow for failures and flaky behavior | included |
 | `vercel-react-best-practices` | React and Next.js performance guidance | included |
 | `supabase-postgres-best-practices` | Supabase and Postgres schema, query, and performance guidance | included |
 | `get-cookies` | Import browser cookies for authenticated QA | included |
@@ -62,6 +64,7 @@ Recommended order for day-to-day engineering work:
 | `fix-ci` | Diagnose and fix failing CI jobs | included |
 | `fix-merge-conflicts` | Resolve merge conflicts safely | included |
 | `loop-on-ci` | Watch CI and iterate to green | included |
+| `peer-review` | Run an independent Codex CLI second-opinion review | included |
 | `review-and-ship` | Review, fix, and ship via PR | included |
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
