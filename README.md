@@ -68,6 +68,7 @@ Recommended order for day-to-day engineering work:
 | `review-and-ship` | Review, fix, and ship via PR | included |
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
+| `image2-with-codex` | Route image generation to the local image2-with-codex HTTP service (Codex CLI image generation) | included |
 
 ## Xianyu Skill Bundle
 

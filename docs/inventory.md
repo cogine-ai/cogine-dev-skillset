@@ -30,6 +30,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `xianyu-api-client-skill`: Foundational Xianyu/Goofish API client skill covering authentication, signing, and common endpoint access.
 - `xianyu-product-manager-skill`: Xianyu product-management workflow for creating, managing, and optimizing AI service listings.
 - `xianyu-automation-skill`: Xianyu automation workflow for store operations, monitoring, and lifecycle automation built on the API and product-management skills.
+- `image2-with-codex`: Routes image-generation requests to the local image2-with-codex HTTP service (Codex CLI backend).
 
 ## Useful But Not For This Repo
 
