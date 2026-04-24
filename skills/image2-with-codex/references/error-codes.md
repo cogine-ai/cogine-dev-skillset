@@ -43,3 +43,18 @@ Means `codex exec` exited cleanly but did not write a PNG to `~/.codex/generated
 3. Codex "completed" without actually generating (e.g. policy refusal).
 
 Look at `details.stdoutPreview` / `details.stderrPreview` in the error payload before guessing.
+
+## Timeout rescue (not an error)
+
+If `codex exec` exceeded `timeoutMs` **but** a freshly generated PNG is present in `~/.codex/generated_images` within the execution window, the worker returns the image as a `completed` job with `result.timedOutRescued: true`. This is normal — it covers the common case where the image was already produced and codex stalled on post-generation reasoning / token tallies. Pass the image through to the user; do not warn unless the user explicitly asks about timing.
+
+You only see `codex-exec-timeout` when timeout fires **and** no new image is found.
+
+## Restart rescue (not an error)
+
+If the service process gets killed or restarted while a job is `running`, the next service instance inspects `<artifactRoot>/<job-id>.png` on startup:
+
+- If the PNG is already on disk (> 0 bytes), the job is finalized as `completed` with `result.restartRescued: true`. The worker had finished writing the artifact before the service died — the only thing lost was the in-memory transition to `completed`. You can hand the image to the user normally.
+- If no such PNG exists, the job is finalized as `failed` with `error.code: "service-restarted"` (classic behavior).
+
+Implication for polling clients: a job you last saw as `running` may reappear as `completed` + `restartRescued: true` after a service hiccup. Treat that as success, not as a partial result.
