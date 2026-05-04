@@ -8,6 +8,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `get-pr-comments`: Useful for PR iteration and feedback intake.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
+- `solus-product-master`: Useful for early product direction work, AI/Agent product strategy, anti-inertia framing, red-team critique, wedge-market selection, and minimum validation experiments.
 - `new-branch-and-pr`: Good for standard branch and PR workflow.
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.

@@ -49,6 +49,7 @@ Recommended order for day-to-day engineering work:
 | `get-pr-comments` | Fetch and summarize PR feedback | included |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
+| `solus-product-master` | Anti-inertia product direction, AI product strategy, red-team critique, and minimum validation experiments | included |
 | `new-branch-and-pr` | Standard branch and PR workflow | included |
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |

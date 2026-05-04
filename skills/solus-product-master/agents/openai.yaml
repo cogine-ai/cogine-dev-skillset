@@ -1,0 +1,4 @@
+interface:
+  display_name: "Solus Product Master"
+  short_description: "Anti-inertia product strategy for AI ideas"
+  default_prompt: "Use $solus-product-master to stress-test this product idea and find the smallest useful validation experiment."
