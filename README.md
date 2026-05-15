@@ -22,6 +22,7 @@ Install a single skill when you only want a narrow workflow:
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill gh-issue-priority-handoff
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill check-compiler-errors
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill ai-slide-templates
 ```
 
 The `skills` CLI supports installing a whole repository collection with `npx skills add owner/repo` or `npx skills add <github-url>`. See the official [CLI docs](https://skills.sh/docs/cli), [FAQ](https://skills.sh/docs/faq), and a concrete collection example in [Trigger.dev's docs](https://trigger.dev/docs/skills).
@@ -70,6 +71,7 @@ Recommended order for day-to-day engineering work:
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
 | `image2-with-codex` | Route image generation to the local image2-with-codex HTTP service (Codex CLI image generation) | included |
+| `ai-slide-templates` | Build polished browser-openable HTML slide decks from Cogine AI templates | included |
 
 ## Xianyu Skill Bundle
 
