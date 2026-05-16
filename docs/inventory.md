@@ -32,6 +32,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `xianyu-product-manager-skill`: Xianyu product-management workflow for creating, managing, and optimizing AI service listings.
 - `xianyu-automation-skill`: Xianyu automation workflow for store operations, monitoring, and lifecycle automation built on the API and product-management skills.
 - `image2-with-codex`: Routes image-generation requests to the local image2-with-codex HTTP service (Codex CLI backend).
+- `ai-slide-templates`: Guides agents through the Cogine AI slide-template workflow: clone/read the template repository, select a template by metadata, assemble a browser-openable HTML deck, and verify the result.
 
 ## Useful But Not For This Repo
 
