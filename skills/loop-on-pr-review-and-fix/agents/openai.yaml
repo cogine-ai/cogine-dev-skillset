@@ -1,0 +1,4 @@
+interface:
+  display_name: "Loop on PR Review and Fix"
+  short_description: "Create an automation for PR review loops"
+  default_prompt: "Use $loop-on-pr-review-and-fix to create a Codex heartbeat automation that checks this ready-for-review PR every 10 minutes and fixes only new actionable review feedback."
