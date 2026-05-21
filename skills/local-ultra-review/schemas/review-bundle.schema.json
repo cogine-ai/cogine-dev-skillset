@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/local-ultra-review/review-bundle.schema.json",
+  "title": "ReviewBundle",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "created_at",
+    "repo_root",
+    "base_ref",
+    "head_ref",
+    "changed_files",
+    "diff_stats",
+    "patches",
+    "project_instructions",
+    "detected"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "repo_root": {
+      "type": "string"
+    },
+    "base_ref": {
+      "type": "string"
+    },
+    "head_ref": {
+      "type": "string"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ignored": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "diff_stats": {
+      "type": "object"
+    },
+    "patches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "sections"
+        ],
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "source",
+                "patch"
+              ],
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "patch": {
+                  "type": "string"
+                },
+                "truncated": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "project_instructions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "content"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "truncated": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "detected": {
+      "type": "object"
+    }
+  }
+}

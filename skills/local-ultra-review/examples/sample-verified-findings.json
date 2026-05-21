@@ -1,0 +1,34 @@
+{
+  "counts": {
+    "confirmed": 1
+  },
+  "findings": [
+    {
+      "candidate_id": "candidate-001",
+      "status": "confirmed",
+      "title": "Deleted user lookup now skips tenant scope",
+      "severity": "Important",
+      "category": "security",
+      "file": "src/users.ts",
+      "line": 42,
+      "introduced_by_diff": true,
+      "failure_scenario": "A workspace admin can request a user id from another workspace and receive profile data because the new query filters only by id.",
+      "evidence": [
+        {
+          "file": "src/users.ts",
+          "line": 42,
+          "reason": "The changed query uses id without workspaceId after the diff removed the scoped helper."
+        }
+      ],
+      "verification": {
+        "summary": "Base used the scoped helper; head queries by id only. A cross-workspace request reaches the changed path.",
+        "method": "base_comparison",
+        "commands": [],
+        "notes": [
+          "Static verification only in this sample."
+        ]
+      },
+      "suggested_fix_direction": "Restore workspaceId scoping or call the scoped helper."
+    }
+  ]
+}

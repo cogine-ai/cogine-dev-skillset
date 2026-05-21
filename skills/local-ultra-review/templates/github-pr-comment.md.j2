@@ -1,0 +1,26 @@
+## Automated Local Ultra Review
+
+**Commit:** `{{ short_commit_sha }}`
+**Mode:** `{{ mode }}`
+**PR:** #{{ pr_number }} - {{ pr_title }}
+
+| Review Score | Findings | Severity Breakdown |
+|---:|---:|---|
+| **{{ score }}/100** ({{ result }}) | **{{ finding_count }}** | P0: {{ p0 }} / P1: {{ p1 }} / P2: {{ p2 }} / P3: {{ p3 }} |
+
+> [!IMPORTANT]
+> This is an automated Local Ultra Review. Treat findings as review candidates for human verification.
+
+### Review Findings
+
+{{ findings_body }}
+
+{{ needs_manual_review }}
+
+---
+
+Artifacts:
+- Full report: `{{ report_path }}`
+- Findings JSON: `{{ findings_path }}`
+
+<!-- pr-review-agent provider=local-ultra-review head={{ head_sha }} session={{ session_id }} -->

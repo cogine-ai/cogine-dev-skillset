@@ -1,0 +1,16 @@
+mode: deep
+default_base: origin/main
+include_uncommitted: true
+include_untracked: false
+max_reviewers: 5
+max_findings: 20
+max_nits: 5
+run_tests: auto
+network: disabled
+copy_secrets: false
+cleanup_worktree: true
+output_dir: .local-ultra-review
+worktree_dir: .local-ultra-review/worktrees
+large_file_limit_bytes: 200000
+max_patch_chars_per_file: 60000
+destructive_actions: false

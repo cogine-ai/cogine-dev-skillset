@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/local-ultra-review/verified-finding.schema.json",
+  "title": "VerifiedFinding",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "candidate_id",
+    "status",
+    "title",
+    "severity",
+    "category",
+    "file",
+    "line",
+    "introduced_by_diff",
+    "failure_scenario",
+    "evidence",
+    "verification"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "confirmed",
+        "false_positive",
+        "pre_existing",
+        "needs_manual_review"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "Important",
+        "Nit",
+        "Pre-existing",
+        "NeedsManualReview"
+      ]
+    },
+    "category": {
+      "type": "string"
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "line": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "introduced_by_diff": {
+      "type": "boolean"
+    },
+    "failure_scenario": {
+      "type": "string"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "summary",
+        "method"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "static",
+            "test",
+            "typecheck",
+            "lint",
+            "base_comparison",
+            "manual",
+            "mixed"
+          ]
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "suggested_fix_direction": {
+      "type": "string"
+    },
+    "dedupe_key": {
+      "type": "string"
+    }
+  }
+}
