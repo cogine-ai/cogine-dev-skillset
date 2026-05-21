@@ -45,7 +45,20 @@
       ]
     },
     "category": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "correctness",
+        "security",
+        "privacy",
+        "integration",
+        "test",
+        "performance",
+        "migration",
+        "concurrency",
+        "state",
+        "configuration",
+        "other"
+      ]
     },
     "file": {
       "type": "string",
@@ -63,9 +76,29 @@
     },
     "evidence": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
-        "additionalProperties": true
+        "additionalProperties": true,
+        "required": [
+          "file",
+          "line",
+          "reason"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     },
     "verification": {

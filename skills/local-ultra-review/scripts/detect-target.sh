@@ -37,6 +37,26 @@ def default_base():
     return ""
 
 
+def parse_pr_target(value):
+    raw = value.strip().rstrip("/")
+    normalized = re.split(r"[?#]", raw, maxsplit=1)[0]
+    if re.fullmatch(r"#?\d+", normalized or raw):
+        return "", (normalized or raw).lstrip("#")
+    if "github.com/" in normalized and "/pull/" in normalized:
+        parts = [part for part in normalized.split("/") if part]
+        try:
+            pull_index = parts.index("pull")
+        except ValueError:
+            return None, None
+        if pull_index < 2 or pull_index + 1 >= len(parts):
+            return None, None
+        pr_number = parts[pull_index + 1]
+        if not re.fullmatch(r"\d+", pr_number):
+            return None, None
+        return f"{parts[pull_index - 2]}/{parts[pull_index - 1]}", pr_number
+    return None, None
+
+
 args = sys.argv[1:]
 mode = "deep"
 base = None
@@ -93,9 +113,20 @@ while i < len(args):
     elif arg == "--no-uncommitted":
         include_uncommitted = False
         i += 1
-    elif arg == "pr" and i + 1 < len(args):
+    elif arg == "pr":
+        if i + 1 >= len(args) or args[i + 1].startswith("-"):
+            errors.append("missing PR number or URL after pr")
+            i += 1
+            continue
+        repo_from_url, pr_number = parse_pr_target(args[i + 1])
+        if not pr_number:
+            errors.append(f"unsupported PR target: {args[i + 1]}")
+            i += 2
+            continue
         target_type = "pr"
-        target = args[i + 1]
+        target = pr_number
+        if repo_from_url:
+            repo = repo or repo_from_url
         include_uncommitted = False
         i += 2
     elif re.fullmatch(r"#?\d+", arg):
@@ -104,17 +135,24 @@ while i < len(args):
         include_uncommitted = False
         i += 1
     elif "github.com/" in arg and "/pull/" in arg:
+        repo_from_url, pr_number = parse_pr_target(arg)
+        if not pr_number:
+            errors.append(f"unsupported PR URL: {arg}")
+            i += 1
+            continue
         target_type = "pr"
-        parts = arg.rstrip("/").split("/")
-        target = parts[-1]
-        if len(parts) >= 5:
-            repo = f"{parts[-4]}/{parts[-3]}"
+        target = pr_number
+        if repo_from_url:
+            repo = repo or repo_from_url
         include_uncommitted = False
         i += 1
     elif ".." in arg:
         target_type = "range"
         target = arg
         include_uncommitted = False
+        i += 1
+    elif arg.startswith("-"):
+        errors.append(f"unknown option: {arg}")
         i += 1
     else:
         target_type = "base"

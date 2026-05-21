@@ -86,17 +86,18 @@ results = []
 for item in commands:
     log_path = logs_dir / f"{item['name']}.log"
     if not run_checks:
-        results.append({**item, "status": "planned", "log": str(log_path)})
+        results.append({**item, "status": "planned", "success": True, "log": str(log_path)})
         continue
     try:
         proc = subprocess.run(item["command"], cwd=repo, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=timeout)
         log_path.write_text(proc.stdout, encoding="utf-8", errors="replace")
-        results.append({**item, "status": "passed" if proc.returncode == 0 else "failed", "exit_code": proc.returncode, "log": str(log_path)})
+        results.append({**item, "status": "passed" if proc.returncode == 0 else "failed", "success": proc.returncode == 0, "exit_code": proc.returncode, "log": str(log_path)})
     except subprocess.TimeoutExpired as exc:
         log_path.write_text(exc.stdout or "", encoding="utf-8", errors="replace")
-        results.append({**item, "status": "timeout", "exit_code": 124, "log": str(log_path)})
+        results.append({**item, "status": "timeout", "success": False, "exit_code": 124, "log": str(log_path)})
 
-summary = {"ok": True, "dry_run": not run_checks, "repo_root": str(repo), "timeout_seconds": timeout, "commands": results}
+ok = True if not run_checks else all(item.get("success", False) for item in results)
+summary = {"ok": ok, "dry_run": not run_checks, "repo_root": str(repo), "timeout_seconds": timeout, "commands": results}
 (out_dir / "checks.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 print(json.dumps(summary, indent=2, sort_keys=True))
 PY

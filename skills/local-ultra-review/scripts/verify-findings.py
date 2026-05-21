@@ -55,6 +55,17 @@ def candidate_status(candidate):
     return ""
 
 
+def verifier_payload(candidate, status, notes):
+    verification = candidate.get("verification")
+    if isinstance(verification, dict):
+        payload = dict(verification)
+        payload.setdefault("notes", notes)
+        return payload
+    summary = "Explicit verifier status confirmed." if status == "confirmed" else f"Explicit verifier status: {status}."
+    method = "mixed" if status == "confirmed" else "manual"
+    return {"summary": summary, "method": method, "notes": notes}
+
+
 def verify_candidate(candidate, repo, changed_paths, static_confirm):
     cid = candidate.get("id") or candidate.get("candidate_id") or "unknown"
     base = {
@@ -93,6 +104,18 @@ def verify_candidate(candidate, repo, changed_paths, static_confirm):
     if path not in changed_paths:
         notes.append("referenced file is not in changed_files")
 
+    explicit = candidate_status(candidate)
+    if explicit == "confirmed":
+        base["status"] = "confirmed"
+        base["verification"] = verifier_payload(candidate, explicit, notes)
+        return base
+    if explicit in {"false_positive", "pre_existing", "needs_manual_review"}:
+        base["status"] = explicit
+        if explicit == "pre_existing":
+            base["severity"] = "Pre-existing"
+        base["verification"] = verifier_payload(candidate, explicit, notes)
+        return base
+
     if candidate.get("introduced_by_diff") is False or candidate.get("severity") == "Pre-existing":
         base["status"] = "pre_existing"
         base["severity"] = "Pre-existing"
@@ -107,18 +130,6 @@ def verify_candidate(candidate, repo, changed_paths, static_confirm):
     if missing:
         base["status"] = "needs_manual_review"
         base["verification"] = {"summary": "Candidate is missing required proof fields.", "method": "static", "notes": notes}
-        return base
-
-    explicit = candidate_status(candidate)
-    if explicit == "confirmed":
-        base["status"] = "confirmed"
-        base["verification"] = candidate.get("verification") if isinstance(candidate.get("verification"), dict) else {"summary": "Explicit verifier status confirmed and program checks passed.", "method": "mixed", "notes": notes}
-        return base
-    if explicit in {"false_positive", "pre_existing", "needs_manual_review"}:
-        base["status"] = explicit
-        if explicit == "pre_existing":
-            base["severity"] = "Pre-existing"
-        base["verification"] = candidate.get("verification") if isinstance(candidate.get("verification"), dict) else {"summary": f"Explicit verifier status: {explicit}.", "method": "manual", "notes": notes}
         return base
 
     if static_confirm:

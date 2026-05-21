@@ -68,7 +68,10 @@ def extract_jsonl(text):
 
 
 def run_cli(command, prompt, cwd, timeout):
-    proc = subprocess.run(command, input=prompt, cwd=cwd, shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout)
+    argv = shlex.split(command)
+    if not argv:
+        raise ValueError("CLI command cannot be empty")
+    proc = subprocess.run(argv, input=prompt, cwd=cwd, shell=False, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=timeout)
     return proc
 
 
@@ -97,7 +100,10 @@ def reviewer_job(role, prompt, args):
                 for row in rows:
                     row.setdefault("reviewer", role)
                     fh.write(json.dumps(row, sort_keys=True) + "\n")
-            result.update({"status": "completed", "exit_code": proc.returncode, "raw_path": str(raw_path), "jsonl_path": str(jsonl_path), "candidates": len(rows)})
+            status = "completed" if proc.returncode == 0 else "failed"
+            result.update({"status": status, "exit_code": proc.returncode, "raw_path": str(raw_path), "jsonl_path": str(jsonl_path), "candidates": len(rows)})
+        except ValueError as exc:
+            result.update({"status": "failed", "reason": str(exc), "exit_code": 2})
         except subprocess.TimeoutExpired:
             result.update({"status": "timeout", "exit_code": 124})
     elif args.backend in {"sequential", "subagent"}:

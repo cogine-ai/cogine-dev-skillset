@@ -86,7 +86,10 @@ def load_ignore_patterns(skill_dir):
 
 def ignored(path, patterns):
     normalized = path.replace(os.sep, "/")
-    return any(fnmatch.fnmatch(normalized, pattern) for pattern in patterns)
+    parts = [part for part in normalized.split("/") if part]
+    variants = {normalized, f"./{normalized}", Path(normalized).name}
+    variants.update("/".join(parts[index:]) for index in range(len(parts)))
+    return any(fnmatch.fnmatch(variant, pattern) for pattern in patterns for variant in variants)
 
 
 def parse_name_status(text, source):

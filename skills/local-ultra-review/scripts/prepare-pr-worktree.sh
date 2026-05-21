@@ -68,7 +68,8 @@ if [ -n "$REPO" ]; then
 fi
 
 if [ -n "$BASE_REF" ]; then
-  git -C "$WORKTREE_DIR" fetch origin "$BASE_REF:refs/remotes/origin/$BASE_REF" >/dev/null 2>"$SESSION_DIR/logs/fetch-base.log" || true
+  BASE_BRANCH="${BASE_REF#origin/}"
+  git -C "$WORKTREE_DIR" fetch origin "$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH" >/dev/null 2>"$SESSION_DIR/logs/fetch-base.log"
 fi
 
 (

@@ -59,7 +59,27 @@
       }
     },
     "diff_stats": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "files",
+        "additions",
+        "deletions"
+      ],
+      "properties": {
+        "files": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "additions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deletions": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
     },
     "patches": {
       "type": "array",
@@ -119,7 +139,45 @@
       }
     },
     "detected": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "language": {
+                "type": "string"
+              },
+              "extension": {
+                "type": "string"
+              },
+              "changed_files": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "frameworks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "package_scripts": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "config_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }
