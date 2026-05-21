@@ -68,8 +68,24 @@ if [ -n "$REPO" ]; then
 fi
 
 if [ -n "$BASE_REF" ]; then
-  BASE_BRANCH="${BASE_REF#origin/}"
-  git -C "$WORKTREE_DIR" fetch origin "$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH" >/dev/null 2>"$SESSION_DIR/logs/fetch-base.log"
+  FETCH_REF="$BASE_REF"
+  case "$BASE_REF" in
+    origin/*)
+      BASE_BRANCH="${BASE_REF#origin/}"
+      FETCH_REF="$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
+      ;;
+    refs/remotes/origin/*)
+      BASE_BRANCH="${BASE_REF#refs/remotes/origin/}"
+      FETCH_REF="$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
+      ;;
+    refs/heads/*)
+      BASE_BRANCH="${BASE_REF#refs/heads/}"
+      FETCH_REF="$BASE_BRANCH:refs/remotes/origin/$BASE_BRANCH"
+      ;;
+  esac
+  if [ "$FETCH_REF" != "$BASE_REF" ] || ! git -C "$WORKTREE_DIR" rev-parse --verify --quiet "$BASE_REF^{commit}" >/dev/null; then
+    git -C "$WORKTREE_DIR" fetch origin "$FETCH_REF" >/dev/null 2>"$SESSION_DIR/logs/fetch-base.log"
+  fi
 fi
 
 (

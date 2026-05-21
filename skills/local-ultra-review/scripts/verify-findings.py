@@ -56,13 +56,16 @@ def candidate_status(candidate):
 
 
 def verifier_payload(candidate, status, notes):
+    summary = "Explicit verifier status confirmed." if status == "confirmed" else f"Explicit verifier status: {status}."
+    method = "mixed" if status == "confirmed" else "manual"
     verification = candidate.get("verification")
     if isinstance(verification, dict):
         payload = dict(verification)
-        payload.setdefault("notes", notes)
+        payload.setdefault("summary", summary)
+        payload.setdefault("method", method)
+        if not isinstance(payload.get("notes"), list) or not payload["notes"]:
+            payload["notes"] = notes
         return payload
-    summary = "Explicit verifier status confirmed." if status == "confirmed" else f"Explicit verifier status: {status}."
-    method = "mixed" if status == "confirmed" else "manual"
     return {"summary": summary, "method": method, "notes": notes}
 
 
