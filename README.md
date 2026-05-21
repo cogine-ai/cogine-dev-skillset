@@ -22,6 +22,7 @@ Install a single skill when you only want a narrow workflow:
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill gh-issue-priority-handoff
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill check-compiler-errors
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill loop-on-pr-review-and-fix
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill ai-slide-templates
 ```
 
@@ -48,6 +49,7 @@ Recommended order for day-to-day engineering work:
 |---|---|---|
 | `gh-issue-priority-handoff` | Prioritize issues and generate delegation briefs | included |
 | `get-pr-comments` | Fetch and summarize PR feedback | included |
+| `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
 | `solus-product-master` | Anti-inertia product direction, AI product strategy, red-team critique, and minimum validation experiments | included |
