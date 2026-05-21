@@ -8,15 +8,18 @@ reviews; this script only stores durable loop state inside the local git dir.
 from __future__ import annotations
 
 import argparse
+import fcntl
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 
 
 HANDLED_STATUSES = {
@@ -34,8 +37,11 @@ def now_iso() -> str:
 
 
 def run_git(args: list[str]) -> str:
+    git_path = shutil.which("git")
+    if not git_path:
+        raise FileNotFoundError("git executable not found on PATH")
     result = subprocess.run(
-        ["git", *args],
+        [git_path, *args],
         check=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -117,6 +123,18 @@ def save_state(path: Path, data: dict[str, Any]) -> None:
             os.unlink(tmp_name)
 
 
+@contextmanager
+def locked_state(path: Path) -> Iterator[None]:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = path.with_suffix(".lock")
+    with lock_path.open("a", encoding="utf-8") as handle:
+        fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
 def cmd_path(args: argparse.Namespace) -> int:
     print(state_path(args.pr, args.state_dir))
     return 0
@@ -124,15 +142,16 @@ def cmd_path(args: argparse.Namespace) -> int:
 
 def cmd_init(args: argparse.Namespace) -> int:
     path = state_path(args.pr, args.state_dir)
-    data = load_state(path, args.pr)
-    data["pr"] = args.pr
-    if args.repo:
-        data["repo"] = args.repo
-    if args.pr_url:
-        data["pr_url"] = args.pr_url
-    if args.head_sha:
-        data["last_head_sha"] = args.head_sha
-    save_state(path, data)
+    with locked_state(path):
+        data = load_state(path, args.pr)
+        data["pr"] = args.pr
+        if args.repo:
+            data["repo"] = args.repo
+        if args.pr_url:
+            data["pr_url"] = args.pr_url
+        if args.head_sha:
+            data["last_head_sha"] = args.head_sha
+        save_state(path, data)
     print(path)
     return 0
 
@@ -173,42 +192,54 @@ def cmd_unseen(args: argparse.Namespace) -> int:
 
 def cmd_mark(args: argparse.Namespace) -> int:
     path = state_path(args.pr, args.state_dir)
-    data = load_state(path, args.pr)
     if args.status not in HANDLED_STATUSES:
         allowed = ", ".join(sorted(HANDLED_STATUSES))
         raise SystemExit(f"Unsupported status {args.status!r}; expected one of: {allowed}")
-    item = {
-        "status": args.status,
-        "note": args.note or "",
-        "updated_at": now_iso(),
-    }
-    if args.head_sha:
-        item["head_sha"] = args.head_sha
-        data["last_head_sha"] = args.head_sha
-    if args.url:
-        item["url"] = args.url
-    data.setdefault("items", {})[args.item_id] = item
-    if args.reset_quiet:
-        data["quiet_rounds"] = 0
-    save_state(path, data)
+    with locked_state(path):
+        data = load_state(path, args.pr)
+        item = {
+            "status": args.status,
+            "note": args.note or "",
+            "updated_at": now_iso(),
+        }
+        if args.head_sha:
+            item["head_sha"] = args.head_sha
+            data["last_head_sha"] = args.head_sha
+        if args.url:
+            item["url"] = args.url
+        data.setdefault("items", {})[args.item_id] = item
+        if args.reset_quiet:
+            data["quiet_rounds"] = 0
+        save_state(path, data)
     print(json.dumps({"item_id": args.item_id, **item}, sort_keys=True))
     return 0
 
 
 def cmd_quiet(args: argparse.Namespace) -> int:
     path = state_path(args.pr, args.state_dir)
-    data = load_state(path, args.pr)
-    if args.reset:
-        data["quiet_rounds"] = 0
-    elif args.increment:
-        data["quiet_rounds"] = int(data.get("quiet_rounds", 0)) + 1
-    else:
-        raise SystemExit("Pass --increment or --reset")
-    save_state(path, data)
-    quiet_rounds = int(data["quiet_rounds"])
+    with locked_state(path):
+        data = load_state(path, args.pr)
+        if args.reset:
+            data["quiet_rounds"] = 0
+        elif args.increment:
+            data["quiet_rounds"] = int(data.get("quiet_rounds", 0)) + 1
+        else:
+            raise SystemExit("Pass --increment or --reset")
+        save_state(path, data)
+        quiet_rounds = int(data["quiet_rounds"])
     should_stop = quiet_rounds >= args.stop_after
     print(json.dumps({"quiet_rounds": quiet_rounds, "stop": should_stop}, sort_keys=True))
     return 0
+
+
+def positive_int(value: str) -> int:
+    try:
+        parsed = int(value)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError(f"expected a positive integer, got: {value!r}") from exc
+    if parsed < 1:
+        raise argparse.ArgumentTypeError(f"expected a positive integer >= 1, got: {value!r}")
+    return parsed
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -251,7 +282,7 @@ def build_parser() -> argparse.ArgumentParser:
     quiet_action = quiet_parser.add_mutually_exclusive_group(required=True)
     quiet_action.add_argument("--increment", action="store_true")
     quiet_action.add_argument("--reset", action="store_true")
-    quiet_parser.add_argument("--stop-after", type=int, default=3)
+    quiet_parser.add_argument("--stop-after", type=positive_int, default=3)
     quiet_parser.set_defaults(func=cmd_quiet)
 
     return parser
