@@ -1,0 +1,18 @@
+paths:
+  - "**/*.lock"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/generated/**"
+  - "**/.next/**"
+  - "**/coverage/**"
+  - "**/node_modules/**"
+  - "**/vendor/**"
+  - "**/__generated__/**"
+  - "**/*.min.js"
+  - "**/*.map"
+
+rules:
+  - ignore_formatting_only_changes: true
+  - ignore_ci_enforced_lint: true
+  - ignore_generated_files: true
+  - ignore_lockfiles_by_default: true

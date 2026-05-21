@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/local-ultra-review/pr-context.schema.json",
+  "title": "PullRequestContext",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "provider",
+    "repo",
+    "number",
+    "url",
+    "base_ref_name",
+    "base_sha",
+    "head_sha",
+    "commit_sha",
+    "changed_files"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "github"
+      ]
+    },
+    "repo": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "base_ref_name": {
+      "type": "string"
+    },
+    "base_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "head_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "commit_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "short_commit_sha": {
+      "type": "string",
+      "minLength": 7,
+      "maxLength": 12,
+      "pattern": "^[0-9a-f]+$"
+    },
+    "git_base_ref": {
+      "type": "string"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "additions": {
+            "type": "integer"
+          },
+          "deletions": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

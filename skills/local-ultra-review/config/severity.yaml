@@ -1,0 +1,25 @@
+Important:
+  - production behavior break
+  - data loss
+  - auth or permission bypass
+  - privacy leak
+  - migration rollback risk
+  - backward incompatible API or schema break
+  - incorrect billing, quota, or payment behavior
+  - concurrency bug likely under normal usage
+
+Nit:
+  - minor edge case
+  - low-risk maintainability issue tied to a concrete failure mode
+  - missing defensive handling with limited impact
+  - localized test blind spot tied to changed behavior
+
+Pre-existing:
+  - exists in base branch
+  - not introduced or worsened by current diff
+
+NeedsManualReview:
+  - plausible issue without enough static evidence
+  - unclear consumer or deployment contract
+  - requires domain owner confirmation
+  - cannot establish whether current diff introduced it

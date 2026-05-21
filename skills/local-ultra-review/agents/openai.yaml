@@ -1,0 +1,8 @@
+interface:
+  display_name: "Local Ultra Review"
+  short_description: "Deep local code review workflow"
+  brand_color: "#2563EB"
+  default_prompt: "Use $local-ultra-review to run a deep local review of the current branch before merge."
+
+policy:
+  allow_implicit_invocation: false

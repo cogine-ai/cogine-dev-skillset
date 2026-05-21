@@ -6,6 +6,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 
 - `gh-issue-priority-handoff`: Good for issue triage and delegation.
 - `get-pr-comments`: Useful for PR iteration and feedback intake.
+- `local-ultra-review`: Useful for deep pre-merge local code review with isolated worktrees, reviewer lenses, verification, dedupe, and severity-ranked findings.
 - `loop-on-pr-review-and-fix`: Useful for running a stateful post-PR-review loop that verifies new review comments, fixes only still-valid issues, validates, pushes, and records handled feedback.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
