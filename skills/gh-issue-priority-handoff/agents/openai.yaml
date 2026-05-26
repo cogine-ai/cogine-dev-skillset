@@ -1,3 +1,4 @@
 interface:
   display_name: "GH Issue Priority Handoff"
-  short_description: "Rank GitHub issues by impact and generate copy-paste delegation briefs"
+  short_description: "Prioritize GitHub issues for agent handoff"
+  default_prompt: "Use $gh-issue-priority-handoff to triage open GitHub issues and generate agent handoff blocks."
