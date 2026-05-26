@@ -5,6 +5,7 @@ BASE_REF=""
 SESSION_ID=""
 OUTPUT_DIR=".local-ultra-review"
 APPLY_LOCAL_PATCHES="true"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
@@ -36,6 +37,7 @@ fi
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
+bash "$SCRIPT_DIR/ensure-local-ignore.sh" --output-dir "$OUTPUT_DIR" >/dev/null
 
 case "$OUTPUT_DIR" in
   /*)
