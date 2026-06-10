@@ -15,6 +15,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.
 - `slow-is-fast`: Good evidence-first workflow for moderate and complex engineering tasks.
+- `goal-contract`: Good pre-goal contract workflow for turning a dev plan into bounded scope, non-goals, stop policy, tool policy, and subagent delegation boundaries.
 - `investigate`: Strong root-cause debugging workflow for failures and flaky behavior.
 - `vercel-react-best-practices`: Explicitly retained React and Next.js performance guidance.
 - `supabase-postgres-best-practices`: Explicitly retained Supabase and Postgres performance guidance.

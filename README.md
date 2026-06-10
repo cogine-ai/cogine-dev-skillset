@@ -59,6 +59,7 @@ Recommended order for day-to-day engineering work:
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |
 | `slow-is-fast` | Research, plan, then code with evidence-based workflow | included |
+| `goal-contract` | Convert a dev plan into a bounded goal description with scope, stop policy, tool policy, and subagent boundaries | included |
 | `investigate` | Root-cause debugging workflow for failures and flaky behavior | included |
 | `vercel-react-best-practices` | React and Next.js performance guidance | included |
 | `supabase-postgres-best-practices` | Supabase and Postgres schema, query, and performance guidance | included |
