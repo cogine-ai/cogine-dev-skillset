@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan DevEx Review"
+  short_description: "Review API CLI docs onboarding plans"
+  default_prompt: "Use $plan-devex-review to review this API, CLI, SDK, or developer documentation plan before implementation."

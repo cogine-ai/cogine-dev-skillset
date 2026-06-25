@@ -25,6 +25,10 @@ npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill local-ultra-review
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill loop-on-pr-review-and-fix
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill ai-slide-templates
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill founder-office-hours
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill backlog-ready-spec
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill ai-app-security-audit
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill plan-devex-review
 ```
 
 The `skills` CLI supports installing a whole repository collection with `npx skills add owner/repo` or `npx skills add <github-url>`. See the official [CLI docs](https://skills.sh/docs/cli), [FAQ](https://skills.sh/docs/faq), and a concrete collection example in [Trigger.dev's docs](https://trigger.dev/docs/skills).
@@ -49,12 +53,14 @@ Recommended order for day-to-day engineering work:
 | Skill | Purpose | Status |
 |---|---|---|
 | `gh-issue-priority-handoff` | Prioritize issues and generate delegation briefs | included |
+| `backlog-ready-spec` | Turn vague product requests or issues into implementation-ready specs | included |
 | `get-pr-comments` | Fetch and summarize PR feedback | included |
 | `local-ultra-review` | Run Ultra Review-style local code review with worktrees, reviewer lenses, verifier gating, dedupe, and ranked findings | included |
 | `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
+| `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
-| `solus-product-master` | Anti-inertia product direction, AI product strategy, red-team critique, and minimum validation experiments | included |
+| `plan-devex-review` | Plan-stage review for API, CLI, SDK, plugin, and developer documentation experience | included |
 | `new-branch-and-pr` | Standard branch and PR workflow | included |
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |
@@ -66,7 +72,10 @@ Recommended order for day-to-day engineering work:
 | `site-design-audit` | Report-only live site design audit | included |
 | `site-design-fix` | Design audit and targeted fix loop | included |
 | `run-smoke-tests` | Playwright-based smoke verification | included |
+| `qa-only` | Report-only browser QA with health score, evidence, and repro steps | included |
+| `devex-review` | Live developer experience audit for API, CLI, SDK, and developer docs onboarding | included |
 | `security-best-practices` | Security review guidance with framework references | included |
+| `ai-app-security-audit` | AI application security review for LLM, agent, RAG, tool, and cost risks | included |
 | `fix-ci` | Diagnose and fix failing CI jobs | included |
 | `fix-merge-conflicts` | Resolve merge conflicts safely | included |
 | `loop-on-ci` | Watch CI and iterate to green | included |
@@ -89,4 +98,5 @@ These three skills form a small Xianyu workflow stack:
 
 - Local private aliases may use underscores on your machine; the public repo normalizes names to `kebab-case`.
 - Some skills in the local machine are marketing, SEO, or personal workflow skills. They are intentionally excluded from this repo.
+- Archived skills live under `archived/skills/` and are not part of the public installable skill set.
 - Provenance and licensing notes are tracked in [docs/provenance.md](./docs/provenance.md).

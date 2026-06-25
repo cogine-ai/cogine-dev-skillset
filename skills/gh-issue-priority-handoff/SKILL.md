@@ -1,6 +1,6 @@
 ---
 name: gh-issue-priority-handoff
-description: Use when the user asks to triage GitHub issues, prioritize backlog work, decide which issues are still valid, or generate delegation-ready issue briefs for coding agents.
+description: Use when the user asks to triage GitHub issues, prioritize backlog work, verify issue readiness or staleness, or generate delegation-ready issue briefs for coding agents.
 ---
 
 # GH Issue Priority Handoff
@@ -58,6 +58,25 @@ gh issue view <number> --comments --json number,title,body,labels,comments,assig
 - Treat each issue as a claim to verify against current code, not as an instruction to apply blindly.
 - Verify whether the issue is still reproducible, already partially implemented, fully fixed, duplicated, or superseded.
 - Identify likely touched files, architecture dependencies, and existing tests or validation commands.
+- Check whether the issue is implementation-ready.
+
+### Issue Readiness Gate
+
+Before scoring priority or handoff status, assign each issue one readiness verdict:
+
+- `READY`: clear user outcome, scope, acceptance criteria, likely target files/modules, and validation path.
+- `READY WITH RISKS`: implementable, but assumptions, dependencies, or code uncertainty must be visible in the handoff.
+- `NOT READY`: missing a product or technical decision that would materially change implementation.
+- `NOT NEEDED`: duplicate, obsolete, already implemented, or no longer relevant to current code.
+
+For `NOT READY` issues, do not create a normal delegation block. Instead, create a readiness block with:
+
+- Missing decision or evidence.
+- One concrete question to unblock it.
+- Suggested owner: founder/product/engineering.
+- Recommended next step: use `backlog-ready-spec`, update the issue, close as duplicate, or investigate code.
+
+Readiness is separate from priority. A high-value issue can still be `NOT READY`.
 
 3. Classify handoff readiness before scoring.
 - `Hand off now`: valid, bounded, agent-executable, and valuable.
@@ -70,6 +89,7 @@ gh issue view <number> --comments --json number,title,body,labels,comments,assig
 - `Value`: 1-10 (user impact + business impact + data correctness + risk reduction)
 - `Effort`: S / M / L / XL
 - `Dependency`: blocked-by or blocks-other-work
+- `Readiness`: READY / READY WITH RISKS / NOT READY / NOT NEEDED
 
 Suggested weighting:
 - User-visible breakage or data integrity: highest
@@ -94,13 +114,19 @@ Always return these sections in order:
 - Repo/ref checked, issue scope, base branch, fetch status, and any freshness caveat.
 
 2. `Priority Table`
-- Issue, Status, Importance, Value, Effort, Recommendation, Reason
+- Issue, Status, Readiness, Importance, Value, Effort, Recommendation, Reason
 
 3. `Issue Analysis`
 - One paragraph per issue, including skipped/deferred issues.
 
-4. `Agent Handoff Blocks`
+4. `Readiness Fixes`
+- One block per `NOT READY` or `NOT NEEDED` issue.
+- State the missing decision, duplicate/obsolete evidence, or already-implemented evidence.
+- Recommend whether to run `backlog-ready-spec`, update the issue, close it, or investigate further.
+
+5. `Agent Handoff Blocks`
 - One copy-paste block per handoff-ready issue.
+- Only include `READY` and `READY WITH RISKS` issues.
 - Each block must include:
   - issue id and title
   - URL
@@ -113,7 +139,7 @@ Always return these sections in order:
   - worktree/branch setup commands
 - If no issues are handoff-ready, say so and do not fabricate blocks.
 
-5. `Skipped or Needs Follow-up`
+6. `Skipped or Needs Follow-up`
 - Issues not handed off, with one-line reasons.
 
 For handoff block format, use:
@@ -125,6 +151,7 @@ For handoff block format, use:
 - Check comments and linked closing PR references when available.
 - Call out stale, duplicate, outdated, already-fixed, or not-agent-ready issues explicitly.
 - Use repo-specific validation commands from package scripts, test config, Makefiles, CI config, or docs. Do not default to `pnpm` unless the repo actually uses it.
+- Do not hand off `NOT READY` issues as if they were executable.
 - Keep recommendations actionable; avoid vague prioritization.
 - Keep handoff blocks self-contained enough for another coding agent to start without rereading this analysis.
 - If uncertain, state assumptions and what evidence is missing.

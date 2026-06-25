@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backlog Ready Spec"
+  short_description: "Turn vague work into ready issues"
+  default_prompt: "Use $backlog-ready-spec to turn this vague request into a backlog-ready issue."

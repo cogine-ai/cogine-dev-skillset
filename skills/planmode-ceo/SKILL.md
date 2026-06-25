@@ -51,6 +51,18 @@ Print the detected base branch name. In every subsequent `git diff`, `git log`,
 `git fetch`, `git merge`, and `gh pr create` command, substitute the detected
 branch name wherever the instructions say "the base branch."
 
+## Input Contract
+
+Before the system audit, identify which artifact is being reviewed:
+
+- Product/founder handoff from `founder-office-hours`
+- Backlog spec or GitHub issue from `backlog-ready-spec`
+- Existing implementation plan
+- Current branch diff
+- Pasted plan in the conversation
+
+If no review target is clear, ask the user to choose the target. Do not review the entire repository by default.
+
 ---
 
 # Mega Plan Review Mode
@@ -403,6 +415,22 @@ Follow the AskUserQuestion format from the Preamble above. Additional rules for 
 * **Escape hatch:** If a section has no issues, say so and move on. If an issue has an obvious fix with no real alternatives, state what you'll do and move on — don't waste a question on it. Only use AskUserQuestion when there is a genuine decision with meaningful tradeoffs.
 
 ## Required Outputs
+
+### CEO Review Artifact
+
+Always produce a durable review artifact in the final response. It must include:
+
+- Review target: branch diff, product handoff, backlog spec, issue, or pasted plan.
+- Mode: EXPANSION, HOLD SCOPE, or REDUCTION.
+- Verdict: `READY`, `READY WITH RISKS`, `NOT READY`, or `RETHINK`.
+- CEO decision: the scope/product decision you recommend and why.
+- Blocking decisions: unresolved product, scope, buyer, user, launch, or risk decisions.
+- Accepted scope: what should be built now.
+- Deferred scope: what should not be built now and why.
+- Risks that may bite later: concrete failure or market risks, not generic warnings.
+- Recommended next step: `backlog-ready-spec`, `planmode-engineer`, implementation, or no-go.
+
+Use `READY` only when an implementer can proceed without making founder-level product decisions during coding.
 
 ### "NOT in scope" section
 List work considered and explicitly deferred, with one-line rationale each.

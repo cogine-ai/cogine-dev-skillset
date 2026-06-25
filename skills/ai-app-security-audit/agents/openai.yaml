@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI App Security Audit"
+  short_description: "Audit LLM and agent app risks"
+  default_prompt: "Use $ai-app-security-audit to review this AI application for prompt, tool, data, and cost security risks."

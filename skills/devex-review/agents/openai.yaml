@@ -1,0 +1,4 @@
+interface:
+  display_name: "DevEx Review"
+  short_description: "Audit live developer onboarding"
+  default_prompt: "Use $devex-review to test this API, CLI, SDK, or developer documentation onboarding flow."

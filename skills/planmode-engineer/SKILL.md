@@ -56,6 +56,26 @@ If you are running low on context or the user asks you to compress: Step 0 > Tes
 
 ## BEFORE YOU START:
 
+### Target Gate
+
+Before reviewing architecture or tests, identify the exact artifact being reviewed:
+
+- Current branch diff against the detected base branch.
+- Pasted implementation plan.
+- Backlog-ready spec or GitHub issue.
+- Product/founder handoff that still needs engineering translation.
+- Specific files or modules named by the user.
+
+If more than one target is plausible, ask the user to choose. Do not silently combine targets.
+
+For issue/spec inputs, first state whether the input is implementation-ready:
+
+- `READY`: enough scope, target files/modules, acceptance criteria, and validation exist.
+- `READY WITH RISKS`: implementable, but risks or assumptions must be visible.
+- `NOT READY`: missing decisions would materially change implementation.
+
+If the verdict is `NOT READY`, list the missing information and recommend `backlog-ready-spec` before continuing.
+
 ### Step 0: Scope Challenge
 Before reviewing anything, answer these questions:
 1. **What existing code already partially or fully solves each sub-problem?** Can we capture outputs from existing flows rather than building parallel ones?
@@ -192,6 +212,8 @@ If any failure mode has no test AND no error handling AND would be silent, flag 
 
 ### Completion summary
 At the end of the review, fill in and display this summary so the user can see all findings at a glance:
+- Review Target: branch diff / pasted plan / backlog spec / issue / files
+- Implementation Readiness Verdict: READY / READY WITH RISKS / NOT READY
 - Step 0: Scope Challenge (user chose: ___)
 - Architecture Review: ___ issues found
 - Code Quality Review: ___ issues found

@@ -1,0 +1,4 @@
+interface:
+  display_name: "QA Only"
+  short_description: "Report-only browser QA"
+  default_prompt: "Use $qa-only to test this web app and produce a report-only QA summary."
