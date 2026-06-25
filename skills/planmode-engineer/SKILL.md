@@ -212,7 +212,7 @@ If any failure mode has no test AND no error handling AND would be silent, flag 
 
 ### Completion summary
 At the end of the review, fill in and display this summary so the user can see all findings at a glance:
-- Review Target: branch diff / pasted plan / backlog spec / issue / files
+- Review Target: branch diff / pasted plan / backlog spec / issue / product/founder handoff / files
 - Implementation Readiness Verdict: READY / READY WITH RISKS / NOT READY
 - Step 0: Scope Challenge (user chose: ___)
 - Architecture Review: ___ issues found

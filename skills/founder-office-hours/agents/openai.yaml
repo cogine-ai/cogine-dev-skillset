@@ -1,4 +1,4 @@
 interface:
   display_name: "Founder Office Hours"
   short_description: "Stress-test founder product ideas"
-  default_prompt: "Use $founder-office-hours to interrogate this product idea and turn it into a concrete design handoff."
+  default_prompt: "Use $founder-office-hours to assess readiness for this product idea; return NOT READY if key product decisions are missing, otherwise turn it into a concrete design handoff."

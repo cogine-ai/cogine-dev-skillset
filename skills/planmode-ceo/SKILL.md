@@ -420,7 +420,7 @@ Follow the AskUserQuestion format from the Preamble above. Additional rules for 
 
 Always produce a durable review artifact in the final response. It must include:
 
-- Review target: branch diff, product handoff, backlog spec, issue, or pasted plan.
+- Review target: Current branch diff, Product/founder handoff, Backlog spec, GitHub issue, Existing implementation plan, or Pasted plan.
 - Mode: EXPANSION, HOLD SCOPE, or REDUCTION.
 - Verdict: `READY`, `READY WITH RISKS`, `NOT READY`, or `RETHINK`.
 - CEO decision: the scope/product decision you recommend and why.

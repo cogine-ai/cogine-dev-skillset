@@ -117,7 +117,7 @@ Show the user a summary of imported cookies (domain counts).
 ## Notes
 
 - First import per browser may trigger a macOS Keychain dialog — click "Allow" / "Always Allow".
-- On Linux, Chromium cookie decryption may depend on libsecret/Secret Service and the browser's current cookie storage version. If imports fail on Linux, report the exact helper output and ask whether to use an already-authenticated CDP session instead.
+- On Linux, Chromium cookie decryption may depend on libsecret/Secret Service and the browser's current cookie storage version. If imports fail on Linux, report only a redacted error summary or error code and ask whether to use an already-authenticated CDP session instead.
 - Cookie picker is served on the same port as the browse server (no extra process)
 - Only domain names and cookie counts are shown in the UI — no cookie values are exposed.
 - Do not print cookie values, raw SQLite rows, decrypted secrets, or Keychain/libsecret output.

@@ -12,7 +12,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `founder-office-hours`: Useful for founder-level product interrogation, target user selection, product-form decisions, and handoff before spec or architecture.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
-- `plan-devex-review`: Useful for plan-stage review of API, CLI, SDK, MCP, plugin, and developer documentation onboarding design.
+- `plan-devex-review`: Useful for plan-stage review of API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design.
 - `new-branch-and-pr`: Good for standard branch and PR workflow.
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.

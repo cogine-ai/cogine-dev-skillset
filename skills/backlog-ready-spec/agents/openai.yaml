@@ -1,4 +1,4 @@
 interface:
   display_name: "Backlog Ready Spec"
-  short_description: "Turn vague work into ready issues"
-  default_prompt: "Use $backlog-ready-spec to turn this vague request into a backlog-ready issue."
+  short_description: "Create ready issues specs and verdicts"
+  default_prompt: "Use $backlog-ready-spec to turn this vague request into a backlog-ready issue, implementation spec, and readiness verdict."

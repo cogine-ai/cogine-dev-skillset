@@ -60,7 +60,7 @@ Recommended order for day-to-day engineering work:
 | `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
-| `plan-devex-review` | Plan-stage review for API, CLI, SDK, plugin, and developer documentation experience | included |
+| `plan-devex-review` | Plan-stage review for API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design | included |
 | `new-branch-and-pr` | Standard branch and PR workflow | included |
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |

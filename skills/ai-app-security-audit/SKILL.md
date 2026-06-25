@@ -9,7 +9,7 @@ Use this skill for security work specific to AI applications. It complements `se
 
 ## Core Rule
 
-Only report findings with a concrete exploit path or failure scenario. Do not list generic AI risks unless the current code, config, prompt flow, or architecture actually exposes them.
+Only report findings with a concrete exploit path or concrete failure scenario. Do not list generic AI risks unless the current code, config, prompt flow, or architecture actually exposes them.
 
 ## Scope
 
@@ -109,4 +109,4 @@ Validation:
 - Critical: secret exfiltration, cross-tenant data exposure, arbitrary tool execution, irreversible external side effects, or uncontrolled spend.
 - High: prompt/tool/RAG path that can access sensitive data, perform unauthorized writes, or materially bypass policy.
 - Medium: validated but bounded risk with limited data/action/cost impact.
-- Low: hardening issue with clear code evidence but no immediate exploit path.
+- Low: evidenced hardening issue with a concrete failure scenario but no immediate exploit path.
