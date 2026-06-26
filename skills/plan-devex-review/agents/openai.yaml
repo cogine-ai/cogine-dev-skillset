@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan DevEx Review"
+  short_description: "Review API CLI SDK MCP plugin integration docs onboarding plans"
+  default_prompt: "Use $plan-devex-review to review this API, CLI, SDK, MCP server, plugin, integration guide, developer documentation, or onboarding plan before implementation."

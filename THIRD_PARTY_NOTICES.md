@@ -22,6 +22,12 @@ Unless otherwise noted, original material in this repository is licensed under A
   Contains its own [LICENSE.txt](./skills/security-best-practices/LICENSE.txt)
   Note: This directory ships bundled reference material and should keep its in-directory license and notices intact.
 
+- `skills/founder-office-hours/`, `skills/backlog-ready-spec/`, `skills/ai-app-security-audit/`, `skills/qa-only/`, `skills/devex-review/`, and `skills/plan-devex-review/`
+  Source of inspiration: `garrytan/gstack`
+  Upstream repository license: MIT
+  Upstream copyright: Copyright (c) 2026 Garry Tan
+  Note: These are Cogine-authored adaptations informed by GStack workflows such as `office-hours`, `spec`, `cso`, `qa-only`, `devex-review`, and `plan-devex-review`; keep this attribution if the adapted skills remain in the public collection.
+
 ## Before Publishing Changes
 
 - Confirm provenance for copied skills that were adapted from local installs.

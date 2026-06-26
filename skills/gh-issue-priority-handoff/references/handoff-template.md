@@ -7,6 +7,7 @@ Issue: #<id> <title>
 URL: <url>
 Repository: <owner/repo or local path>
 Base ref: <origin/main, origin/develop, or local ref with caveat>
+Readiness: READY / READY WITH RISKS
 
 Evidence checked:
 - <issue body/comment/linked PR detail>
