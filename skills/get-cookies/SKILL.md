@@ -72,7 +72,7 @@ If `NEEDS_SETUP`:
 If the browser automation helper is already connected to a real browser profile through CDP or an equivalent "use my existing browser" mode, cookie import is usually unnecessary. Verify before opening the picker:
 
 ```bash
-$B status 2>/dev/null || true
+"$B" status 2>/dev/null || true
 ```
 
 If the status output indicates an attached real browser profile, tell the user: "This session already appears to be using your real browser profile, so cookie import is not needed unless a specific domain still fails authentication." Then continue with the authenticated QA task.
