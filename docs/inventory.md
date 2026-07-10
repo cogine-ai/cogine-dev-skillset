@@ -24,6 +24,8 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `site-design-audit`: Valuable report-only UI and design audit workflow.
 - `site-design-fix`: Valuable design audit plus fix loop for frontend work.
 - `run-smoke-tests`: Valuable verification workflow.
+- `ui-proof-screenshot`: Codex-specific static evidence capture for real in-app Browser flows, kept separate from functional browser verification.
+- `ui-proof-video`: Codex-specific optional video recording, background review, and visible playback for owner-facing UI proof.
 - `qa-only`: Useful report-only browser QA workflow with health score, screenshot/evidence expectations, and reproduction steps.
 - `devex-review`: Useful live developer experience audit for APIs, CLIs, SDKs, plugins, and getting-started documentation.
 - `security-best-practices`: Useful security review checklist.
