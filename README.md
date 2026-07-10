@@ -72,6 +72,8 @@ Recommended order for day-to-day engineering work:
 | `site-design-audit` | Report-only live site design audit | included |
 | `site-design-fix` | Design audit and targeted fix loop | included |
 | `run-smoke-tests` | Playwright-based smoke verification | included |
+| `ui-proof-screenshot` | Capture focused screenshot evidence from real Codex in-app Browser flows | included |
+| `ui-proof-video` | Record, review, and visibly play owner-facing UI proof videos | included |
 | `qa-only` | Report-only browser QA with health score, evidence, and repro steps | included |
 | `devex-review` | Live developer experience audit for API, CLI, SDK, and developer docs onboarding | included |
 | `security-best-practices` | Security review guidance with framework references | included |

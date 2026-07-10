@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Proof Screenshot"
+  short_description: "Capture focused screenshots from real UI flows"
+  default_prompt: "Use $ui-proof-screenshot to capture the relevant UI state as local evidence."
