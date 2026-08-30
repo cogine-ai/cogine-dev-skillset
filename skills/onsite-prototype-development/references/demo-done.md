@@ -1,0 +1,69 @@
+# Demo Completion Contract
+
+The onsite goal is complete when the confirmed core business loop is accurately demonstrable.
+Feature count, page count, code volume, exhaustive proof, and production hardening are not acceptance
+criteria. Accurate completion takes priority over perfect engineering.
+
+## Required Behavior
+
+- The UI uses the customer's business language and recognizable scenario.
+- A user can perform a clear input or action through a clickable interface.
+- The prototype visibly performs processing or a decision. Simulated behavior is acceptable only when
+  it is coherent and disclosed.
+- The operation changes meaningful state.
+- The path ends in a business result the customer can understand.
+- The flow can be repeated or reset for another demonstration.
+- The demonstrated path contains no dead controls, fake success states, or blocking errors.
+
+## Required Proof
+
+- Run focused tests for non-trivial core-loop behavior when a stable seam exists and the repository
+  requires or the time box safely permits them.
+- Run the fastest sufficient repository-required validation. If repository instructions mandate a
+  specific command, run it; otherwise do not broaden checks beyond the changed path.
+- Drive the exact demo path through a real browser with user-like actions.
+- Confirm the customer-visible result, reset path, and absence of blocking browser or runtime errors.
+- Capture focused screenshot evidence of the customer action and business result.
+- Run the repository's privacy check when available; otherwise inspect the changed files and build
+  output for meeting text, customer-sensitive data, and secrets.
+- State every database, authentication, provider, deployment, or production boundary that remains
+  unverified.
+
+Lower-level tests do not prove the browser interaction. A screenshot of a static screen does not
+prove the full loop.
+
+Proof must describe the implementation truthfully; it must not drive new product scope. If the
+available browser or test tooling cannot observe a non-critical event, report that proof gap or omit
+the detail from the claim. Do not add a backend endpoint, dependency, service, or production-like
+architecture solely to make an automated tool observe it.
+
+## Stop Rule
+
+`Sales Demo Done` is a hard stop. Once the confirmed loop works, the required proof is sufficient,
+and the handoff can be presented, stop implementation and deliver immediately.
+
+After Sales Demo Done, do not start optional static reviews, generalized hardening, refactors, new
+backend work, additional feature tests, or adjacent UX polish unless the operator explicitly asks.
+Fix only an issue that makes the confirmed path broken, materially misleading, unsafe, or capable of
+exposing sensitive data. Preserve every other improvement as deferred scope.
+
+Reserve the final part of a supplied time box for proof and handoff; in a 30-minute session, reserve
+at least the final five minutes. When that boundary is reached, stop adding behavior. If the core loop
+is not yet complete, cut non-essential steps and report any remaining gap accurately rather than
+chasing a perfect result past the delivery window.
+
+## Handoff Format
+
+Return:
+
+1. **Run/access:** exact project path, command, and local URL or separately authorized published URL.
+2. **Demo path:** a short sequence from customer action to business result and reset.
+3. **Talk track:** a concise operator explanation focused on customer value.
+4. **Implemented:** only behavior that actually works.
+5. **Deferred:** discussed ideas intentionally left out.
+6. **Mocked/assumed:** synthetic data, simulated processing, and unresolved assumptions.
+7. **Proof:** commands run, browser path exercised, and observed result.
+8. **Not proven:** external or production boundaries that were not tested.
+
+Do not claim production readiness. Publishing, production hardening, and conversion into a maintained
+product are separate tasks.

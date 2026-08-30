@@ -58,6 +58,7 @@ Recommended order for day-to-day engineering work:
 | `local-ultra-review` | Run Ultra Review-style local code review with worktrees, reviewer lenses, verifier gating, dedupe, and ranked findings | included |
 | `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
 | `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
+| `onsite-prototype-development` | Turn meeting context and operator focus into one confirmed, clickable onsite sales prototype | included (v0.0.1 alpha) |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
 | `plan-devex-review` | Plan-stage review for API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design | included |

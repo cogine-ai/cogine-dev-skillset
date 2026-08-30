@@ -10,6 +10,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `local-ultra-review`: Useful for deep pre-merge local code review with isolated worktrees, reviewer lenses, verification, dedupe, and severity-ranked findings.
 - `loop-on-pr-review-and-fix`: Useful for running a stateful post-PR-review loop that verifies new review comments, fixes only still-valid issues, validates, pushes, and records handled feedback.
 - `founder-office-hours`: Useful for founder-level product interrogation, target user selection, product-form decisions, and handoff before spec or architecture.
+- `onsite-prototype-development`: Internal alpha v0.0.1 for turning meeting context and operator focus into one confirmed, clickable sales-demo loop while keeping mock and production boundaries explicit.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
 - `plan-devex-review`: Useful for plan-stage review of API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design.
