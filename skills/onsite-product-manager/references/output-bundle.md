@@ -127,10 +127,11 @@ acknowledge when assigning a Build Card downstream.
 Write one independent file per proposition under `build-cards/`, named by stable ID such as `P01.md`.
 Use [prototype-handoff.md](prototype-handoff.md) exactly. Each card links to `context-freeze.md` and
 carries the internal verdict, all seven downstream gate states, and named risks required by the
-downstream development skill.
+downstream design skill and eventual development task.
 
-The Build Cards are canonical for development scope. The product board is canonical for the short
-human explanation. Do not make either artifact carry the other audience's detail.
+The Build Cards are canonical for product scope through design and development. The product board is
+canonical for the short human explanation. Do not make either artifact carry the other audience's
+detail.
 
 ## Product Proposition Test
 

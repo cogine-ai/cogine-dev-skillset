@@ -1,15 +1,15 @@
 ---
 name: onsite-product-manager
-description: Turn full customer-meeting text, operator emphasis, and customer context into a concise onsite product-direction board plus an internal context freeze and 3-10 independent Build Cards; after demos, capture customer evidence against those product bets. Use only when explicitly invoked for this onsite product workflow, not for transcript summarization, PRDs, visual design, project routing, or implementation.
+description: Turn full customer-meeting text, operator emphasis, and customer context into a concise onsite product-direction board plus an internal context freeze and 3-10 independent Build Cards for the downstream design portfolio; after demos, capture customer evidence against those product bets. Use only when explicitly invoked for this onsite product workflow, not for transcript summarization, PRDs, visual design, project routing, or implementation.
 ---
 
 # Onsite Product Manager
 
-Version 0.0.2 is an internal alpha.
+Version 0.0.3 is an internal alpha.
 
-Use this skill as the product-management layer between a live customer conversation and code-prototype
-development. The code prototype is an experiment instrument; it is not the method for deciding what
-product is worth showing. Work in the operator's language; default to Chinese.
+Use this skill as the product-management layer between a live customer conversation and product
+design. The eventual code prototype is an experiment instrument; it is not the method for deciding
+what product is worth showing. Work in the operator's language; default to Chinese.
 
 ## Core Rule
 
@@ -18,7 +18,7 @@ materially different product propositions and produce three separate artifacts f
 
 1. `onsite-product-board.md`: a short decision board for the onsite team and customer boss;
 2. `context-freeze.md`: internal evidence, reasoning, gates, risks, and unknowns;
-3. `build-cards/Pxx.md`: one complete downstream handoff per proposition.
+3. `build-cards/Pxx.md`: one complete product-to-design handoff per proposition.
 
 The human-facing board is not a shortened PRD and must not expose the internal reasoning report.
 Each proposition still gets one observable core demo moment, one key validation question, and one
@@ -30,7 +30,7 @@ stack, write implementation specs, or build a prototype. Stop at the product han
 ## Operating Modes
 
 - **Pre-demo planning:** the default. Produce the product-direction board, context freeze, and Build
-  Cards, then stop before development.
+  Cards, then stop before design.
 - **Post-demo learning:** use only when the operator supplies the original output bundle and the
   fullest available demonstration conversation or notes. Append customer evidence, update each
   proposition verdict, and recommend the next product experiment or commercial action. Do not
@@ -140,9 +140,9 @@ proposition using
 
 Rank the portfolio for internal prototype sequencing using evidence strength, customer-visible value,
 learning value, demonstrability, and complementarity. Mark all 3-10 portfolio propositions as one
-comparison batch for downstream execution; do not force one winner before the customer has seen the
-prototypes. Reducing the batch below three requires an explicit operator waiver and must be reported
-internally as `READY WITH RISKS`, never `READY`.
+comparison batch for downstream design and prototype execution; do not force one winner before the
+customer has seen the prototypes. Reducing the batch below three requires an explicit operator
+waiver and must be reported internally as `READY WITH RISKS`, never `READY`.
 
 Use a dedicated task-output directory supplied by the operator or environment. Never infer a
 customer product repository as the output target. If no writable task-output route exists, return
@@ -156,10 +156,10 @@ the exact short template; move every necessary detail to the appropriate interna
 
 ### 7. Stop At Product Handoff
 
-End with the concise board and artifact paths. Do not invoke normal engineering workflow or
-continue into prototype development unless a separate instruction explicitly starts the downstream
-phase. The downstream prototype skill owns visual research, Project Template routing, implementation,
-browser proof, and publishing.
+End with the concise board and artifact paths. Do not invoke design or normal engineering workflow
+unless a separate instruction explicitly starts the downstream phase. `onsite-product-design` owns
+the portfolio's visible design directions and Design Cards. `onsite-prototype-development` later owns
+Project Template routing, implementation, browser proof, and publishing boundaries.
 
 ## Post-Demo Learning Mode
 
@@ -192,8 +192,8 @@ Card. Do not expose gate jargon on `onsite-product-board.md`:
   comparison batch; a smaller operator-waived batch is explicit and cannot receive `READY`.
 - **Mock honesty:** `Real interaction`, `Synthetic data`, `Simulated intelligence`, and `Not claimed`
   are explicit.
-- **Handoff:** every portfolio proposition has an independent Build Card that requires no technical
-  invention to understand the intended product experience.
+- **Handoff:** every portfolio proposition has an independent Build Card that requires no new product
+  invention to understand what must be designed and validated.
 - **Stop boundary:** no project, Project Template, visual route, architecture, or implementation was
   created by this skill.
 
@@ -223,8 +223,8 @@ This skill does not:
 
 A strong result makes the product logic more specific than the customer's initial wording while
 remaining traceable to evidence. It offers multiple credible product mechanisms, gives each prototype
-one job, lets a boss understand the portfolio in two minutes, and gives the downstream builder enough
-detail without forcing the human reader through that detail.
+one job, lets a boss understand the portfolio in two minutes, and gives the downstream designer
+enough product detail without forcing the human reader through that detail.
 
 A weak result is a transcript summary, a long analysis shown to the boss, a list of ten features,
 several UI shells around the same workflow, a technology plan, or polished prose with no falsifiable

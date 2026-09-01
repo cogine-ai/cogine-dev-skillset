@@ -27,12 +27,11 @@ routing purpose.
 
 ## Instantiate the Target
 
-- Do not instantiate a new target project until the operator has confirmed the combined demo bet,
-  visual direction or fallback, and project route, or explicitly delegated those decisions.
+- Do not instantiate a new target project until the assigned Build Card and matching Design Card are
+  development-ready and the project route is resolved.
 - Immediately before cloning, copying, or running a template creation command, verify that the
-  external context freeze is `confirmed` and cites an actual operator confirmation or unambiguous
-  waiver. An Agent-authored recommendation, "direction frozen" statement, or move to Code is not
-  sufficient evidence.
+  external development freeze is `confirmed`, cites the operator's assignment, and links valid
+  product and design freezes. An Agent-authored status or move to Code is not sufficient evidence.
 - Use the template's declared creation command or procedure when one exists.
 - If no procedure is declared, resolve the Git source and fixed revision from either the maintained
   registry or the operator, and resolve the new destination through separate explicit authorization.
@@ -54,9 +53,10 @@ routing purpose.
   deny-by-default policy. Keep new customer-specific code outside protected foundations.
 - Replace or remove declared starter examples instead of building a parallel example layer.
 - Reuse installed UI, API, persistence, testing, and build foundations before adding dependencies.
-- Treat Refero output as research input, not permission to copy another product, modify the Project
-  Template foundation, install a new design system, or add dependencies. Translate the confirmed
-  direction through the target project's existing editable components and tokens.
+- Treat the Design Card and its references as implementation constraints, not permission to copy
+  another product, modify the Project Template foundation, install a new design system, or add
+  dependencies. Translate the confirmed route through the target project's existing editable
+  components and tokens.
 - Use the commands actually declared by the manifest for start, validation, build, privacy, and reset
   when available; do not invent missing commands.
 - Keep raw meeting context, credentials, and sensitive customer data out of the project.

@@ -17,8 +17,8 @@ mismatch leaves the route unresolved rather than authorizing a silent substituti
    proposed core loop.
 3. Do not ask the operator which template to use when one registry entry clearly fits.
 4. Template selection does not authorize a destination. Use an explicitly authorized new-project
-   output root when one is available; otherwise ask only for the destination in the mode-specific
-   pre-development check. Build Card mode does not reopen product confirmation.
+   output root when one is available; otherwise ask only for the destination in the pre-development
+   check. Project routing does not reopen the fixed Build Card or Design Card.
 5. Never write a personal absolute checkout path into the frozen brief as the canonical source.
    Local checkouts are optional caches and must be verified against the canonical repository and
    fixed revision before use.

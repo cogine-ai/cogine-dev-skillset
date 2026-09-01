@@ -1,6 +1,6 @@
 interface:
   display_name: "Onsite Prototype Development"
-  short_description: "Build one fixed, visually deliberate interactive sales demo"
-  default_prompt: "Use $onsite-prototype-development. Here is either the full meeting text and operator focus for discovery mode, or one fixed Build Card plus its linked upstream context freeze for Build Card mode. Build exactly one onsite demo."
+  short_description: "Build one fixed product and design into an interactive demo"
+  default_prompt: "Use $onsite-prototype-development. 这是同一个 Pxx 的 Build Card、Design Card 和两份 Freeze，也有目标项目或 PT 路径。按已经确认的产品和设计，只做一个最小但完整、可点击、可重置的现场原型。"
 policy:
   allow_implicit_invocation: false

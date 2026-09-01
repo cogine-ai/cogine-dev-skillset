@@ -1,4 +1,4 @@
-# Prototype Handoff Contract
+# Product-To-Design Handoff Contract
 
 Create one independent Build Card file for every proposition in the prototype portfolio. Write it to
 `build-cards/<Prototype ID>.md`. The card defines the product experiment. It does not prescribe
@@ -27,11 +27,12 @@ implementation architecture or visual design.
 
 ## Handoff Rules
 
-- One Build Card maps to one downstream prototype task. Treat its product proposition as fixed for
-  that task; the downstream workflow may report a product contradiction, but it must not reopen
-  divergent product ideation or replace the proposition with a preferred alternative.
-- A Build Card is scope-complete. Together with its linked `context-freeze.md`, it gives a clean
-  downstream task the complete product and evidence handoff without private transcripts or invented
+- One Build Card maps to one downstream Design Card and, after design is ready, one prototype task.
+  Treat its product proposition as fixed throughout that chain; either downstream workflow may
+  report a product contradiction, but it must not reopen divergent product ideation or replace the
+  proposition with a preferred alternative.
+- A Build Card is product-scope-complete. Together with its linked `context-freeze.md`, it gives the
+  design stage the complete product and evidence handoff without private transcripts or invented
   product requirements.
 - Keep each Build Card to 18 lines or fewer. Combine related fields as shown above; do not trade
   scope clarity for repeated narrative.
@@ -39,8 +40,9 @@ implementation architecture or visual design.
   recognizable.
 - State initial, processing or decision, result, and reset states. Do not substitute a screen list for
   the causal loop.
-- Make the core product mechanism and business result explicit. The downstream builder may simplify
-  surrounding features but must not replace that mechanism with a static page.
+- Make the core product mechanism and business result explicit. The downstream designer and builder
+  may simplify surrounding presentation or features but must not replace that mechanism with a
+  static page.
 - Describe the desired product feeling only in business terms such as trustworthy, controllable,
   urgent, premium, or operationally dense. Do not name a component library, palette, layout system,
   Refero reference, or UI style here.
@@ -50,15 +52,19 @@ implementation architecture or visual design.
   default. Any operator reduction below three follows the explicit waiver in the upstream
   `context-freeze.md`.
 
-The downstream prototype workflow owns:
+The downstream design workflow owns:
 
-- visual-direction research and confirmation;
+- portfolio-level visual and interaction research;
+- visible previews, design confirmation, and one Design Card per Build Card;
+
+The later prototype-development workflow owns:
+
 - Project Template resolution and repository rules;
 - technical implementation and scope cuts;
 - browser interaction, screenshot proof, privacy checks, and publishing boundaries.
 
-If the downstream workflow cannot preserve the product mechanism within the time budget, it should
-return that conflict instead of silently building a different product.
+If either downstream workflow cannot preserve the product mechanism within the time budget, it
+should return that conflict instead of silently designing or building a different product.
 
 ## After-Demo Feedback
 

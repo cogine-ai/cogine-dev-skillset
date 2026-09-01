@@ -1,112 +1,102 @@
 # Input Contract
 
-Resolve exactly one product-input mode before development. Inputs may be pasted text, local files, or
-other sources the user has authorized Codex to read.
+Resolve one complete product-design pair before development. Inputs may be local files or another
+source the operator has authorized Codex to read.
 
-## Discovery Mode
-
-- **Raw meeting text:** the full transcript or the fullest available verbatim text. Do not replace it
-  with a third-party AI summary.
-- **Operator focus:** the technical operator's short description of what matters most now, including
-  corrections, priority, and any idea that must be demonstrated.
-
-If either source is absent, request it or ask the operator to explicitly authorize the available
-source as the substitute. Do not fabricate missing meeting content.
-
-In discovery mode, these are the only product-definition inputs required from the operator. Do not
-require the operator to name a product form, prepare a feature list, request alternatives, choose a
-visual direction, or name a design-research tool. The Agent owns that reasoning and proposes the
-consequential decisions at the confirmation gate.
-
-Treat the operator's statement that supplied meeting text is complete or is the fullest available
-source as authoritative. Do not reject or reclassify it merely because it is short, compressed, or
-well organized. Ask about completeness only when the operator says the source is partial or when a
-missing segment creates a material contradiction in the core demo outcome.
-
-## Build Card Mode
+## Required Product Inputs
 
 Require all of:
 
 - exactly one complete Build Card from `onsite-product-manager`;
-- its linked upstream `context-freeze.md` path from `onsite-product-manager`;
-- source context-freeze ID, comparison-batch ID, card ID, and upstream overall verdict;
-- upstream `Evidence`, `Product distinctness`, `Validation`, `Demonstrability`, `Portfolio execution`,
-  `Mock honesty`, and `Handoff` gate states;
+- its linked product `context-freeze.md` path and freeze ID;
+- comparison-batch ID, card ID, upstream product verdict, gate states, and named risks;
 - an explicit operator instruction assigning that card to this prototype task.
 
 `Evidence`, `Product distinctness`, `Validation`, `Mock honesty`, and `Handoff` must pass.
-`Demonstrability` may carry a named execution risk, and an operator-waived `Portfolio execution`
-gate must remain visible and be acknowledged in the assignment. Any failed or unproven required gate
-blocks development.
+`Demonstrability` may carry a named execution risk. An operator-waived `Portfolio execution` gate
+must remain visible and be acknowledged. The product freeze must be `READY` or operator-acknowledged
+`READY WITH RISKS`. `NOT READY` blocks development.
 
-The Build Card must preserve the product proposition, actor and business moment, product form and
-usage surface, distinct mechanism, core demo loop, behavior that must be real, customer-visible
-result, mock boundary, validation question, acceptance path, non-goals, and time budget. The upstream
-context freeze must be `READY` or `READY WITH RISKS`. The latter requires the operator to acknowledge
-the named risks in the assignment. A `NOT READY` context freeze blocks development; do not convert its
-provisional cards into implementation scope.
+The Build Card fixes the product proposition, actor, business moment, product form, mechanism, core
+demo loop, real behavior, customer-visible result, mock boundary, validation question, acceptance
+path, non-goals, and time budget. Do not reopen product ideation or select another card.
 
-The explicit assignment fixes the product proposition for this task. Do not reopen product ideation,
-generate challengers, select another card, or ask the customer to approve a written direction. If
-multiple cards are supplied, do not choose among them: request one card per clean downstream task.
+## Required Design Inputs
 
-Raw meeting text and general customer context are not required in Build Card mode. Read the minimum
-anonymized evidence in the card and upstream context freeze; do not copy private transcripts into the
-target task or repository. `onsite-product-board.md` is optional and may be read for portfolio names
-and presentation order, but it cannot replace the card or upstream context freeze.
+Require all of:
+
+- exactly one Design Card from `onsite-product-design` with the same card and batch IDs;
+- its linked `design-context.md` path and design freeze ID;
+- the exact Build Card and product-freeze paths referenced by the Design Card;
+- a visible preview path or accessible link;
+- selected route, state map, reference lock, first-screen attention order, non-token consequence,
+  reference mappings, explicit rejects, and visual acceptance checks;
+- `DESIGN READY` as both the design bundle state and the card's development eligibility;
+- recorded operator confirmation or explicit design-decision delegation.
+
+Required design gates are `Upstream product`, `Visible evidence`, `Product-design fit`, `Portfolio
+design distinctness`, `State completeness`, `Reference lock`, `Mock honesty`, `Decision`, `Handoff`,
+and `Stop boundary`. They must pass. An explicit evidence waiver remains `waived` and does not count
+as a pass for the 0.0.5 acceptance gate.
+
+A missing Design Card returns `DESIGN REQUIRED`. A bundle in `AWAITING DESIGN DECISION`,
+`PROVISIONAL - PRODUCT BLOCKED`, or `DESIGN NOT READY` returns `DESIGN BLOCKED`. Do not research a
+visual route or synthesize a Design Card inside development.
+
+The Design Card may shape presentation and interaction but may not alter the Build Card's product
+mechanism, mock boundary, validation question, or non-goals. A mismatch returns the cards to the
+upstream stage that introduced it.
 
 ## Project Input
 
 Resolve one of:
 
-- An explicitly identified target project path.
-- A compatible Project Template selected from the maintained registry or supplied by the operator,
-  plus a target project name and destination.
+- an explicitly identified existing target project path; or
+- a compatible Project Template selected from the maintained registry or supplied by the operator,
+  plus an authorized destination and project name.
 
-If no project or template is identified, apply the project-routing rules in `SKILL.md` and read
-`project-template-registry.md`. Do not ask the operator to name a template when one registered entry
-clearly fits. Do not assume that the current working directory is the target. A named path that does
-not exist is not a resolved existing project; ask whether the path should be corrected or created
-as a new-project destination. Select the template separately through the registry when one clearly
-fits.
+If no project or template is identified, use the project-routing rules in `SKILL.md` and read
+`project-template-registry.md`. Do not assume the current working directory is the target. A named
+path that does not exist is not an existing project; treat it as a proposed destination only when the
+operator clearly intends a new project.
 
-The project route is an execution input, not part of the operator's product brief. Its absence must
-not block initial product framing in discovery mode or visual research in either mode. Ask only for
-the unresolved part of the route in the pre-development check, and resolve the route before creating
-or modifying target files.
+Project routing is an implementation input. It must be resolved before target files are created or
+modified, but it must not cause product or design decisions to be reopened.
+
+For a parallel comparison batch, each card requires a unique target path, development-server port,
+and proof directory. A shared authorized batch root is sufficient when this task derives a stable
+child path from the batch and card IDs. A shared checkout, shared writable proof folder, or ambiguous
+running URL is not a resolved route.
 
 ## Optional Inputs
 
-- Established customer background context.
-- Remaining onsite time or another explicit time box.
-- Existing brand, terminology, screenshots, documents, sample data, or design references.
-- Authorized external services or disposable resources.
-- Delivery constraints such as local-only operation or a separately requested publishing target.
+- remaining onsite time;
+- authorized synthetic assets or sample data;
+- device and presentation constraints;
+- authorized external services or disposable resources;
+- local-only delivery or a separately requested publishing target.
 
-When no time box is supplied, assume a short onsite session and keep the first vertical slice as small
-as possible; do not promise a specific elapsed time.
+When no time box is supplied, keep the first vertical slice as small as possible; do not promise a
+specific elapsed time.
 
 ## Authority Order
 
-In discovery mode, use this order when sources conflict:
+Use this order when inputs conflict:
 
-1. The operator's latest explicit instruction or correction.
-2. The operator focus note.
-3. Explicitly established customer background context.
-4. The raw meeting transcript.
-5. Agent inference.
+1. the operator's latest explicit correction;
+2. the assigned Build Card and product freeze for product scope;
+3. the matching Design Card and design freeze for presentation and interaction design;
+4. the resolved target project's verified constraints;
+5. Agent implementation inference.
 
-Expose consequential conflicts in the frozen brief. Never let an inference override an explicit
-operator direction.
+A correction that changes the product proposition returns to `onsite-product-manager`. A correction
+that changes the selected design route returns to `onsite-product-design`. Do not silently rewrite
+either upstream card.
 
-In Build Card mode, use the operator's latest explicit correction, then the assigned Build Card,
-upstream context freeze, resolved target-project evidence, and Agent inference. A correction that
-changes the product proposition invalidates the card assignment; return it to the product layer
-instead of silently rewriting the card.
+## Privacy
 
-## Privacy Handling
-
-- Read source material in place when possible.
-- Do not copy raw meeting text or customer-sensitive context into the target repository.
-- Do not include raw source material in commits, logs, screenshots, public URLs, or build output.
-- Put only synthetic or explicitly approved data in the prototype.
+- Read product and design artifacts in place.
+- Do not require or copy raw meeting text into the target project.
+- Do not include customer-sensitive context, private reference assets, credentials, or internal URLs
+  in commits, screenshots, public URLs, or build output.
+- Put only synthetic or explicitly approved data and assets in the prototype.
