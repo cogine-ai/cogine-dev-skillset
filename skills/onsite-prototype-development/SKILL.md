@@ -1,6 +1,6 @@
 ---
 name: onsite-prototype-development
-description: Turn a full customer-meeting transcript, operator focus notes, and customer context into the smallest demo-ready interactive business prototype inside an explicitly chosen project or compatible Project Template. Use only when the user explicitly invokes this onsite sales-prototyping mode; do not use for ordinary product development, Project Template authoring, static mockups, or transcript summarization alone.
+description: Turn a full customer-meeting transcript and operator focus notes, plus any available customer context, into the smallest visually deliberate, demo-ready interactive business prototype. Actively frame viable product directions, confirm one core demo bet and visual target, resolve an existing project or compatible Project Template before development, and then build the working loop. Use only when the user explicitly invokes this onsite sales-prototyping mode; do not use for ordinary product development, Project Template authoring, static mockups, or transcript summarization alone.
 ---
 
 # Onsite Prototype Development
@@ -10,7 +10,7 @@ lets a customer operate something, observe processing or a decision, see state c
 business-meaningful result. The prototype may use clearly disclosed mock behavior, but the
 demonstrated interaction must work.
 
-Version 0.0.1 is an internal alpha that targets one core business loop. Do not expand it into
+Version 0.0.2 is an internal alpha that targets one core business loop. Do not expand it into
 simultaneous generation of many prototype variants, ASR integration, Project Template maintenance,
 production integration, or automatic publishing unless the user separately requests that work.
 
@@ -34,21 +34,39 @@ Before creating or modifying the target project:
 2. Read [references/context-freeze.md](references/context-freeze.md) and draft the business outcome
    outside the target repository.
 3. Resolve the existing target project or Project Template source and destination route without
-   creating or copying target files. Never treat the current working directory as the target merely
-   because it is open.
-4. Read the existing target project's instructions and current implementation, or the source
-   template's instructions and implementation when the target has not been instantiated.
-5. Read [references/demo-done.md](references/demo-done.md) and define one recommended demo bet and its
-   smallest proof path.
-6. Present the demo bet to the operator and wait for explicit confirmation before creating or
-   changing target project files. Confirm the customer problem, core loop, customer-visible result,
-   mock boundary, and deferred scope. Do not ask the operator to write a detailed specification or
-   select from every meeting idea.
+   creating or copying target files. When the operator has not supplied a project or template, read
+   [references/project-template-registry.md](references/project-template-registry.md) and select a
+   compatible registered template when one clearly fits. Never treat the current working directory
+   as the target merely because it is open. Ask a routing question only for the unresolved part.
+4. When a route is already resolved, read the existing target project's instructions and current
+   implementation, or the source template's instructions and implementation when the target has not
+   been instantiated. Use that evidence to verify the proposed direction is feasible. If a project or
+   template source is supplied only in a reply to the direction check, treat that reply as routing
+   input rather than final confirmation. Keep the brief `proposed`, inspect the source, update any
+   affected assumptions, and obtain the final combined confirmation before marking it `confirmed`.
+5. Read [references/direction-and-visual-research.md](references/direction-and-visual-research.md) and
+   [references/demo-done.md](references/demo-done.md). Actively frame the product direction, establish
+   a visual target when presentation quality is material, and define one recommended demo bet with
+   its smallest proof path. Use the resolved project evidence when available; otherwise keep any
+   project-dependent assumptions provisional. Do not require the operator to ask for divergent
+   thinking, name a design source, or prescribe multiple visual options.
+6. Present one compact direction check to the operator and wait for explicit confirmation before
+   creating or changing target project files. Confirm the customer problem, recommended product
+   framing, core loop, customer-visible result, visual target when material, mock boundary, and
+   deferred scope, plus the project route when unresolved. Surface alternative product or visual
+   directions only when the differences are consequential. Do not ask the operator to write a
+   detailed specification or select from every meeting idea.
 
-An instruction to build a prototype does not by itself waive this confirmation gate. Skip it only
-when the operator explicitly says to proceed without confirmation or to decide and build directly.
-After confirmation or explicit delegation, record the operator's decision in the external context
-freeze, mark it confirmed, and enter development.
+An instruction to build a prototype does not by itself waive this confirmation gate. Requests such
+as "judge it yourself," "see what works," or "handle this as an onsite demo" authorize the Agent to
+form and recommend the direction only; they do not authorize project creation or development. Skip
+the gate only when the operator unambiguously says that no confirmation is needed and delegates both
+the business/visual direction and immediate target-project modification. If that authority is
+ambiguous, keep the brief `proposed` and wait.
+
+Before marking the brief `confirmed`, record the operator's actual confirmation or explicit waiver
+and verify that the project route is resolved. The Agent's own recommendation, plan, phrase such as
+"direction frozen," or transition to Code is never confirmation evidence.
 
 Ask only when a missing answer would materially change the target project, core business loop, data
 boundary, or feasible proof path. Otherwise state the assumption and continue.
@@ -59,14 +77,23 @@ Use the first matching rule:
 
 1. If the user explicitly identifies a target project, resolve its exact path and confirm that it
    exists and is accessible. Then use it after reading its repository instructions. If the path does
-   not exist, ask whether the path is incorrect or the user intends to create a project there from a
-   specific template; do not create an arbitrary project.
-2. Otherwise, if a compatible Project Template is identified, prefer creating a new project from
-   that fixed template version. Resolve the destination path and project name before writing, but do
-   not instantiate the target until the demo bet is confirmed or explicitly delegated.
-3. If neither a target project nor a compatible template is clear, ask the user which existing
-   project or template to use. Do not silently edit the current directory or create an arbitrary
-   stack.
+   not exist, do not treat it as an existing project. When the operator clearly intends a new
+   project, treat the path only as the proposed destination and continue with template selection
+   under rules 2–3. If that intent is ambiguous, ask only whether this is the intended new-project
+   destination; do not also ask which template to use when the registry resolves one.
+2. If the operator explicitly identifies a Project Template, resolve its source and fixed revision,
+   then use it when its verified contract supports the demo bet. Do not replace an operator-supplied
+   template with a registry entry.
+3. Otherwise, read [references/project-template-registry.md](references/project-template-registry.md)
+   and automatically select the narrowest compatible registered template. Do not ask the operator
+   to identify a template that the registry already resolves.
+4. Resolve a new project name and destination independently from template selection. When the task
+   explicitly authorizes a new-project output root, propose a concise project slug inside it. If no
+   destination is authorized, ask only for the destination in the combined direction check. Do not
+   infer authorization from the current working directory.
+5. If no registered template is compatible, include one concise request for a compatible template
+   or target project in the combined direction check. Do not interrupt initial direction work with a
+   separate routing exchange, silently edit the current directory, or create an arbitrary stack.
 
 If the supplied path appears to be the template source itself, clarify whether the user intends to
 create a project from it or intentionally edit it. When a Project Template is used, read
@@ -86,12 +113,20 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
   inference.
 - Identify the priority already formed during the meeting. Do not introduce a separate exercise that
   lists all discussed features and then selects one.
+- Internally explore materially different ways to express the customer's underlying outcome before
+  recommending the demo bet. Product framing is not a feature-voting exercise, and the operator does
+  not need to request this exploration.
+- When visual presentation can materially affect recognition or sales impact, automatically use the
+  best available design-research capability according to the direction-and-visual-research contract.
+  Do not wait for the operator to name Refero or another source.
 
 ### Plan
 
 - Define one smallest complete vertical slice. It may contain a few tightly coupled functions when
   they are all necessary for the same demonstrable business loop.
 - Express the path as `input/action -> processing/decision -> state change -> business result`.
+- Preserve the confirmed visual target as an implementation constraint. Use one dominant direction;
+  do not average unrelated references into a generic dashboard style.
 - Keep the implementation inside the confirmed demo bet. Return to the operator only when new
   evidence materially contradicts it; do not silently reinterpret the bet during development.
 - Mark all other ideas as deferred rather than silently implementing them.
@@ -102,6 +137,8 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 - Replace starter examples directly and reuse the target project's installed stack.
 - Build real interactive state; do not substitute static screens, dead controls, or page navigation
   for the requested business behavior.
+- Implement the visual target through the target project's editable application and theme surfaces.
+  Do not modify Project Template foundations or protected UI components merely to force a style.
 - Add focused behavior tests for non-trivial core-loop logic when a stable public seam exists and the
   repository requires or the time box safely permits them.
 - Run the fastest sufficient repository-required validation and exercise the exact visible path in a
@@ -116,6 +153,9 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 
 - Keep recordings, full transcripts, frozen context, customer-sensitive data, credentials, and
   secrets outside the target repository and public build artifacts.
+- Use generalized product, industry, and interaction terms in external visual research. Never send
+  raw meeting excerpts, customer identity, confidential data, or proprietary terminology to Refero
+  or another external research service.
 - Do not access customer, staging, production, paid, authenticated, or database resources without
   exact authorization for that resource and action.
 - Use synthetic data by default and label mocked behavior in the handoff.
@@ -125,6 +165,7 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 ## Handoff
 
 Return the runnable prototype location and access method, one concise demo path, a short operator
-talk track, implemented and deferred scope, mock and assumption boundaries, and verification evidence.
-Use the exact reporting contract in [references/demo-done.md](references/demo-done.md).
+talk track, implemented and deferred scope, mock and assumption boundaries, the visual target used,
+and verification evidence. Use the exact reporting contract in
+[references/demo-done.md](references/demo-done.md).
 List possible improvements under deferred scope; do not implement them as part of the handoff.

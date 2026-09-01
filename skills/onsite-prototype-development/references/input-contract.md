@@ -13,6 +13,11 @@ sources the user has authorized Codex to read.
 If either source is absent, request it or ask the operator to explicitly authorize the available
 source as the substitute. Do not fabricate missing meeting content.
 
+These are the only product-definition inputs required from the operator. Do not require the operator
+to name a product form, prepare a feature list, request alternatives, choose a visual direction, or
+name a design-research tool. The Agent owns that reasoning and proposes the consequential decisions
+at the confirmation gate.
+
 Treat the operator's statement that supplied meeting text is complete or is the fullest available
 source as authoritative. Do not reject or reclassify it merely because it is short, compressed, or
 well organized. Ask about completeness only when the operator says the source is partial or when a
@@ -23,11 +28,19 @@ missing segment creates a material contradiction in the core demo outcome.
 Resolve one of:
 
 - An explicitly identified target project path.
-- A compatible Project Template plus a target project name and destination.
+- A compatible Project Template selected from the maintained registry or supplied by the operator,
+  plus a target project name and destination.
 
-If no project is identified, apply the project-routing rules in `SKILL.md`. Do not assume that the
-current working directory is the target. A named path that does not exist is not a resolved existing
-project; ask whether the path should be corrected or created from a specific template.
+If no project or template is identified, apply the project-routing rules in `SKILL.md` and read
+`project-template-registry.md`. Do not ask the operator to name a template when one registered entry
+clearly fits. Do not assume that the current working directory is the target. A named path that does
+not exist is not a resolved existing project; ask whether the path should be corrected or created
+as a new-project destination. Select the template separately through the registry when one clearly
+fits.
+
+The project route is an execution input, not part of the operator's product brief. Its absence must
+not block initial product framing or visual research. Ask only for the unresolved part of the route
+in the combined direction check, and resolve the route before creating or modifying target files.
 
 ## Optional Inputs
 

@@ -11,8 +11,12 @@ new target project before the confirmation gate.
 
 The brief must contain:
 
-- **Status:** `proposed` before operator confirmation or delegation and `confirmed` afterward.
+- **Status:** `proposed` until an actual operator message explicitly confirms the combined direction
+  or unambiguously waives confirmation and delegates immediate development; `confirmed` only after
+  that evidence exists.
 - **Business situation:** who the customer is and what operational problem is being discussed.
+- **Product framing:** the recommended form of the experience and why it best expresses the customer
+  outcome; include consequential alternatives only when they remain genuinely viable.
 - **Demo bet:** the one recommended customer-facing experience most likely to create recognition or
   interest during this meeting.
 - **Core demo outcome:** one sentence describing what the customer must be able to experience.
@@ -20,30 +24,46 @@ The brief must contain:
 - **Customer language:** terms, roles, entities, and visible data the prototype should use.
 - **Operator direction:** the priority, corrections, and constraints supplied by the technical
   operator.
+- **Visual target:** the intended impression, primary design basis, key visual roles, distinguishing
+  move, and explicit rejects when visual presentation is material; otherwise state which approved
+  existing design system remains authoritative.
+- **Visual research:** the generalized research sources used, or the reason and fallback when an
+  external design-research capability was not used.
+- **Project route:** the confirmed target project, or Project Template source and destination. It may
+  remain unresolved only while the brief is `proposed`.
 - **Mock boundary:** synthetic data, simulated processing, and unconnected external systems.
 - **Deferred scope:** discussed ideas not needed for the current loop.
 - **Unknowns:** only unresolved assumptions that could affect the demo or its proof.
 - **Time box:** remaining time when supplied.
-- **Operator confirmation:** the confirmed direction, the operator's concise correction, or explicit
-  delegation to decide and proceed.
+- **Operator confirmation:** the operator's actual confirmation, concise correction, or explicit
+  waiver and delegation to decide and proceed. Preserve a concise quote or faithful paraphrase of the
+  operator message; never substitute an Agent-authored recommendation or status label.
 
 Do not turn the transcript into a broad requirements document. The freeze exists to stabilize one
 demonstrable outcome, not to preserve every idea as active scope.
 
 ## Confirmation Gate
 
-Present one recommended demo bet in a compact form:
+Present one recommended direction in a compact form:
 
 1. The customer problem the prototype will make visible.
-2. The proposed core interaction loop.
+2. The recommended product framing and proposed core interaction loop.
 3. The business result the customer will see.
-4. The boundaries that will be mocked.
-5. The important ideas intentionally deferred.
+4. The visual target and primary basis when visual presentation is material.
+5. The boundaries that will be mocked.
+6. The important ideas intentionally deferred.
+7. The target project or Project Template route when it has not yet been supplied.
 
-Ask the operator whether to proceed with that bet. This is a direction confirmation, not a request
-for detailed requirements, field definitions, screen specifications, or implementation choices. Do
-not create or modify the target project until the operator confirms or explicitly delegates the
-decision.
+Ask the operator once whether to proceed with the business and visual direction together. This is a
+direction confirmation, not a request for detailed requirements, field definitions, screen
+specifications, implementation choices, a fixed number of alternatives, or the name of a design
+source. Do not create or modify the target project until the operator confirms or explicitly
+delegates the decision and the project route is resolved.
+
+Asking the Agent to judge, recommend, explore, or handle the request in onsite-demo mode is not
+explicit delegation to modify files. A waiver must clearly state that confirmation is unnecessary
+and that the Agent may decide the business and visual direction and start development immediately.
+When in doubt, leave the brief `proposed`.
 
 If the operator corrects the bet, update the smallest affected part of the proposed brief and confirm
 again. Once confirmed, record the decision and avoid reopening it for non-consequential details.

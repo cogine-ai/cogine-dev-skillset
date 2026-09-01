@@ -1,6 +1,6 @@
 interface:
   display_name: "Onsite Prototype Development"
-  short_description: "Build a core interactive sales demo from meeting context"
-  default_prompt: "Use $onsite-prototype-development with this meeting transcript, my focus notes, and the target project to build the core demo path."
+  short_description: "Frame and build a visually deliberate interactive sales demo"
+  default_prompt: "Use $onsite-prototype-development. Here are the complete meeting notes and what I think matters most. Handle this as an onsite demo."
 policy:
   allow_implicit_invocation: false

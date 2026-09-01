@@ -14,6 +14,8 @@ criteria. Accurate completion takes priority over perfect engineering.
 - The path ends in a business result the customer can understand.
 - The flow can be repeated or reset for another demonstration.
 - The demonstrated path contains no dead controls, fake success states, or blocking errors.
+- When visual direction was material, the rendered core states preserve the confirmed visual thesis
+  and named reference traits. Exact replication is not required.
 
 ## Required Proof
 
@@ -24,6 +26,9 @@ criteria. Accurate completion takes priority over perfect engineering.
 - Drive the exact demo path through a real browser with user-like actions.
 - Confirm the customer-visible result, reset path, and absence of blocking browser or runtime errors.
 - Capture focused screenshot evidence of the customer action and business result.
+- When a visual target was confirmed, compare the running primary viewport and relevant interaction
+  state against its visual lock. Report and fix material hierarchy, typography, spacing, color-role,
+  component-character, imagery, or generic-design drift on the core path.
 - Run the repository's privacy check when available; otherwise inspect the changed files and build
   output for meeting text, customer-sensitive data, and secrets.
 - State every database, authentication, provider, deployment, or production boundary that remains
@@ -47,6 +52,9 @@ backend work, additional feature tests, or adjacent UX polish unless the operato
 Fix only an issue that makes the confirmed path broken, materially misleading, unsafe, or capable of
 exposing sensitive data. Preserve every other improvement as deferred scope.
 
+Visual QA must not reopen alternative directions, create a second prototype, or continue as optional
+polish after Sales Demo Done.
+
 Reserve the final part of a supplied time box for proof and handoff; in a 30-minute session, reserve
 at least the final five minutes. When that boundary is reached, stop adding behavior. If the core loop
 is not yet complete, cut non-essential steps and report any remaining gap accurately rather than
@@ -63,7 +71,9 @@ Return:
 5. **Deferred:** discussed ideas intentionally left out.
 6. **Mocked/assumed:** synthetic data, simulated processing, and unresolved assumptions.
 7. **Proof:** commands run, browser path exercised, and observed result.
-8. **Not proven:** external or production boundaries that were not tested.
+8. **Visual target:** the confirmed direction and whether the running core path stayed within its
+   visual lock.
+9. **Not proven:** external or production boundaries that were not tested.
 
 Do not claim production readiness. Publishing, production hardening, and conversion into a maintained
 product are separate tasks.
