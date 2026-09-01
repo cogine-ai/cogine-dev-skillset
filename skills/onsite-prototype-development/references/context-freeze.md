@@ -1,8 +1,10 @@
 # Context Freeze
 
 Create a compact proposed development brief before coding. Keep it in the conversation or an
-external session workspace, never inside the target repository. The brief becomes frozen only after
-the operator confirms the demo bet or explicitly delegates that decision.
+external session workspace, never inside the target repository. In discovery mode, the brief becomes
+frozen only after the operator confirms or delegates the product and visual decision. In Build Card
+mode, the assigned card is already the confirmed product decision; the brief becomes frozen after
+the visual decision and project route are confirmed or explicitly delegated.
 
 A proposed business outcome can be drafted before the target route is resolved. Confirm and freeze it
 after the existing target project or source template has been resolved, its relevant instructions
@@ -11,19 +13,24 @@ new target project before the confirmation gate.
 
 The brief must contain:
 
-- **Status:** `proposed` until an actual operator message explicitly confirms the combined direction
-  or unambiguously waives confirmation and delegates immediate development; `confirmed` only after
-  that evidence exists.
+- **Entry mode:** `discovery` or `build-card`.
+- **Status:** `proposed` until an actual operator message supplies the confirmation required by the
+  selected mode or unambiguously delegates the still-open decision and immediate development;
+  `confirmed` only after that evidence exists and the project route is resolved.
 - **Business situation:** who the customer is and what operational problem is being discussed.
-- **Product framing:** the recommended form of the experience and why it best expresses the customer
-  outcome.
-- **Direction packet:** one recommendation and two materially different challengers, each with actor,
-  trigger, interaction model, state change, customer-visible result, mocked boundary, and reason for
-  its rank. If the evidence supports fewer honest directions, record the gap instead of inventing one.
-- **Direction divergence:** `pass`, `not proven`, or `waived`, with the evidence or actual waiver. A
-  confirmed recommendation does not by itself make this gate pass.
-- **Demo bet:** the one recommended customer-facing experience most likely to create recognition or
-  interest during this meeting.
+- **Upstream product source:** in Build Card mode, the parent product-document reference, context
+  freeze, comparison batch, card ID, overall verdict, gate states, and exact assignment instruction.
+- **Product framing:** the recommended form in discovery mode or fixed form in Build Card mode, and
+  why it expresses the customer outcome.
+- **Direction packet:** in discovery mode, one recommendation and two materially different
+  challengers, each with actor, trigger, interaction model, state change, customer-visible result,
+  mocked boundary, and reason for its rank. If the evidence supports fewer honest directions, record
+  the gap instead of inventing one.
+  In Build Card mode, reference the upstream portfolio overview and do not recreate challengers.
+- **Direction divergence:** `pass`, `not proven`, or `waived`, with the local evidence, upstream gate
+  evidence, or actual waiver. A confirmed recommendation does not by itself make this gate pass.
+- **Demo bet:** the one confirmed customer-facing experience. In Build Card mode this is the assigned
+  proposition and may not be replaced.
 - **Core demo outcome:** one sentence describing what the customer must be able to experience.
 - **Demo loop:** actor, trigger/input, processing or decision, state change, and business result.
 - **Customer language:** terms, roles, entities, and visible data the prototype should use.
@@ -47,15 +54,15 @@ The brief must contain:
 - **Time box:** remaining time when supplied.
 - **Operator confirmation:** the operator's actual confirmation, concise correction, or explicit
   waiver and delegation to decide and proceed. Preserve a concise quote or faithful paraphrase of the
-  operator message and the chosen direction/visual packet version; never substitute an Agent-authored
-  recommendation or status label.
+  chosen product/visual packet in discovery mode, or the card assignment and visual packet in Build
+  Card mode; never substitute an Agent-authored recommendation or status label.
 
 Do not turn the transcript into a broad requirements document. The freeze exists to stabilize one
 demonstrable outcome, not to preserve every idea as active scope.
 
 ## Confirmation Gate
 
-Present one compact decision package:
+In discovery mode, present one compact decision package:
 
 1. The customer problem the prototype will make visible.
 2. One recommended product framing and two materially different challengers.
@@ -71,22 +78,35 @@ specifications, implementation choices, or the name of a design source. Do not c
 target project until the operator confirms or explicitly delegates the decision and the project route
 is resolved.
 
-Asking the Agent to judge, recommend, explore, or handle the request in onsite-demo mode is not
-explicit delegation to modify files. A waiver must clearly state that confirmation is unnecessary
-and that the Agent may decide the business and visual direction and start development immediately.
-Decision delegation does not waive the evidence packets. A separate explicit evidence waiver must be
-recorded as `waived`, cannot be reported as `pass`, and must remain visible in the handoff. When in
-doubt, leave the brief `proposed`.
+In Build Card mode, present a compact execution package containing:
+
+1. the fixed card ID, proposition, core loop, customer-visible result, and upstream gate reference;
+2. the visual routes and evidence packet when visual presentation is material;
+3. mocked boundaries and explicit non-goals;
+4. the target project or Project Template route when unresolved.
+
+Do not show product challengers or ask for product selection. The exact card assignment is product
+confirmation. Ask only for the still-open visual and project-route confirmation. If the assignment
+explicitly delegates visual choice and immediate target modification, record that delegation and
+continue only after the visual evidence packet and project route exist.
+
+In discovery mode, asking the Agent to judge, recommend, explore, or handle the request in onsite-demo
+mode is not explicit delegation to modify files. A waiver must clearly state that confirmation is
+unnecessary and that the Agent may decide the business and visual direction and start development
+immediately. Decision delegation does not waive the evidence packets. A separate explicit evidence
+waiver must be recorded as `waived`, cannot be reported as `pass`, and must remain visible in the
+handoff. When in doubt, leave the brief `proposed`.
 
 If the operator corrects the bet, update the smallest affected part of the proposed brief and confirm
 again. Once confirmed, record the decision and avoid reopening it for non-consequential details.
 
 ## Updates After Freeze
 
-New transcript text is additional evidence, not an automatic instruction to restart or replan active
-development.
+New transcript text in discovery mode or amended upstream product evidence in Build Card mode is
+additional evidence, not an automatic instruction to restart or replan active development.
 
-Change the confirmed core direction when the operator explicitly updates or corrects the development focus.
-Record the amendment in the brief, identify what current work it invalidates, and adjust the smallest
-possible scope. If new evidence contradicts the current loop but the operator's intent is unclear,
-pause only that decision and ask.
+In discovery mode, change the confirmed core direction when the operator explicitly updates or
+corrects the development focus. In Build Card mode, a product-level correction invalidates the card;
+return it to the product layer rather than rewriting it locally. Record the amendment, identify what
+current work it invalidates, and adjust the smallest possible scope. If new evidence contradicts the
+current loop but the operator's intent is unclear, pause only that decision and ask.

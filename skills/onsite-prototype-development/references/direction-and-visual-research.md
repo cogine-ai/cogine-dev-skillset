@@ -1,19 +1,40 @@
 # Product Direction And Visual Research
 
-Use this workflow before the confirmation gate. The operator supplies business evidence: the fullest
-meeting text, a short focus note, and customer context when available. A target project or template is
-an execution input that may be supplied initially or resolved in the combined direction check. The
-operator does not need to request divergent ideas, name Refero, choose a design method, or specify a
-fixed number of directions.
+Use this workflow before the confirmation gate. In discovery mode, the operator supplies the fullest
+meeting text, a short focus note, and customer context when available. In Build Card mode, the
+operator supplies one fixed card and its parent product-document evidence. A target project or
+template is an execution input that may be supplied initially or resolved in the pre-development
+check. The operator does not need to request divergent ideas in discovery mode, name Refero, choose a
+design method, or specify a fixed number of visual routes.
+
+## Build Card Mode
+
+When the input is a valid upstream Build Card, do not run product-direction ideation. Validate the
+parent document, context freeze, comparison batch, card ID, overall verdict, and upstream gate states.
+Freeze the card's actor, business moment, product proposition, product form, distinct mechanism, core
+demo loop, required real behavior, customer-visible result, mock boundary, validation question, and
+non-goals.
+
+Use the upstream `Product distinctness` gate as the Direction Divergence evidence only when the parent
+document is `READY` or operator-acknowledged `READY WITH RISKS`, the card belongs to its stated
+comparison batch, and the evidence is accessible. Record `source: upstream` in the gate. Do not
+manufacture a local direction packet, challengers, or a second product decision. If the upstream
+evidence is absent or not passing, stop and return the contract gap.
+
+Continue with visual research below. Product form and core demo states are fixed inputs to that
+research, not options to reopen.
 
 ## Frame The Product Direction
+
+This section applies only in discovery mode.
 
 Infer the underlying business outcome, the actor who needs it, the costly or confusing moment being
 changed, and the visible evidence that would make the customer recognize the value.
 
-Create a compact direction packet with one recommendation and two challengers before the combined
-confirmation. Useful lenses may include a focused workbench, guided workflow, agent workspace,
-monitoring or BI surface, knowledge retrieval, browser sidecar, or generated decision artifact.
+Create a compact direction packet with one recommendation and two challengers before the
+pre-development confirmation. Useful lenses may include a focused workbench, guided workflow,
+agent workspace, monitoring or BI surface, knowledge retrieval, browser sidecar, or generated
+decision artifact.
 These are prompts for reasoning, not a menu that must be copied.
 
 For each direction state:
@@ -68,7 +89,7 @@ Use the first suitable source:
    none exists, derive two visibly different annotated compositions from the desired customer
    impression, product form, information hierarchy, and interaction states, then label them as
    Agent-derived fallback evidence. Do not ask the operator to install a tool merely to continue, and
-   do not block the combined direction check solely because an external design-research capability
+   do not block the pre-development check solely because an external design-research capability
    is absent.
 
 When using Refero directly, inspect distinct search angles derived from the customer, domain, desired
@@ -138,9 +159,10 @@ Use semantic roles rather than copying raw style values without understanding th
 fallbacks such as one default AI palette, cards around every section, decorative gradients, or a
 generic SaaS dashboard shell when the researched direction does not support them.
 
-## One Combined Direction Check
+## One Pre-Development Check
 
-Before target files are created or modified, present one compact confirmation containing:
+In discovery mode, before target files are created or modified, present one compact confirmation
+containing:
 
 1. the direction packet: one recommendation and two materially different challengers;
 2. the recommended core interaction loop and customer-visible result;
@@ -155,9 +177,15 @@ direction and visual packets. If the operator explicitly delegates the choice, r
 the Agent selected and continue only after the evidence packets exist. Do not split the onsite window
 into separate product, requirements, and design approval ceremonies.
 
-After confirmation, implement exactly one selected product direction and one selected visual route.
-Keep unselected product directions and visual routes as decision evidence and deferred scope; do not
-scaffold, partially build, or average them into the implementation.
+In Build Card mode, replace the direction packet with the fixed Build Card summary and upstream gate
+reference. Present the visual routes, mock/deferred boundary, and unresolved project route, then ask
+only for visual and route confirmation. The card assignment already confirms the product; do not show
+challengers or ask the customer to select the written proposition again.
+
+After confirmation, implement exactly one selected or upstream-fixed product direction and one
+selected visual route. In discovery mode, keep unselected product directions and visual routes as
+decision evidence and deferred scope. In Build Card mode, keep other portfolio cards outside this
+task. Never scaffold, partially build, or average alternatives into the implementation.
 
 ## Visual QA
 

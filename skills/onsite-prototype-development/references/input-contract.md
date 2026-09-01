@@ -1,9 +1,9 @@
 # Input Contract
 
-Resolve the following inputs before development. They may be pasted text, local files, or other
-sources the user has authorized Codex to read.
+Resolve exactly one product-input mode before development. Inputs may be pasted text, local files, or
+other sources the user has authorized Codex to read.
 
-## Required Source Inputs
+## Discovery Mode
 
 - **Raw meeting text:** the full transcript or the fullest available verbatim text. Do not replace it
   with a third-party AI summary.
@@ -13,15 +13,46 @@ sources the user has authorized Codex to read.
 If either source is absent, request it or ask the operator to explicitly authorize the available
 source as the substitute. Do not fabricate missing meeting content.
 
-These are the only product-definition inputs required from the operator. Do not require the operator
-to name a product form, prepare a feature list, request alternatives, choose a visual direction, or
-name a design-research tool. The Agent owns that reasoning and proposes the consequential decisions
-at the confirmation gate.
+In discovery mode, these are the only product-definition inputs required from the operator. Do not
+require the operator to name a product form, prepare a feature list, request alternatives, choose a
+visual direction, or name a design-research tool. The Agent owns that reasoning and proposes the
+consequential decisions at the confirmation gate.
 
 Treat the operator's statement that supplied meeting text is complete or is the fullest available
 source as authoritative. Do not reject or reclassify it merely because it is short, compressed, or
 well organized. Ask about completeness only when the operator says the source is partial or when a
 missing segment creates a material contradiction in the core demo outcome.
+
+## Build Card Mode
+
+Require all of:
+
+- exactly one complete Build Card from `onsite-product-manager`;
+- a parent product-document path or exact conversation reference;
+- source context-freeze ID, comparison-batch ID, card ID, and upstream overall verdict;
+- upstream `Evidence`, `Product distinctness`, `Validation`, `Demonstrability`, `Portfolio execution`,
+  `Mock honesty`, and `Handoff` gate states;
+- an explicit operator instruction assigning that card to this prototype task.
+
+`Evidence`, `Product distinctness`, `Validation`, `Mock honesty`, and `Handoff` must pass.
+`Demonstrability` may carry a named execution risk, and an operator-waived `Portfolio execution`
+gate must remain visible and be acknowledged in the assignment. Any failed or unproven required gate
+blocks development.
+
+The Build Card must preserve the product proposition, actor and business moment, product form and
+usage surface, distinct mechanism, core demo loop, behavior that must be real, customer-visible
+result, mock boundary, validation question, acceptance path, non-goals, and time budget. The parent
+document must be `READY` or `READY WITH RISKS`. The latter requires the operator to acknowledge the
+named risks in the assignment. A `NOT READY` document blocks development; do not convert its
+provisional cards into implementation scope.
+
+The explicit assignment fixes the product proposition for this task. Do not reopen product ideation,
+generate challengers, select another card, or ask the customer to approve a written direction. If
+multiple cards are supplied, do not choose among them: request one card per clean downstream task.
+
+Raw meeting text and general customer context are not required in Build Card mode. Read the minimum
+anonymized evidence in the card and parent document; do not copy private transcripts into the target
+task or repository.
 
 ## Project Input
 
@@ -39,8 +70,9 @@ as a new-project destination. Select the template separately through the registr
 fits.
 
 The project route is an execution input, not part of the operator's product brief. Its absence must
-not block initial product framing or visual research. Ask only for the unresolved part of the route
-in the combined direction check, and resolve the route before creating or modifying target files.
+not block initial product framing in discovery mode or visual research in either mode. Ask only for
+the unresolved part of the route in the pre-development check, and resolve the route before creating
+or modifying target files.
 
 ## Optional Inputs
 
@@ -55,7 +87,7 @@ as possible; do not promise a specific elapsed time.
 
 ## Authority Order
 
-When sources conflict, use this order:
+In discovery mode, use this order when sources conflict:
 
 1. The operator's latest explicit instruction or correction.
 2. The operator focus note.
@@ -65,6 +97,11 @@ When sources conflict, use this order:
 
 Expose consequential conflicts in the frozen brief. Never let an inference override an explicit
 operator direction.
+
+In Build Card mode, use the operator's latest explicit correction, then the assigned Build Card,
+parent product document, resolved target-project evidence, and Agent inference. A correction that
+changes the product proposition invalidates the card assignment; return it to the product layer
+instead of silently rewriting the card.
 
 ## Privacy Handling
 

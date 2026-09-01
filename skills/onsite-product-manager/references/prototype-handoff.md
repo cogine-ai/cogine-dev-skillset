@@ -8,7 +8,7 @@ the product experiment. It does not prescribe implementation architecture or vis
 ```markdown
 ### Build Card - <Prototype ID And Name>
 
-- Portfolio role and evidence: <Anchor / Contrast / Stretch>; <evidence IDs>
+- Source, role, and evidence: <document reference; freeze ID; batch ID; card ID; upstream verdict and gates>; <Anchor / Contrast / Stretch>; <evidence IDs>
 - Product proposition: <actor + business moment + mechanism + observable result + value>
 - Form and usage surface: <where and how the user encounters it>
 - Why it is distinct: <nearest proposition and material mechanism/result difference>

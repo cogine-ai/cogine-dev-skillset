@@ -1,6 +1,6 @@
 ---
 name: onsite-prototype-development
-description: Turn a full customer-meeting transcript and operator focus notes, plus any available customer context, into the smallest visually deliberate, demo-ready interactive business prototype. Actively frame viable product directions, confirm one core demo bet and visual target, resolve an existing project or compatible Project Template before development, and then build the working loop. Use only when the user explicitly invokes this onsite sales-prototyping mode; do not use for ordinary product development, Project Template authoring, static mockups, or transcript summarization alone.
+description: Build the smallest visually deliberate, demo-ready interactive business prototype from either full customer-meeting evidence and operator focus or one fixed Build Card from an onsite product portfolio. In discovery mode, frame and confirm the product and visual direction; in Build Card mode, preserve the upstream proposition, confirm or delegate only the visual and project route, then build the working loop. Use only when explicitly invoked for onsite sales prototyping, not for ordinary product development, Project Template authoring, static mockups, or transcript summarization.
 ---
 
 # Onsite Prototype Development
@@ -10,12 +10,25 @@ lets a customer operate something, observe processing or a decision, see state c
 business-meaningful result. The prototype may use clearly disclosed mock behavior, but the
 demonstrated interaction must work.
 
-Version 0.0.2 is an internal alpha that targets one core business loop after independently proving
-the product-direction and visual-design decisions. After confirmation, implement exactly one selected
-product direction and one selected visual route; keep every unselected direction in deferred scope. Do not
-expand into ASR integration, Project Template maintenance, production integration, or automatic
-publishing unless the user separately requests that work. Exploring and showing materially different
-directions before confirmation is required; partially building them is not.
+Version 0.0.3 is an internal alpha that targets one fixed core business loop after the product and
+visual decisions have been proved at the appropriate layer. Implement exactly one product proposition
+and one selected visual route per task. Do not expand into ASR integration, Project Template
+maintenance, production integration, or automatic publishing unless the user separately requests
+that work.
+
+## Entry Modes
+
+- **Discovery mode:** use full meeting text, operator focus, and customer context to create one
+  recommendation plus two materially different challengers. Confirm one product direction and one
+  visual route, then build only that loop.
+- **Build Card mode:** use exactly one Build Card and its parent product-document evidence from
+  `onsite-product-manager`. The task assignment fixes the product proposition. Do not regenerate
+  product directions, show challengers, ask the customer to choose a written product direction, or
+  replace the card with a preferred idea. Validate the upstream gates, research the visual direction,
+  resolve the project route, and build that card only.
+
+One Build Card maps to one clean downstream task. A comparison batch runs as separate tasks so the
+customer can see multiple materially different prototypes before choosing among them.
 
 ## Operating Principle
 
@@ -25,9 +38,11 @@ end to end, every visible claim is truthful, mock boundaries are disclosed, and 
 to present inside the time box.
 
 For a new sales-critical surface, product divergence and visual design are part of accuracy rather
-than optional polish. Report the core-loop, direction-divergence, and visual-design gates separately.
-A working interaction cannot substitute for missing direction or design evidence, and changed color,
-type, radius, border, or shadow tokens do not by themselves prove design.
+than optional polish. Product divergence may be proved locally in discovery mode or inherited from a
+valid upstream portfolio in Build Card mode. Report the core-loop, direction-divergence, and
+visual-design gates separately. A working interaction cannot substitute for missing direction or
+design evidence, and changed color, type, radius, border, or shadow tokens do not by themselves prove
+design.
 
 Do not spend the onsite window perfecting adjacent behavior, broad test coverage, generalized
 accessibility or security hardening, production architecture, or acceptance-grade proof for
@@ -38,7 +53,8 @@ false success state, sensitive-data exposure, or material safety issue on the co
 
 Before creating or modifying the target project:
 
-1. Read [references/input-contract.md](references/input-contract.md) and resolve the source inputs.
+1. Read [references/input-contract.md](references/input-contract.md), select exactly one entry mode,
+   and resolve that mode's source inputs.
 2. Read [references/context-freeze.md](references/context-freeze.md) and draft the business outcome
    outside the target repository.
 3. Resolve the existing target project or Project Template source and destination route without
@@ -49,35 +65,39 @@ Before creating or modifying the target project:
 4. When a route is already resolved, read the existing target project's instructions and current
    implementation, or the source template's instructions and implementation when the target has not
    been instantiated. Use that evidence to verify the proposed direction is feasible. If a project or
-   template source is supplied only in a reply to the direction check, treat that reply as routing
+   template source is supplied only in a reply to the pre-development check, treat that reply as routing
    input rather than final confirmation. Keep the brief `proposed`, inspect the source, update any
-   affected assumptions, and obtain the final combined confirmation before marking it `confirmed`.
+   affected assumptions, and obtain the confirmation required by the selected mode before marking it
+   `confirmed`.
 5. Read [references/direction-and-visual-research.md](references/direction-and-visual-research.md) and
-   [references/demo-done.md](references/demo-done.md). Actively frame the product direction, establish
-   a visual target when presentation quality is material, and define one recommended demo bet with
-   its smallest proof path. Use the resolved project evidence when available; otherwise keep any
-   project-dependent assumptions provisional. Produce the required direction and visual evidence
-   packets without requiring the operator to ask for divergent thinking, name a design source, or
-   prescribe multiple options.
-6. Present one compact direction check to the operator and wait for explicit confirmation before
-   creating or changing target project files. Show one recommended product direction and two genuine
-   challengers, then show the required concrete visual evidence when design is material.
-   Confirm one product framing, core loop, customer-visible result, visual target, mock boundary, and
-   deferred scope, plus the project route when unresolved. Do not ask the operator to write a detailed
-   specification or select from every meeting idea.
+   [references/demo-done.md](references/demo-done.md). In discovery mode, actively frame the product
+   direction and prove divergence. In Build Card mode, validate and freeze the upstream proposition
+   and divergence evidence without reopening product ideation. In both modes, establish a visual
+   target when presentation quality is material and verify the smallest proof path against the
+   resolved project evidence.
+6. Present one compact pre-development check and wait for the confirmation required by the selected
+   mode before creating or changing target files. Discovery mode confirms the product and visual
+   direction together. Build Card mode treats the explicit card assignment as product confirmation,
+   presents and preserves the fixed mock/deferred boundaries, and confirms only the visual direction
+   and unresolved project route.
+   Do not ask the operator to rewrite the card or choose another product direction.
 
-An instruction to build a prototype does not by itself waive this confirmation gate. Requests such
-as "judge it yourself," "see what works," or "handle this as an onsite demo" authorize the Agent to
-form and recommend the direction only; they do not authorize project creation or development. Skip
+In discovery mode, an instruction to build a prototype does not by itself waive this confirmation
+gate. Requests such as "judge it yourself," "see what works," or "handle this as an onsite demo"
+authorize the Agent to form and recommend the direction only; they do not authorize project creation
+or development. Skip
 the gate only when the operator unambiguously says that no confirmation is needed and delegates both
 the business/visual direction and immediate target-project modification. If that authority is
 ambiguous, keep the brief `proposed` and wait.
 
 Before marking the brief `confirmed`, record the operator's actual confirmation or explicit waiver
-and verify that the project route is resolved. Decision delegation lets the Agent choose among the
-presented options; it does not waive the direction or visual evidence packets. An explicit evidence
-waiver must remain recorded as `waived`, never converted into `pass`. The Agent's own recommendation,
-plan, phrase such as "direction frozen," or transition to Code is never confirmation evidence.
+and verify that the project route is resolved. In Build Card mode, record the exact task instruction,
+card ID, parent document, context freeze, comparison batch, and upstream gate states as the product
+confirmation evidence. Product confirmation does not waive visual evidence or visual confirmation.
+Decision delegation lets the Agent make the still-open visual choice; it does not waive evidence
+packets. An explicit evidence waiver must remain recorded as `waived`, never converted into `pass`.
+The Agent's own recommendation, plan, phrase such as "direction frozen," or transition to Code is
+never confirmation evidence.
 
 Ask only when a missing answer would materially change the target project, core business loop, data
 boundary, or feasible proof path. Otherwise state the assumption and continue.
@@ -100,10 +120,10 @@ Use the first matching rule:
    to identify a template that the registry already resolves.
 4. Resolve a new project name and destination independently from template selection. When the task
    explicitly authorizes a new-project output root, propose a concise project slug inside it. If no
-   destination is authorized, ask only for the destination in the combined direction check. Do not
+   destination is authorized, ask only for the destination in the pre-development check. Do not
    infer authorization from the current working directory.
 5. If no registered template is compatible, include one concise request for a compatible template
-   or target project in the combined direction check. Do not interrupt initial direction work with a
+   or target project in the pre-development check. Do not interrupt initial pre-development work with a
    separate routing exchange, silently edit the current directory, or create an arbitrary stack.
 
 If the supplied path appears to be the template source itself, clarify whether the user intends to
@@ -117,17 +137,18 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 
 ### Research
 
-- Read the raw meeting text directly; do not route it through another AI summary service.
+- In discovery mode, read the raw meeting text directly; do not route it through another AI summary
+  service. In Build Card mode, read the Build Card and its parent product-document evidence; do not
+  require or copy the private transcript into the target task.
 - Inspect the target repository, its source, dependencies, instructions, and available validation
   path before changing it.
 - Treat the operator's latest explicit direction as authoritative when it conflicts with transcript
   inference.
-- Identify the priority already formed during the meeting. Do not introduce a separate exercise that
-  lists all discussed features and then selects one.
-- Develop a direction packet with one recommendation and two materially different challengers before
-  recommending the demo bet. Product framing is not a feature-voting exercise, and the operator does
-  not need to request this exploration. Apply the distinctness test in the direction-and-visual-
-  research contract; renamed steps, a different shell, or the same result behind chat do not count.
+- In discovery mode, identify the priority already formed during the meeting and develop one
+  recommendation plus two materially different challengers. Do not introduce a feature-voting
+  exercise. In Build Card mode, preserve the assigned product proposition, product form, core demo
+  loop, behavior that must be real, mock boundary, validation question, and non-goals. Do not create a
+  new direction packet.
 - When visual presentation can materially affect recognition or sales impact, automatically use the
   best available design-research capability according to the direction-and-visual-research contract.
   Do not wait for the operator to name Refero or another source.
@@ -142,8 +163,9 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 - Preserve the confirmed non-token design consequence: the composition, information hierarchy,
   media role, interaction feedback, or state choreography that makes the core business moment
   recognizable even without its palette or typography.
-- Keep the implementation inside the confirmed demo bet. Return to the operator only when new
-  evidence materially contradicts it; do not silently reinterpret the bet during development.
+- Keep the implementation inside the confirmed demo bet or fixed Build Card. Return to the operator
+  only when new evidence materially contradicts it; do not silently reinterpret the product
+  proposition during development.
 - Mark all other product and visual directions as deferred rather than scaffolding, partially
   implementing, or silently merging them into the selected route.
 - Prefer synthetic, customer-shaped demo data. Identify every mocked external boundary.

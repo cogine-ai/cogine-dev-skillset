@@ -59,7 +59,7 @@ Recommended order for day-to-day engineering work:
 | `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
 | `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
 | `onsite-product-manager` | Turn customer meeting evidence into 3-10 product propositions, prototype experiments, and independent Build Cards before development | included (v0.0.1 alpha) |
-| `onsite-prototype-development` | Actively frame and build one confirmed, visually deliberate, clickable onsite sales prototype from meeting context and operator focus | included (v0.0.2 alpha) |
+| `onsite-prototype-development` | Frame one onsite demo from meeting evidence or execute one fixed upstream Build Card, then build the confirmed visual and interactive loop | included (v0.0.3 alpha) |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
 | `plan-devex-review` | Plan-stage review for API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design | included |
