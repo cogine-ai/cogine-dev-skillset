@@ -1,0 +1,6 @@
+interface:
+  display_name: "Onsite Product Manager"
+  short_description: "Turn customer conversations into prototype validation briefs"
+  default_prompt: "Use $onsite-product-manager. Here are the full meeting text through the context-freeze point, accumulated customer context, and what I think matters most. Produce the product opportunity and prototype validation document without starting development."
+policy:
+  allow_implicit_invocation: false
