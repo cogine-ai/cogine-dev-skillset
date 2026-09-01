@@ -28,7 +28,7 @@ missing segment creates a material contradiction in the core demo outcome.
 Require all of:
 
 - exactly one complete Build Card from `onsite-product-manager`;
-- a parent product-document path or exact conversation reference;
+- its linked upstream `context-freeze.md` path from `onsite-product-manager`;
 - source context-freeze ID, comparison-batch ID, card ID, and upstream overall verdict;
 - upstream `Evidence`, `Product distinctness`, `Validation`, `Demonstrability`, `Portfolio execution`,
   `Mock honesty`, and `Handoff` gate states;
@@ -41,9 +41,9 @@ blocks development.
 
 The Build Card must preserve the product proposition, actor and business moment, product form and
 usage surface, distinct mechanism, core demo loop, behavior that must be real, customer-visible
-result, mock boundary, validation question, acceptance path, non-goals, and time budget. The parent
-document must be `READY` or `READY WITH RISKS`. The latter requires the operator to acknowledge the
-named risks in the assignment. A `NOT READY` document blocks development; do not convert its
+result, mock boundary, validation question, acceptance path, non-goals, and time budget. The upstream
+context freeze must be `READY` or `READY WITH RISKS`. The latter requires the operator to acknowledge
+the named risks in the assignment. A `NOT READY` context freeze blocks development; do not convert its
 provisional cards into implementation scope.
 
 The explicit assignment fixes the product proposition for this task. Do not reopen product ideation,
@@ -51,8 +51,9 @@ generate challengers, select another card, or ask the customer to approve a writ
 multiple cards are supplied, do not choose among them: request one card per clean downstream task.
 
 Raw meeting text and general customer context are not required in Build Card mode. Read the minimum
-anonymized evidence in the card and parent document; do not copy private transcripts into the target
-task or repository.
+anonymized evidence in the card and upstream context freeze; do not copy private transcripts into the
+target task or repository. `onsite-product-board.md` is optional and may be read for portfolio names
+and presentation order, but it cannot replace the card or upstream context freeze.
 
 ## Project Input
 
@@ -99,7 +100,7 @@ Expose consequential conflicts in the frozen brief. Never let an inference overr
 operator direction.
 
 In Build Card mode, use the operator's latest explicit correction, then the assigned Build Card,
-parent product document, resolved target-project evidence, and Agent inference. A correction that
+upstream context freeze, resolved target-project evidence, and Agent inference. A correction that
 changes the product proposition invalidates the card assignment; return it to the product layer
 instead of silently rewriting the card.
 

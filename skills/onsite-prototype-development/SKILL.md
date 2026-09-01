@@ -10,7 +10,7 @@ lets a customer operate something, observe processing or a decision, see state c
 business-meaningful result. The prototype may use clearly disclosed mock behavior, but the
 demonstrated interaction must work.
 
-Version 0.0.3 is an internal alpha that targets one fixed core business loop after the product and
+Version 0.0.4 is an internal alpha that targets one fixed core business loop after the product and
 visual decisions have been proved at the appropriate layer. Implement exactly one product proposition
 and one selected visual route per task. Do not expand into ASR integration, Project Template
 maintenance, production integration, or automatic publishing unless the user separately requests
@@ -21,8 +21,9 @@ that work.
 - **Discovery mode:** use full meeting text, operator focus, and customer context to create one
   recommendation plus two materially different challengers. Confirm one product direction and one
   visual route, then build only that loop.
-- **Build Card mode:** use exactly one Build Card and its parent product-document evidence from
-  `onsite-product-manager`. The task assignment fixes the product proposition. Do not regenerate
+- **Build Card mode:** use exactly one Build Card and its linked upstream `context-freeze.md` from
+  `onsite-product-manager`. The optional `onsite-product-board.md` supplies portfolio display order,
+  not development scope. The task assignment fixes the product proposition. Do not regenerate
   product directions, show challengers, ask the customer to choose a written product direction, or
   replace the card with a preferred idea. Validate the upstream gates, research the visual direction,
   resolve the project route, and build that card only.
@@ -92,8 +93,9 @@ ambiguous, keep the brief `proposed` and wait.
 
 Before marking the brief `confirmed`, record the operator's actual confirmation or explicit waiver
 and verify that the project route is resolved. In Build Card mode, record the exact task instruction,
-card ID, parent document, context freeze, comparison batch, and upstream gate states as the product
-confirmation evidence. Product confirmation does not waive visual evidence or visual confirmation.
+card ID, upstream context-freeze path and ID, comparison batch, and upstream gate states as the
+product confirmation evidence. Product confirmation does not waive visual evidence or visual
+confirmation.
 Decision delegation lets the Agent make the still-open visual choice; it does not waive evidence
 packets. An explicit evidence waiver must remain recorded as `waived`, never converted into `pass`.
 The Agent's own recommendation, plan, phrase such as "direction frozen," or transition to Code is
@@ -138,8 +140,9 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 ### Research
 
 - In discovery mode, read the raw meeting text directly; do not route it through another AI summary
-  service. In Build Card mode, read the Build Card and its parent product-document evidence; do not
-  require or copy the private transcript into the target task.
+  service. In Build Card mode, read the Build Card and linked upstream `context-freeze.md`; read the
+  optional product board only for portfolio context. Do not require or copy the private transcript
+  into the target task.
 - Inspect the target repository, its source, dependencies, instructions, and available validation
   path before changing it.
 - Treat the operator's latest explicit direction as authoritative when it conflicts with transcript

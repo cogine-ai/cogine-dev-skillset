@@ -2,7 +2,8 @@
 
 Use this workflow before the confirmation gate. In discovery mode, the operator supplies the fullest
 meeting text, a short focus note, and customer context when available. In Build Card mode, the
-operator supplies one fixed card and its parent product-document evidence. A target project or
+operator supplies one fixed card and its linked upstream `context-freeze.md`; the human-facing
+product board is optional portfolio context. A target project or
 template is an execution input that may be supplied initially or resolved in the pre-development
 check. The operator does not need to request divergent ideas in discovery mode, name Refero, choose a
 design method, or specify a fixed number of visual routes.
@@ -10,14 +11,15 @@ design method, or specify a fixed number of visual routes.
 ## Build Card Mode
 
 When the input is a valid upstream Build Card, do not run product-direction ideation. Validate the
-parent document, context freeze, comparison batch, card ID, overall verdict, and upstream gate states.
+upstream context-freeze path and ID, comparison batch, card ID, overall verdict, and upstream gate
+states.
 Freeze the card's actor, business moment, product proposition, product form, distinct mechanism, core
 demo loop, required real behavior, customer-visible result, mock boundary, validation question, and
 non-goals.
 
-Use the upstream `Product distinctness` gate as the Direction Divergence evidence only when the parent
-document is `READY` or operator-acknowledged `READY WITH RISKS`, the card belongs to its stated
-comparison batch, and the evidence is accessible. Record `source: upstream` in the gate. Do not
+Use the upstream `Product distinctness` gate as the Direction Divergence evidence only when the
+upstream context freeze is `READY` or operator-acknowledged `READY WITH RISKS`, the card belongs to
+its stated comparison batch, and the evidence is accessible. Record `source: upstream` in the gate. Do not
 manufacture a local direction packet, challengers, or a second product decision. If the upstream
 evidence is absent or not passing, stop and return the contract gap.
 

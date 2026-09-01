@@ -1,6 +1,6 @@
 interface:
   display_name: "Onsite Prototype Development"
   short_description: "Build one fixed, visually deliberate interactive sales demo"
-  default_prompt: "Use $onsite-prototype-development. Here is either the full meeting text and operator focus for discovery mode, or one fixed Build Card plus its parent product document for Build Card mode. Build exactly one onsite demo."
+  default_prompt: "Use $onsite-prototype-development. Here is either the full meeting text and operator focus for discovery mode, or one fixed Build Card plus its linked upstream context freeze for Build Card mode. Build exactly one onsite demo."
 policy:
   allow_implicit_invocation: false

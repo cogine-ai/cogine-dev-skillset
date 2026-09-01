@@ -1,14 +1,16 @@
 # Prototype Handoff Contract
 
-Create one independent Build Card for every proposition in the prototype portfolio. The card defines
-the product experiment. It does not prescribe implementation architecture or visual design.
+Create one independent Build Card file for every proposition in the prototype portfolio. Write it to
+`build-cards/<Prototype ID>.md`. The card defines the product experiment. It does not prescribe
+implementation architecture or visual design.
 
 ## Build Card
 
 ```markdown
-### Build Card - <Prototype ID And Name>
+# Build Card - <Prototype ID And Name>
 
-- Source, role, and evidence: <document reference; freeze ID; batch ID; card ID; upstream verdict and gates>; <Anchor / Contrast / Stretch>; <evidence IDs>
+- Source, role, and evidence: <context-freeze.md path; freeze ID; batch ID; card ID; upstream verdict>; <Anchor / Contrast / Stretch>; <evidence IDs>
+- Upstream gates and risks: <Evidence=...; Product distinctness=...; Validation=...; Demonstrability=...; Portfolio execution=...; Mock honesty=...; Handoff=...>; <named risks or none>
 - Product proposition: <actor + business moment + mechanism + observable result + value>
 - Form and usage surface: <where and how the user encounters it>
 - Why it is distinct: <nearest proposition and material mechanism/result difference>
@@ -28,10 +30,11 @@ the product experiment. It does not prescribe implementation architecture or vis
 - One Build Card maps to one downstream prototype task. Treat its product proposition as fixed for
   that task; the downstream workflow may report a product contradiction, but it must not reopen
   divergent product ideation or replace the proposition with a preferred alternative.
-- A Build Card stands alone. A clean downstream task should understand the intended product experience
-  without reading private transcripts or inventing product requirements.
-- Keep each Build Card to 15 lines or fewer. Combine related fields as shown above; do not trade
-  standalone clarity for repeated narrative.
+- A Build Card is scope-complete. Together with its linked `context-freeze.md`, it gives a clean
+  downstream task the complete product and evidence handoff without private transcripts or invented
+  product requirements.
+- Keep each Build Card to 18 lines or fewer. Combine related fields as shown above; do not trade
+  scope clarity for repeated narrative.
 - Preserve only the minimum anonymized context and customer language needed to make the prototype
   recognizable.
 - State initial, processing or decision, result, and reset states. Do not substitute a screen list for
@@ -44,7 +47,8 @@ the product experiment. It does not prescribe implementation architecture or vis
 - Do not prescribe database, ORM, backend, framework, model, provider, or deployment choices.
 - Do not require the customer to approve the written card before it can be prototyped. The portfolio
   is an internal product recommendation; all cards move downstream as one comparison batch by
-  default. Any operator reduction below three follows the explicit waiver in the product document.
+  default. Any operator reduction below three follows the explicit waiver in the upstream
+  `context-freeze.md`.
 
 The downstream prototype workflow owns:
 
@@ -59,8 +63,9 @@ return that conflict instead of silently building a different product.
 ## After-Demo Feedback
 
 The onsite operator owns capturing the demonstration conversation. Re-invoke
-`onsite-product-manager` in post-demo learning mode with that evidence and the original product
-document; that invocation owns appending the following record after each shown prototype:
+`onsite-product-manager` in post-demo learning mode with that evidence and the original output
+bundle; that invocation owns appending the following record after each shown prototype to
+`context-freeze.md`:
 
 ```markdown
 ### Feedback - <Prototype ID>

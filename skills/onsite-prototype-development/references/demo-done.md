@@ -1,7 +1,7 @@
 # Demo Completion Contract
 
 The onsite prototype is runnable when the confirmed core business loop is accurately demonstrable.
-Version 0.0.3 is accepted only when the core-loop, direction-divergence, and visual-design gates are
+Version 0.0.4 is accepted only when the core-loop, direction-divergence, and visual-design gates are
 reported separately and all required gates pass. Feature count, page count, code volume, exhaustive
 proof, and production hardening are not acceptance criteria. Accurate completion takes priority over
 perfect engineering.
@@ -12,10 +12,10 @@ Use these states:
 - **Direction Divergence:** `pass`, `fail`, `not proven`, or `waived`, with `source: local` in discovery
   mode or `source: upstream` in Build Card mode.
 - **Visual Design:** `accepted`, `fail`, `awaiting acceptance`, `not proven`, `waived`, or `not material`.
-- **0.0.3 Overall:** `pass` only when Core Loop is `pass`, Direction Divergence is `pass`, and Visual
+- **0.0.4 Overall:** `pass` only when Core Loop is `pass`, Direction Divergence is `pass`, and Visual
   Design is `accepted` or legitimately `not material`. A waiver never counts as a pass.
 
-A prototype may be runnable while 0.0.3 Overall remains `not pass`. Do not collapse these states into
+A prototype may be runnable while 0.0.4 Overall remains `not pass`. Do not collapse these states into
 one success claim.
 
 ## Required Behavior
@@ -42,8 +42,8 @@ one success claim.
 - Confirm the customer-visible result, reset path, and absence of blocking browser or runtime errors.
 - Capture focused screenshot evidence of the customer action and business result.
 - In discovery mode, preserve the confirmed direction packet or exact conversation reference and
-  confirm that its alternatives passed the distinctness test. In Build Card mode, preserve the parent
-  product-document reference, context freeze, comparison batch, card ID, upstream overall verdict,
+  confirm that its alternatives passed the distinctness test. In Build Card mode, preserve the
+  upstream context-freeze path and ID, comparison batch, card ID, upstream overall verdict,
   upstream gate states, and exact assignment instruction. Confirm that the implementation contains
   exactly the fixed card proposition and one selected visual route.
 - When a visual target was confirmed, place the running input and result screenshots beside the
@@ -97,11 +97,11 @@ Return:
 5. **Deferred:** discussed ideas intentionally left out.
 6. **Mocked/assumed:** synthetic data, simulated processing, and unresolved assumptions.
 7. **Proof:** commands run, browser path exercised, and observed result.
-8. **Direction divergence:** entry mode, local packet or upstream product-document/card reference,
+8. **Direction divergence:** entry mode, local packet or upstream context-freeze/card reference,
    distinctness evidence, source, and gate state.
 9. **Visual design:** confirmed evidence, actual screenshot comparison, non-token consequence,
    operator acceptance, and gate state.
-10. **Gate summary:** Core Loop, Direction Divergence, Visual Design, and 0.0.3 Overall.
+10. **Gate summary:** Core Loop, Direction Divergence, Visual Design, and 0.0.4 Overall.
 11. **Not proven:** external or production boundaries that were not tested.
 
 Do not claim production readiness. Publishing, production hardening, and conversion into a maintained

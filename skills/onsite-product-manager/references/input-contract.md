@@ -5,7 +5,7 @@ conversation; it must not improve a lossy summary until it looks like original e
 
 ## Accepted Inputs
 
-Minimum inputs for a `READY` pre-demo document:
+Minimum inputs for a `READY` pre-demo bundle:
 
 - full meeting text through the context-freeze point;
 - onsite operator focus in the operator's own words;
@@ -25,11 +25,11 @@ directly. Do not route it through another AI summarizer before product reasoning
 is complete for this purpose when it includes the full conversation through the recorded freeze
 point; later speech belongs to an addendum.
 
-If only notes or a summary exist, they may support a provisional document when they contain enough
+If only notes or a summary exist, they may support a provisional bundle when they contain enough
 product evidence, but the evidence gate and overall verdict remain `NOT READY`. Mark the source
 `summary-only` or `notes-only`; never call it a full transcript.
 
-For post-demo learning mode, also require the original product document and the fullest available
+For post-demo learning mode, also require the original output bundle and the fullest available
 conversation or operator notes from the prototype presentation. Mark notes-only feedback accurately;
 do not reconstruct the boss's exact words.
 
@@ -45,11 +45,12 @@ When sources conflict, use this order:
 6. generic industry patterns.
 
 Operator emphasis selects attention; it does not rewrite what the customer said. Preserve material
-conflicts in the document instead of silently choosing the more convenient version.
+conflicts in `context-freeze.md` instead of silently choosing the more convenient version.
 
 ## Evidence Labels
 
-Label every material claim with one of these types:
+Label every material internal claim in `context-freeze.md` and the Build Cards with one of these
+types. Keep these labels out of the human-facing product board:
 
 - `Fact`: directly stated by the customer or demonstrated by supplied material.
 - `Operator interpretation`: the onsite team's reading or priority.
@@ -96,7 +97,7 @@ to produce a PRD, feature list, screen map, architecture, or formal requirements
 - Do not paste private customer text, names, files, or internal URLs into external search, design,
   analytics, or model services.
 - If public research is materially needed and authorized, search only sanitized public concepts.
-- Use synthetic or anonymized examples in the final product document unless exact customer data is
+- Use synthetic or anonymized examples in the product board and Build Cards unless exact customer data is
   explicitly required and authorized.
 - Do not place meeting material, customer assets, or generated customer documents inside this Skill
   repository.
