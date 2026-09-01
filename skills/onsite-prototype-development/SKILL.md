@@ -10,9 +10,12 @@ lets a customer operate something, observe processing or a decision, see state c
 business-meaningful result. The prototype may use clearly disclosed mock behavior, but the
 demonstrated interaction must work.
 
-Version 0.0.2 is an internal alpha that targets one core business loop. Do not expand it into
-simultaneous generation of many prototype variants, ASR integration, Project Template maintenance,
-production integration, or automatic publishing unless the user separately requests that work.
+Version 0.0.2 is an internal alpha that targets one core business loop after independently proving
+the product-direction and visual-design decisions. After confirmation, implement exactly one selected
+product direction and one selected visual route; keep every unselected direction in deferred scope. Do not
+expand into ASR integration, Project Template maintenance, production integration, or automatic
+publishing unless the user separately requests that work. Exploring and showing materially different
+directions before confirmation is required; partially building them is not.
 
 ## Operating Principle
 
@@ -20,6 +23,11 @@ Accurate completion is more important than perfect hardening. Accuracy means tha
 confirmed the demo bet or explicitly delegated that decision, the customer-visible core loop works
 end to end, every visible claim is truthful, mock boundaries are disclosed, and the result is ready
 to present inside the time box.
+
+For a new sales-critical surface, product divergence and visual design are part of accuracy rather
+than optional polish. Report the core-loop, direction-divergence, and visual-design gates separately.
+A working interaction cannot substitute for missing direction or design evidence, and changed color,
+type, radius, border, or shadow tokens do not by themselves prove design.
 
 Do not spend the onsite window perfecting adjacent behavior, broad test coverage, generalized
 accessibility or security hardening, production architecture, or acceptance-grade proof for
@@ -48,14 +56,15 @@ Before creating or modifying the target project:
    [references/demo-done.md](references/demo-done.md). Actively frame the product direction, establish
    a visual target when presentation quality is material, and define one recommended demo bet with
    its smallest proof path. Use the resolved project evidence when available; otherwise keep any
-   project-dependent assumptions provisional. Do not require the operator to ask for divergent
-   thinking, name a design source, or prescribe multiple visual options.
+   project-dependent assumptions provisional. Produce the required direction and visual evidence
+   packets without requiring the operator to ask for divergent thinking, name a design source, or
+   prescribe multiple options.
 6. Present one compact direction check to the operator and wait for explicit confirmation before
-   creating or changing target project files. Confirm the customer problem, recommended product
-   framing, core loop, customer-visible result, visual target when material, mock boundary, and
-   deferred scope, plus the project route when unresolved. Surface alternative product or visual
-   directions only when the differences are consequential. Do not ask the operator to write a
-   detailed specification or select from every meeting idea.
+   creating or changing target project files. Show one recommended product direction and two genuine
+   challengers, then show the required concrete visual evidence when design is material.
+   Confirm one product framing, core loop, customer-visible result, visual target, mock boundary, and
+   deferred scope, plus the project route when unresolved. Do not ask the operator to write a detailed
+   specification or select from every meeting idea.
 
 An instruction to build a prototype does not by itself waive this confirmation gate. Requests such
 as "judge it yourself," "see what works," or "handle this as an onsite demo" authorize the Agent to
@@ -65,8 +74,10 @@ the business/visual direction and immediate target-project modification. If that
 ambiguous, keep the brief `proposed` and wait.
 
 Before marking the brief `confirmed`, record the operator's actual confirmation or explicit waiver
-and verify that the project route is resolved. The Agent's own recommendation, plan, phrase such as
-"direction frozen," or transition to Code is never confirmation evidence.
+and verify that the project route is resolved. Decision delegation lets the Agent choose among the
+presented options; it does not waive the direction or visual evidence packets. An explicit evidence
+waiver must remain recorded as `waived`, never converted into `pass`. The Agent's own recommendation,
+plan, phrase such as "direction frozen," or transition to Code is never confirmation evidence.
 
 Ask only when a missing answer would materially change the target project, core business loop, data
 boundary, or feasible proof path. Otherwise state the assumption and continue.
@@ -113,9 +124,10 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
   inference.
 - Identify the priority already formed during the meeting. Do not introduce a separate exercise that
   lists all discussed features and then selects one.
-- Internally explore materially different ways to express the customer's underlying outcome before
+- Develop a direction packet with one recommendation and two materially different challengers before
   recommending the demo bet. Product framing is not a feature-voting exercise, and the operator does
-  not need to request this exploration.
+  not need to request this exploration. Apply the distinctness test in the direction-and-visual-
+  research contract; renamed steps, a different shell, or the same result behind chat do not count.
 - When visual presentation can materially affect recognition or sales impact, automatically use the
   best available design-research capability according to the direction-and-visual-research contract.
   Do not wait for the operator to name Refero or another source.
@@ -127,9 +139,13 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 - Express the path as `input/action -> processing/decision -> state change -> business result`.
 - Preserve the confirmed visual target as an implementation constraint. Use one dominant direction;
   do not average unrelated references into a generic dashboard style.
+- Preserve the confirmed non-token design consequence: the composition, information hierarchy,
+  media role, interaction feedback, or state choreography that makes the core business moment
+  recognizable even without its palette or typography.
 - Keep the implementation inside the confirmed demo bet. Return to the operator only when new
   evidence materially contradicts it; do not silently reinterpret the bet during development.
-- Mark all other ideas as deferred rather than silently implementing them.
+- Mark all other product and visual directions as deferred rather than scaffolding, partially
+  implementing, or silently merging them into the selected route.
 - Prefer synthetic, customer-shaped demo data. Identify every mocked external boundary.
 
 ### Code
@@ -139,6 +155,8 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
   for the requested business behavior.
 - Implement the visual target through the target project's editable application and theme surfaces.
   Do not modify Project Template foundations or protected UI components merely to force a style.
+- Treat generic template composition with new tokens as an incomplete design, not a valid visual
+  implementation. Preserve the confirmed reference-to-screen mapping and distinguishing move.
 - Add focused behavior tests for non-trivial core-loop logic when a stable public seam exists and the
   repository requires or the time box safely permits them.
 - Run the fastest sufficient repository-required validation and exercise the exact visible path in a
@@ -166,6 +184,7 @@ Follow `Research -> Plan -> Code` while keeping each phase proportional to the o
 
 Return the runnable prototype location and access method, one concise demo path, a short operator
 talk track, implemented and deferred scope, mock and assumption boundaries, the visual target used,
-and verification evidence. Use the exact reporting contract in
+verification evidence, and separate core-loop, direction-divergence, and visual-design gate states.
+Use the exact reporting contract in
 [references/demo-done.md](references/demo-done.md).
 List possible improvements under deferred scope; do not implement them as part of the handoff.

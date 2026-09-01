@@ -1,8 +1,21 @@
 # Demo Completion Contract
 
-The onsite goal is complete when the confirmed core business loop is accurately demonstrable.
-Feature count, page count, code volume, exhaustive proof, and production hardening are not acceptance
-criteria. Accurate completion takes priority over perfect engineering.
+The onsite prototype is runnable when the confirmed core business loop is accurately demonstrable.
+Version 0.0.2 is accepted only when the core-loop, direction-divergence, and visual-design gates are
+reported separately and all required gates pass. Feature count, page count, code volume, exhaustive
+proof, and production hardening are not acceptance criteria. Accurate completion takes priority over
+perfect engineering.
+
+Use these states:
+
+- **Core Loop:** `pass` or `fail`.
+- **Direction Divergence:** `pass`, `fail`, `not proven`, or `waived`.
+- **Visual Design:** `accepted`, `fail`, `awaiting acceptance`, `not proven`, `waived`, or `not material`.
+- **0.0.2 Overall:** `pass` only when Core Loop is `pass`, Direction Divergence is `pass`, and Visual
+  Design is `accepted` or legitimately `not material`. A waiver never counts as a pass.
+
+A prototype may be runnable while 0.0.2 Overall remains `not pass`. Do not collapse these states into
+one success claim.
 
 ## Required Behavior
 
@@ -15,7 +28,8 @@ criteria. Accurate completion takes priority over perfect engineering.
 - The flow can be repeated or reset for another demonstration.
 - The demonstrated path contains no dead controls, fake success states, or blocking errors.
 - When visual direction was material, the rendered core states preserve the confirmed visual thesis
-  and named reference traits. Exact replication is not required.
+  and named reference traits, including the non-token design consequence. Exact replication is not
+  required; a token-only reskin is insufficient.
 
 ## Required Proof
 
@@ -26,9 +40,15 @@ criteria. Accurate completion takes priority over perfect engineering.
 - Drive the exact demo path through a real browser with user-like actions.
 - Confirm the customer-visible result, reset path, and absence of blocking browser or runtime errors.
 - Capture focused screenshot evidence of the customer action and business result.
-- When a visual target was confirmed, compare the running primary viewport and relevant interaction
-  state against its visual lock. Report and fix material hierarchy, typography, spacing, color-role,
-  component-character, imagery, or generic-design drift on the core path.
+- Preserve the confirmed direction packet or an exact conversation reference to it. Confirm that its
+  alternatives passed the distinctness test and that the final implementation contains exactly one
+  selected product direction and one selected visual route.
+- When a visual target was confirmed, place the running input and result screenshots beside the
+  target composition or exact references. Record promised non-token consequences as `visible`,
+  `drifted`, or `not proven`, repeat the reskin counterfactual, and report material hierarchy,
+  typography, spacing, color-role, component-character, imagery, or generic-design drift.
+- Obtain the operator's explicit acceptance of the actual visual result. The implementing Agent's
+  own QA cannot set `Visual Design: accepted`.
 - Run the repository's privacy check when available; otherwise inspect the changed files and build
   output for meeting text, customer-sensitive data, and secrets.
 - State every database, authentication, provider, deployment, or production boundary that remains
@@ -44,8 +64,9 @@ architecture solely to make an automated tool observe it.
 
 ## Stop Rule
 
-`Sales Demo Done` is a hard stop. Once the confirmed loop works, the required proof is sufficient,
-and the handoff can be presented, stop implementation and deliver immediately.
+`Sales Demo Done` is a hard stop. Once the confirmed loop works and the required implementation and
+visual proof are ready, stop implementation and present the handoff for operator visual acceptance.
+Do not continue polishing while waiting for that decision.
 
 After Sales Demo Done, do not start optional static reviews, generalized hardening, refactors, new
 backend work, additional feature tests, or adjacent UX polish unless the operator explicitly asks.
@@ -53,7 +74,9 @@ Fix only an issue that makes the confirmed path broken, materially misleading, u
 exposing sensitive data. Preserve every other improvement as deferred scope.
 
 Visual QA must not reopen alternative directions, create a second prototype, or continue as optional
-polish after Sales Demo Done.
+polish after Sales Demo Done. If the operator rejects the actual visual result, make only the smallest
+correction needed to satisfy the already confirmed evidence; a new visual direction requires a new
+confirmation.
 
 Reserve the final part of a supplied time box for proof and handoff; in a 30-minute session, reserve
 at least the final five minutes. When that boundary is reached, stop adding behavior. If the core loop
@@ -71,9 +94,11 @@ Return:
 5. **Deferred:** discussed ideas intentionally left out.
 6. **Mocked/assumed:** synthetic data, simulated processing, and unresolved assumptions.
 7. **Proof:** commands run, browser path exercised, and observed result.
-8. **Visual target:** the confirmed direction and whether the running core path stayed within its
-   visual lock.
-9. **Not proven:** external or production boundaries that were not tested.
+8. **Direction divergence:** packet reference, distinctness evidence, and gate state.
+9. **Visual design:** confirmed evidence, actual screenshot comparison, non-token consequence,
+   operator acceptance, and gate state.
+10. **Gate summary:** Core Loop, Direction Divergence, Visual Design, and 0.0.2 Overall.
+11. **Not proven:** external or production boundaries that were not tested.
 
 Do not claim production readiness. Publishing, production hardening, and conversion into a maintained
 product are separate tasks.
