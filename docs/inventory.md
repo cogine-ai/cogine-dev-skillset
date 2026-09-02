@@ -10,9 +10,9 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `local-ultra-review`: Useful for deep pre-merge local code review with isolated worktrees, reviewer lenses, verification, dedupe, and severity-ranked findings.
 - `loop-on-pr-review-and-fix`: Useful for running a stateful post-PR-review loop that verifies new review comments, fixes only still-valid issues, validates, pushes, and records handled feedback.
 - `founder-office-hours`: Useful for founder-level product interrogation, target user selection, product-form decisions, and handoff before spec or architecture.
-- `onsite-product-manager`: Internal alpha v0.0.3 for turning full customer-meeting evidence, operator focus, and customer context into a concise human-facing product-direction board, an internal context freeze, and 3-10 independent Build Cards before design.
-- `onsite-product-design`: Internal alpha v0.0.1 for reading the complete comparison batch, actively grounding each product in visible Refero or fallback evidence, producing one confirmed Design Card and preview per Build Card, and later comparing the running batch for visual drift without creating projects or code.
-- `onsite-prototype-development`: Internal alpha v0.0.5 for executing exactly one matching Build Card and DESIGN READY Design Card, selecting a compatible Project Template or existing target, and building one clickable sales-demo loop with browser and visual-fidelity proof while keeping mock and production boundaries explicit.
+- `onsite-product-manager`: Internal alpha for turning meeting context into 3-10 concise product directions and requiring the onsite operator to choose which directions continue.
+- `onsite-product-design`: Internal alpha for creating visible, genuinely different design options for operator-selected product directions and requiring the operator to confirm a route before development.
+- `onsite-prototype-development`: Internal alpha for building one operator-confirmed product and design as a focused, clickable sales-demo loop in an existing project or compatible Project Template.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
 - `plan-devex-review`: Useful for plan-stage review of API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design.

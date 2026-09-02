@@ -58,9 +58,9 @@ Recommended order for day-to-day engineering work:
 | `local-ultra-review` | Run Ultra Review-style local code review with worktrees, reviewer lenses, verifier gating, dedupe, and ranked findings | included |
 | `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
 | `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
-| `onsite-product-manager` | Turn customer meeting evidence into a concise 3-10 direction board, internal context freeze, and independent Build Cards before design | included (v0.0.3 alpha) |
-| `onsite-product-design` | Turn the complete product batch into visibly different, Refero-grounded routes, previews, and Design Cards, then compare the running batch for drift | included (v0.0.1 alpha) |
-| `onsite-prototype-development` | Execute one matching Build Card and DESIGN READY Design Card in a target project or Project Template as a clickable, browser-proven sales demo | included (v0.0.5 alpha) |
+| `onsite-product-manager` | Turn meeting context into 3-10 concise product directions, then stop for the operator to choose | included (alpha) |
+| `onsite-product-design` | Create visible, genuinely different design options for operator-selected product directions, then stop for confirmation | included (alpha) |
+| `onsite-prototype-development` | Build the confirmed product and design as one focused, clickable, browser-proven sales demo using a suitable Project Template when available | included (alpha) |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
 | `plan-devex-review` | Plan-stage review for API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design | included |

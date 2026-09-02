@@ -1,6 +1,6 @@
 interface:
   display_name: "Onsite Product Design"
-  short_description: "Turn a product portfolio into distinct visible design routes"
-  default_prompt: "Use $onsite-product-design. 这是完整的现场产品方向包，请主动用 Refero 等可用设计证据，为整批方向做真正不同的设计方案；每个方向给一个可见预览和一张 Design Card，先别开发。"
+  short_description: "Create visible design options for selected product directions"
+  default_prompt: "Use $onsite-product-design. 这是我已经选好的产品方向。请主动参考 Refero 等可用设计证据，给我至少两个真正不同、能看见的设计方案。先别替我选，也别开发，展示预览后问我想用哪个。"
 policy:
   allow_implicit_invocation: false
