@@ -66,6 +66,11 @@ After the operator selects one or more directions, return a short confirmed prod
 
 That confirmed brief is the only product handoff needed by `onsite-product-design`.
 
+Immediately continue in the same task with `$onsite-product-design`, passing the confirmed product
+brief and the original customer context. Do not stop after writing the brief, ask the operator to
+invoke another skill, or create another task. The operator's product selection is the authorization
+to enter design exploration; it is not authorization to choose a design or start development.
+
 ## Boundaries
 
 - Do not turn the meeting into a long summary, PRD, backlog, architecture, or implementation plan.

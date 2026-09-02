@@ -71,6 +71,12 @@ After the operator chooses, return one short confirmed design brief:
 
 That confirmed brief is the only design handoff needed by `onsite-prototype-development`.
 
+Immediately continue in the same task with `$onsite-prototype-development`, passing the confirmed
+product brief, confirmed design brief, preview, and available task-output route. Do not stop after
+writing the brief, ask the operator to invoke another skill, or create another task. The operator's
+design selection is the authorization to build the confirmed prototype. Development may ask only
+for a genuinely unresolved project destination or permission boundary.
+
 ## Boundaries
 
 - Do not reopen product ideation or change the selected product mechanism.

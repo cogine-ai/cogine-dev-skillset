@@ -3,4 +3,4 @@ interface:
   short_description: "Build a confirmed product and design into a clickable demo"
   default_prompt: "Use $onsite-prototype-development. 产品方向和设计方案已经确认了。优先从合适的 PT 创建独立项目，只做最重要的业务闭环，把它做成真实可点击、可重置的原型并跑起来。"
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

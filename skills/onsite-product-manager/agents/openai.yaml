@@ -1,6 +1,6 @@
 interface:
   display_name: "Onsite Product Manager"
   short_description: "Turn customer conversations into concise product directions"
-  default_prompt: "Use $onsite-product-manager. 这是客户沟通纪要和我补充的重点。先像现场产品经理一样，给我几个真正不同、值得做成原型的产品方向，写得简洁一点。先别替我选，也别做设计和开发，列完后问我想继续做哪些。"
+  default_prompt: "Use $onsite-product-manager. 这是客户沟通纪要和我补充的重点。先像现场产品经理一样，给我几个真正不同、值得做成原型的产品方向，列完后问我想继续做哪些；我选择后在同一个任务里继续设计和开发流程。"
 policy:
   allow_implicit_invocation: false
