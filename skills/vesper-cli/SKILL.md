@@ -1,6 +1,6 @@
 ---
 name: vesper-cli
-description: Use the Vesper CLI to authenticate with Feishu, select a configured project, discover authorized services, and query remote logs. This skill documents the tool, not project-specific log formats or diagnostic methods.
+description: Operate the Vesper CLI for the user, including setup, Feishu authorization handoff, project/service discovery, and remote log queries. The Agent runs the commands; the user only completes Feishu login and consent. This skill does not define business log formats or diagnostic methods.
 ---
 
 # Vesper CLI
@@ -9,10 +9,30 @@ Vesper connects over HTTPS to one Gateway. The Gateway routes projects to their
 local log Servers. The CLI does not need SSH, per-project endpoints, or access
 to internal Server credentials.
 
-## Command entry
+## Agent-owned execution
 
-Use Node.js 24 or newer. Install the public npm package when installation is
-within the user's request:
+For a requested log query, execute the workflow instead of handing the user a
+terminal tutorial. All command blocks below are for the Agent to run. The user
+only opens the authorization link and completes Feishu login and consent; never
+ask them to run CLI commands, copy a device code, or manage tokens.
+
+1. Check the CLI and install it if missing, within the environment's permissions.
+2. Reuse the saved Gateway. If absent, configure the user-provided or previously
+   approved origin. If no origin is known, ask only for that missing value, then
+   configure it yourself; do not ask the user to perform the setup.
+3. Check authentication. Reuse a valid login; otherwise start split login,
+   hand off the link, and poll automatically as described below.
+4. Once authenticated, discover authorized projects/services and execute the
+   requested query without asking whether to continue.
+
+Pause only for missing information or an actual execution/access blocker. Report
+the specific blocker instead of transferring the command sequence to the user.
+Respect a user cancellation and do not bypass environment permissions.
+
+## Command entry — Agent executes
+
+Check `vesper --help` first. If the executable is missing, use Node.js 24 or newer
+and install the public npm package as a setup step for the requested query:
 
 ```bash
 npm install -g @zenyangzzz/vesper
@@ -23,7 +43,7 @@ The package installs the `vesper` executable. Installing it does not grant acces
 to logs: the Gateway authenticates the user and authorizes projects and services.
 Use `vesper <command> --help` for the installed version's accepted arguments.
 
-## Projects and services
+## Projects and services — Agent executes
 
 ```bash
 vesper projects list
@@ -37,7 +57,9 @@ the Gateway, not internal Server addresses or a health check of those Servers.
 registered service IDs in `data.services`. Use discovered IDs; the project names
 above are examples, not a guarantee that a deployment has registered them.
 
-When the user supplies or approves the Gateway endpoint, configure it once:
+Check `vesper config show` before configuring anything. Reuse an existing Gateway
+unless the user requests a different one. When setup is needed and the origin is
+known from the user or approved task context, configure it once:
 
 ```bash
 vesper config set-server https://vesper.example.com
@@ -54,10 +76,17 @@ Without a configured Gateway, `projects list` retains its legacy local listing;
 use `config show` to distinguish the modes. Do not add per-project client
 mappings when using a Gateway; project registration is server-side configuration.
 
-## Feishu login
+## Feishu login — Agent executes, user authorizes
 
 ```bash
 vesper auth status
+```
+
+When status reports `TOKEN_MISSING` or `UNAUTHORIZED` (including an expired
+credential), start split login yourself. Do not treat network failures or
+`FORBIDDEN` as a reason to start another login:
+
+```bash
 vesper auth login --no-wait
 ```
 
@@ -66,19 +95,26 @@ check access to a specific project. Missing or rejected credentials produce an
 error, not `authenticated: true`. Reuse a valid stored login.
 
 The login start command returns `verificationUrl`, `deviceCode`, `expiresIn`,
-and `interval`. Present the verification link to the user. Keep the device code
-for resuming the same login against the same server; do not expose it as a log
-or include it in a report.
+and `interval`. Present `verificationUrl` as a clickable link with a short request
+to complete Feishu login and consent. When browser-opening tools are available,
+you may also open that exact link for the user. Do not perform the user's consent
+or ask for their Feishu password. Keep `deviceCode`, the server, and the original
+expiry deadline privately for this login; do not include the code in a report.
 
-After the user approves, poll once:
+After handing off the link, wait the returned `interval` and execute a single poll
+yourself, substituting the retained code. Do not wait for the user to say "done"
+before polling, and do not ask them to copy or execute this command:
 
 ```bash
 vesper auth login --device-code '<deviceCode>' --no-wait
 ```
 
-- `status: "pending"`: authorization is unfinished. Wait at least the returned
-  `interval` seconds before another poll. Stop when the original login expires.
-- `loggedIn: true`: the credential has been saved; queries use it automatically.
+- `status: "pending"`: authorization is unfinished. Automatically wait at least
+  the returned `interval` seconds and poll again with the same code and server.
+  Use the environment's wait mechanism; stop at the original expiry deadline or
+  if the user cancels. Do not start a new login for every pending response.
+- `loggedIn: true`: the CLI has saved the credential. Immediately continue the
+  requested discovery/query using it; no extra user confirmation is needed.
 - Denied, expired, or forbidden: report the error. Do not loop indefinitely or
   automatically start fresh authorization requests.
 
@@ -89,12 +125,13 @@ the different internal Server credentials.
 
 The authorization link's `expiresIn` is not the saved session's lifetime. The
 Gateway configures session validity, with support for up to 30 days; do not
-assume every deployment uses 30 days. Ask the operator if the configured lifetime
-is unknown; the CLI's successful login output does not include the expiry.
+assume every deployment uses 30 days. The CLI's successful login output does not
+include the expiry. An unknown lifetime is not a reason to interrupt a working
+query; consult the operator only when that information is needed.
 Queries do not extend the expiry. A session-duration configuration change does
 not extend already-issued credentials; a new login is required.
 
-## Query
+## Query — Agent executes
 
 ```bash
 vesper query --project knowai --service app --since 15m
