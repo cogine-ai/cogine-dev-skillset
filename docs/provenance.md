@@ -8,6 +8,7 @@ This repository is intended for public publication, so skill provenance matters.
 - `founder-office-hours`, `backlog-ready-spec`, `ai-app-security-audit`, `qa-only`, `devex-review`, and `plan-devex-review` are Cogine-authored adaptations informed by selected GStack workflows, not direct copies. Retain GStack attribution in `THIRD_PARTY_NOTICES.md`.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.
 - `npm-release-pipeline` is a locally authored generic npm-release workflow skill and should be reviewed as Cogine-authored material before publication.
+- `vesper-cli` is Cogine-authored usage guidance for the Vesper CLI, published here with the owner's authorization. It contains no CLI/server source, credentials, production configuration, or business logs. This repository's license covers the Skill text, not the separately distributed `@zenyangzzz/vesper` package, whose license remains independent.
 - `local-ultra-review` is Cogine-authored material also published as the standalone `cogine-ai/local-ultra-review` skill repository.
 - `loop-on-pr-review-and-fix` is Cogine-authored material also published as the standalone `cogine-ai/loop-on-pr-review-and-fix` skill repository.
 - `ai-slide-templates` is Cogine-authored material derived from the `cogine-ai/ai-slide-templates` repository workflow and should stay aligned with that repository's current `AGENTS.md` and `INPUT_GUIDE.md`.

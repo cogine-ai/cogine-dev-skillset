@@ -35,6 +35,7 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `review-and-ship`: Good end-to-end shipping flow.
 - `clawpacker`: Useful for packaging and transferring portable OpenClaw agent bundles.
 - `npm-release-pipeline`: Useful generic npm release workflow covering readiness checks, package-content validation, publish, tags, GitHub Release, and release issue closure.
+- `vesper-cli`: Guides Vesper installation, Feishu authentication, project/service discovery, remote log queries, and structured error handling without prescribing business log formats or diagnostic methods.
 - `xianyu-api-client-skill`: Foundational Xianyu/Goofish API client skill covering authentication, signing, and common endpoint access.
 - `xianyu-product-manager-skill`: Xianyu product-management workflow for creating, managing, and optimizing AI service listings.
 - `xianyu-automation-skill`: Xianyu automation workflow for store operations, monitoring, and lifecycle automation built on the API and product-management skills.
