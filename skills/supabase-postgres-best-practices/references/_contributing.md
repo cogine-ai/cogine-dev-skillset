@@ -1,5 +1,7 @@
 # Writing Guidelines for Postgres References
 
+> Run the package commands in this upstream contribution guide only from a full `supabase/agent-skills` checkout. The distributed skill folder and Cogine collection have no standalone package/test runner.
+
 This document provides guidelines for creating effective Postgres best
 practice references that work well with AI agents and LLMs.
 
