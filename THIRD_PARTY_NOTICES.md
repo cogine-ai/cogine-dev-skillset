@@ -8,6 +8,17 @@ Unless otherwise noted, original material in this repository is licensed under A
 
 ## Third-Party Material
 
+- `skills/check-compiler-errors/`, `skills/deslop/`, `skills/fix-ci/`, `skills/fix-merge-conflicts/`, `skills/get-pr-comments/`, `skills/loop-on-ci/`, `skills/new-branch-and-pr/`, `skills/review-and-ship/`, and `skills/run-smoke-tests/`
+  Source: `cursor/plugins`, `cursor-team-kit`, commit `c1c0a32802223f4be824112dd83d33ad29a8b26c`
+  Upstream copyright: Copyright (c) 2026 Cursor
+  License: [MIT](./licenses/cursor-team-kit-MIT.txt)
+
+- `skills/planmode-ceo/`, `skills/planmode-engineer/`, `skills/get-cookies/`, `skills/site-design-audit/`, and `skills/site-design-fix/`
+  Source: GStack-derived adaptations of `plan-ceo-review`, `plan-eng-review`, `setup-browser-cookies`, and historical `qa-design-review`.
+  Upstream copyright: Copyright (c) 2026 Garry Tan
+  License: [MIT](./licenses/gstack-MIT.txt)
+  Note: Preserve Cogine's host integration and the separate audit-only and audit-and-fix workflows. See [provenance](./docs/upstream-followup-2026-09-16.md).
+
 - `skills/vercel-react-best-practices/`
   Source: `vercel-labs/agent-skills`
   Upstream repository license: MIT
