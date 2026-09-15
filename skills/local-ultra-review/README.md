@@ -97,10 +97,10 @@ Default PR behavior:
 - writes a full local report and `findings.json`
 - removes the temporary worktree after a successful run unless `--keep-worktree` is used
 - renders a GitHub-ready top-level summary comment
-- does **not** post to GitHub for PR numbers or non-current-repo PR URLs unless explicitly requested
-- automatically posts one GitHub PR review event when the user provides a full PR URL for the current checkout's `origin` repository
+- writes local artifacts for all targets; posting requires explicit authorization
+- use `--post summary` or `--post review` for the authorized posting action
 
-To opt out of posting for a current-repo PR URL:
+To explicitly keep a PR review local:
 
 ```text
 /local-ultra-review https://github.com/org/repo/pull/123 --post none

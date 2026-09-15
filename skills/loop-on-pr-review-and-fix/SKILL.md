@@ -1,6 +1,6 @@
 ---
 name: loop-on-pr-review-and-fix
-description: Create and run a post-PR review loop for a ready-for-review GitHub pull request. Use when the user asks Codex or Claude Code to watch, loop on, monitor, periodically check, or automatically handle PR review feedback after a PR has been opened. In Codex, the default behavior is to create a 10-minute heartbeat automation first, not to perform an ordinary one-off fix; only execute the review/fix iteration when the skill is invoked by that automation or the user explicitly asks for one immediate pass.
+description: Monitor ready-for-review GitHub PRs and handle new, still-valid feedback. Use to start a recurring review loop or run one explicitly requested iteration.
 ---
 
 # Loop on PR Review and Fix

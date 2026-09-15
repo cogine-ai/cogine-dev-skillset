@@ -1,31 +1,37 @@
 ---
 name: loop-on-ci
-description: Watch CI runs and iterate on failures until all checks pass
+description: Monitor PR checks and fix failures until green. Uses gh pr checks as the source of truth for PR-attached checks.
 ---
 
 # Loop on CI
 
 ## Trigger
 
-Need to watch branch CI and iterate on failures until green.
+Need to watch a branch or pull request and iterate on CI failures until all required checks are green.
+
+Use `gh pr checks` as the source of truth. It includes all PR-attached checks, while `gh run list` only covers GitHub Actions.
 
 ## Workflow
 
-1. Find the current branch and latest workflow run.
-2. Wait for CI completion with `gh run watch --exit-status`.
-3. If failed, inspect failed logs, implement a focused fix, commit, and push.
-4. Repeat until all required checks pass.
+1. Resolve the PR for the current branch.
+2. Inspect current PR checks before waiting.
+3. If checks already failed, diagnose those failures first.
+4. If checks are pending, watch with `gh pr checks --watch --fail-fast`.
+5. After each push, re-check the full PR check set and repeat until green.
 
 ## Commands
 
 ```bash
-# Latest run for current branch
-gh run list --branch "$(git branch --show-current)" --limit 5
+# Resolve the active PR
+gh pr view --json number,url,headRefName
 
-# Block until completion (0 on pass, non-zero on fail)
-gh run watch --exit-status
+# Inspect all attached checks
+gh pr checks --json name,bucket,state,workflow,link
 
-# Inspect failed jobs
+# Watch pending checks and fail fast
+gh pr checks --watch --fail-fast
+
+# GitHub Actions logs, when the failing check links to a GHA run
 gh run view <run-id> --log-failed
 ```
 
@@ -33,7 +39,9 @@ gh run view <run-id> --log-failed
 
 - Keep each fix scoped to a single failure cause when possible.
 - Do not bypass hooks (`--no-verify`) to force progress.
+- If the failure is clearly unrelated to the PR and appears fixed on main, merge latest main instead of bloating the PR with unrelated fixes.
 - If failures are flaky, retry once and report flake evidence.
+- Re-run `gh pr checks --json name,bucket,state,workflow,link` after every push; the check set can change.
 
 ## Output
 

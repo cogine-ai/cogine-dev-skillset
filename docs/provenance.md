@@ -2,9 +2,14 @@
 
 This repository is intended for public publication, so skill provenance matters.
 
-## Current V1 Assumption
+## Verified Sources — 2026-09-16
 
-- `planmode-ceo`, `planmode-engineer`, `get-cookies`, `site-design-audit`, `site-design-fix`, `check-compiler-errors`, `deslop`, `fix-ci`, `fix-merge-conflicts`, `get-pr-comments`, `gh-issue-priority-handoff`, `investigate`, `loop-on-ci`, `loop-on-pr-review-and-fix`, `new-branch-and-pr`, `peer-review`, `review-and-ship`, `run-smoke-tests`, and `slow-is-fast` are copied from local development skills and should be reviewed for original source and redistribution expectations before publication.
+- `check-compiler-errors`, `deslop`, `fix-ci`, `fix-merge-conflicts`, `get-pr-comments`, `loop-on-ci`, `new-branch-and-pr`, `review-and-ship`, and `run-smoke-tests` match [Cursor's official cursor-team-kit](https://github.com/cursor/plugins/tree/c1c0a32802223f4be824112dd83d33ad29a8b26c/cursor-team-kit/skills). All nine repository entries are synchronized byte-for-byte to that pinned source. `fix-ci`, `loop-on-ci`, and `review-and-ship` receive upstream behavior updates; `get-pr-comments` only changes its final newline. Retain the Cursor MIT notice.
+- `planmode-ceo`, `planmode-engineer`, `get-cookies`, `site-design-audit`, and `site-design-fix` are GStack-derived local adaptations. Their earliest repository versions at `02bb615` match substantial distinctive bodies in [GStack at b65a464](https://github.com/garrytan/gstack/tree/b65a464d37e564a0623e6358d2d7a3080b386647), the last upstream snapshot before that import. This identifies the source family, not the exact original import revision. Preserve the adaptations documented in [the synchronization record](./upstream-followup-2026-09-16.md).
+
+## Other Provenance Records
+
+- `gh-issue-priority-handoff`, `investigate`, `peer-review`, and `slow-is-fast` were copied from local development skills; their original source and redistribution history remain unverified.
 - `founder-office-hours`, `backlog-ready-spec`, `ai-app-security-audit`, `qa-only`, `devex-review`, and `plan-devex-review` are Cogine-authored adaptations informed by selected GStack workflows, not direct copies. Retain GStack attribution in `THIRD_PARTY_NOTICES.md`.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.
 - `npm-release-pipeline` is a locally authored generic npm-release workflow skill and should be reviewed as Cogine-authored material before publication.
