@@ -197,21 +197,10 @@ while i < len(args):
 if mode not in {"light", "deep", "max"}:
     errors.append(f"unsupported mode: {mode}")
 
+# Identifying a PR does not authorize posting; require an explicit --post mode.
 auto_post = False
-current_repo = current_repo_slug()
 if post_mode is None:
     post_mode = "none"
-    if (
-        target_type == "pr"
-        and pr_target_was_url
-        and repo
-        and current_repo
-        and repo.lower() == current_repo.lower()
-    ):
-        post_mode = "review"
-        auto_post = True
-elif post_mode_explicit:
-    auto_post = False
 
 if post_mode not in {"none", "summary", "review"}:
     errors.append(f"unsupported post mode: {post_mode}")

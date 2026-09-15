@@ -29,7 +29,7 @@ Invocation examples:
 
 If no target is provided, review the current branch against the default base branch and include staged and unstaged tracked changes.
 
-If the target is a GitHub PR, default to `deep` mode, collect PR metadata, review the PR head in an isolated worktree, and render a GitHub-ready summary comment. If the user provides a full GitHub PR URL for the current checkout's `origin` repository, post mode defaults to `review`; otherwise do not post unless the user passes `--post summary` or `--post review`. `--post none` always disables posting.
+If the target is a GitHub PR, default to `deep` mode, collect PR metadata, review the PR head in an isolated worktree, and render a GitHub-ready summary comment locally. All targets default to `--post none`. Post only when explicitly authorized in this session; pass the corresponding `--post summary` or `--post review` argument without asking again. A PR URL alone does not authorize posting. `--post none` always disables posting.
 
 Modes:
 
@@ -39,7 +39,7 @@ Modes:
 
 GitHub output:
 
-- `--post none`: default for local branches, ranges, PR numbers, and non-current-repo PR URLs; write local artifacts only
+- `--post none`: default for all targets; write local artifacts only
 - `--post summary`: post one top-level PR summary comment after verification and report rendering
 - `--post review`: create one GitHub PR review event with CodeRabbit-style inline comments for verified findings that map to diff-commentable right-side lines; list verified findings that cannot be placed inline in the review body
 
@@ -235,7 +235,7 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/post-github-summary.py \
   --body-file .local-ultra-review/<session-id>/github-pr-comment.md
 ```
 
-If `post_mode` is `review`, or `detect-target.sh` set `post_mode` to `review` because the user provided a current-repo PR URL, create exactly one GitHub PR review event:
+If the authorized `post_mode` is `review`, create exactly one GitHub PR review event:
 
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/scripts/post-github-review.py \
