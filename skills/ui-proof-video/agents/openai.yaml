@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Proof Video"
+  short_description: "Record, review, and show UI proof videos"
+  default_prompt: "Use $ui-proof-video to record or play a local UI verification video."

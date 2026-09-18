@@ -12,6 +12,7 @@ This repository is intended for public publication, so skill provenance matters.
 - `gh-issue-priority-handoff`, `investigate`, `peer-review`, and `slow-is-fast` were copied from local development skills; their original source and redistribution history remain unverified.
 - `founder-office-hours`, `backlog-ready-spec`, `ai-app-security-audit`, `qa-only`, `devex-review`, and `plan-devex-review` are Cogine-authored adaptations informed by selected GStack workflows, not direct copies. Retain GStack attribution in `THIRD_PARTY_NOTICES.md`.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.
+- `ui-proof-screenshot` and `ui-proof-video` are locally authored Cogine workflow skills for Codex in-app Browser media evidence. They contain no copied third-party implementation code; references to Playwright describe public API usage.
 - `npm-release-pipeline` is a locally authored generic npm-release workflow skill and should be reviewed as Cogine-authored material before publication.
 - `local-ultra-review` is Cogine-authored material also published as the standalone `cogine-ai/local-ultra-review` skill repository.
 - `loop-on-pr-review-and-fix` is Cogine-authored material also published as the standalone `cogine-ai/loop-on-pr-review-and-fix` skill repository.
