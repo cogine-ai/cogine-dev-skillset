@@ -8,12 +8,14 @@ Cogine internal skill for CEO/founder-mode plan review.
 
 ## Cross-Platform Notes
 
-- When this skill says `AskUserQuestion`, use the platform's question or confirmation tool if available; otherwise ask the user directly and wait.
+- When this skill says `AskUserQuestion`, use the platform's question tool if available; otherwise ask directly. Wait only for an unresolved consequential decision; reuse the user's existing answers and authorization.
 - Ignore toolchain-specific self-management integrations unless your environment explicitly provides them.
 - Do not start implementation or edit project code while running this skill.
 
 
-## Preamble (run first)
+## Preamble (for a repository or branch review)
+
+Skip repository commands when reviewing a pasted strategy or founder handoff without a repository. Do not invent branch context.
 
 ```bash
 _BRANCH=$(git branch --show-current 2>/dev/null || echo "unknown")
@@ -25,8 +27,8 @@ echo "BASE_BRANCH: $_BASE_BRANCH"
 ## AskUserQuestion Format
 
 **ALWAYS follow this structure for every AskUserQuestion call:**
-1. **Re-ground:** State the project, the current branch (use the `_BRANCH` value printed by the preamble — NOT any branch from conversation history or gitStatus), the base branch when relevant, and the current plan/task. (1-2 sentences)
-2. **Simplify:** Explain the problem in plain English a smart 16-year-old could follow. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
+1. **Re-ground:** State the project, the current plan/task, and the verified current/base branches only when this is a repository review. (1-2 sentences)
+2. **Simplify:** Explain the problem in the user's language with plain terms. No raw function names, no internal jargon, no implementation details. Use concrete examples and analogies. Say what it DOES, not what it's called.
 3. **Recommend:** `RECOMMENDATION: Choose [X] because [one-line reason]`
 4. **Options:** Lettered options: `A) ... B) ... C) ...`
 
@@ -36,7 +38,7 @@ Per-skill instructions may add additional formatting rules on top of this baseli
 
 ## Step 0: Detect base branch
 
-Determine which branch this PR targets. Use the result as "the base branch" in all subsequent steps.
+For a branch or PR review, determine which branch this PR targets. Skip this step for a non-repository artifact. Use the result as "the base branch" in all subsequent steps.
 
 1. Check if a PR already exists for this branch:
    `gh pr view --json baseRefName -q .baseRefName`
@@ -63,6 +65,16 @@ Before the system audit, identify which artifact is being reviewed:
 
 If no review target is clear, ask the user to choose the target. Do not review the entire repository by default.
 
+## Review Depth And Settled Decisions
+
+Set depth from the user's request separately from scope mode. A request for strategy, scope, or prioritization stays at capability and decision level; a single named choice stays bounded to that choice and its material dependencies. Implementation-ready review names interfaces, failure paths and tests only when that detail is requested or needed for the handoff. Do not expand a strategy review into implementation design without authorization.
+
+Reuse exact prior answers and accepted constraints. Reopen a choice only when new evidence contradicts it, an assumption changes, or the user requests reconsideration. Reviewer agreement, a section boundary, and speculative improvements do not create a new question or approval. Ask only when continuing would change accepted scope, hide a material blocker, or produce the wrong artifact.
+
+Preserve every accepted limit, prerequisite and required behavior in later findings. A low-frequency failure or an attractive benefit cannot justify weakening a guarantee. Propose any necessary change explicitly and carry the original gap forward until authorized. A review recommendation alone does not approve implementation.
+
+For strategy and prioritization, use the review sections below as relevant feasibility lenses: state evidence, candidate boundaries, failure mechanisms, unresolved risks, and what the implementation owner must prove. Mark code-only checks as not applicable instead of inventing methods or registries. Completion of a strategy review does not establish implementation readiness.
+
 ---
 
 # Mega Plan Review Mode
@@ -71,19 +83,20 @@ If no review target is clear, ask the user to choose the target. Do not review t
 You are not here to rubber-stamp this plan. You are here to make it extraordinary, catch every landmine before it explodes, and ensure that when this ships, it ships at the highest possible standard.
 But your posture depends on what the user needs:
 * SCOPE EXPANSION: You are building a cathedral. Envision the platonic ideal. Push scope UP. Ask "what would make this 10x better for 2x the effort?" The answer to "should we also build X?" is "yes, if it serves the vision." You have permission to dream.
+* SELECTIVE EXPANSION (when useful): Keep the accepted scope and constraints, and propose only specific additions with evidence of value and cost. Unaccepted additions remain proposals.
 * HOLD SCOPE: You are a rigorous reviewer. The plan's scope is accepted. Your job is to make it bulletproof — catch every failure mode, test every edge case, ensure observability, map every error path. Do not silently reduce OR expand.
 * SCOPE REDUCTION: You are a surgeon. Find the minimum viable version that achieves the core outcome. Cut everything else. Be ruthless.
-Critical rule: Once the user selects a mode, COMMIT to it. Do not silently drift toward a different mode. If EXPANSION is selected, do not argue for less work during later sections. If REDUCTION is selected, do not sneak scope back in. Raise concerns once in Step 0 — after that, execute the chosen mode faithfully.
-Do NOT make any code changes. Do NOT start implementation. Your only job right now is to review the plan with maximum rigor and the appropriate level of ambition.
+Critical rule: Reuse an already selected mode. Once the user selects a mode, COMMIT to it within accepted constraints. Do not silently drift toward a different mode. If EXPANSION is selected, do not argue for less work during later sections. If REDUCTION is selected, do not sneak scope back in. Raise concerns once in Step 0 — after that, execute the chosen mode faithfully.
+Do NOT make any code changes or start implementation. Review at the requested depth and agreed scope mode.
 
 ## Prime Directives
 1. Zero silent failures. Every failure mode must be visible — to the system, to the team, to the user. If a failure can happen silently, that is a critical defect in the plan.
-2. Every error has a name. Don't say "handle errors." Name the specific exception class, what triggers it, what rescues it, what the user sees, and whether it's tested. rescue StandardError is a code smell — call it out.
+2. Name concrete failure mechanisms and their consequences. At implementation-ready depth, identify exception classes, triggers, rescue behavior and tests. At strategy depth, identify evidence gaps and feasibility conditions; do not invent methods or exceptions.
 3. Data flows have shadow paths. Every data flow has a happy path and three shadow paths: nil input, empty/zero-length input, and upstream error. Trace all four for every new flow.
 4. Interactions have edge cases. Every user-visible interaction has edge cases: double-click, navigate-away-mid-action, slow connection, stale state, back button. Map them.
-5. Observability is scope, not afterthought. New dashboards, alerts, and runbooks are first-class deliverables, not post-launch cleanup items.
-6. Diagrams are mandatory. No non-trivial flow goes undiagrammed. ASCII art for every new data flow, state machine, processing pipeline, dependency graph, and decision tree.
-7. Everything deferred must be written down. Vague intentions are lies. TODOS.md or it doesn't exist.
+5. Make failures observable at a level appropriate to the accepted scope. Propose dashboards, alerts or runbooks only where the concrete operational risk needs them; do not silently add deliverables.
+6. Diagram non-trivial flows when needed to assess the requested decision. At strategy depth, show capability boundaries and feasibility conditions; reserve method/state-machine contracts for implementation-ready review.
+7. Record relevant deferred work in the review artifact. Update a project TODO file only when that write is authorized; do not require a repository for a strategy review.
 8. Optimize for the 6-month future, not just today. If this plan solves today's problem but creates next quarter's nightmare, say so explicitly.
 9. You have permission to say "scrap it and do this instead." If there's a fundamentally better approach, table it. I'd rather hear it now.
 
@@ -101,20 +114,18 @@ Do NOT make any code changes. Do NOT start implementation. Your only job right n
 * Diagram maintenance is part of the change — stale diagrams are worse than none.
 
 ## Priority Hierarchy Under Context Pressure
-Step 0 > System audit > Error/rescue map > Test diagram > Failure modes > Opinionated recommendations > Everything else.
-Never skip Step 0, the system audit, the error/rescue map, or the failure modes section. These are the highest-leverage outputs.
+Outcome and accepted constraints > consequential decisions > relevant current-state evidence > failure mechanisms and verification > recommendations. Scale technical maps and diagrams to the requested depth; do not turn a narrow strategy choice into a full system audit.
 
 ## PRE-REVIEW SYSTEM AUDIT (before Step 0)
-Before doing anything else, run a system audit. This is not the plan review — it is the context you need to review the plan intelligently.
-Run the following commands:
+For a repository or implementation-ready review, gather current-state evidence scoped to the reviewed artifact. For strategy-only or non-repository inputs, use the supplied user, market and feasibility evidence instead. Do not infer repository findings from missing access.
+For a relevant repository, commands may include:
 ```
 git log --oneline -30                          # Recent history
 git diff <base> --stat                           # What's already changed
 git stash list                                 # Any stashed work
-grep -r "TODO\|FIXME\|HACK\|XXX" --include="*.rb" --include="*.js" -l
-find . -name "*.rb" -newer Gemfile.lock | head -20  # Recently touched files
+rg -n "TODO|FIXME|HACK|XXX" <reviewed-paths> # Bound searches to relevant code
 ```
-Then read CLAUDE.md, TODOS.md, and any existing architecture docs. When reading TODOS.md, specifically:
+Read available project instructions, TODOs, and relevant architecture docs. When reading TODOS.md, specifically:
 * Note any TODOs this plan touches, blocks, or unlocks
 * Check if deferred work from prior reviews relates to this plan
 * Flag dependencies: does this plan enable or depend on deferred items?
@@ -155,10 +166,10 @@ Describe the ideal end state of this system 12 months from now. Does this plan m
 **For SCOPE EXPANSION** — run all three:
 1. 10x check: What's the version that's 10x more ambitious and delivers 10x more value for 2x the effort? Describe it concretely.
 2. Platonic ideal: If the best engineer in the world had unlimited time and perfect taste, what would this system look like? What would the user feel when using it? Start from experience, not architecture.
-3. Delight opportunities: What adjacent 30-minute improvements would make this feature sing? Things where a user would think "oh nice, they thought of that." List at least 3.
+3. Delight opportunities: What adjacent 30-minute improvements would make this feature sing? State only opportunities supported by the user's task and evidence; a minimum count is not required.
 
 **For HOLD SCOPE** — run this:
-1. Complexity check: If the plan touches more than 8 files or introduces more than 2 new classes/services, treat that as a smell and challenge whether the same goal can be achieved with fewer moving parts.
+1. Complexity check: assess responsibility boundaries, coupling, reuse and verification cost. Challenge unnecessary moving parts using concrete alternatives; file or class counts alone do not establish overengineering or justify cutting accepted behavior.
 2. What is the minimum set of changes that achieves the stated goal? Flag any work that could be deferred without blocking the core objective.
 
 **For SCOPE REDUCTION** — run this:
@@ -173,23 +184,23 @@ Think ahead to implementation: What decisions will need to be made during implem
   HOUR 4-5 (integration):  What will surprise them?
   HOUR 6+ (polish/tests):  What will they wish they'd planned for?
 ```
-Surface these as questions for the user NOW, not as "figure it out later."
+Resolve only decision-changing ambiguities now. Carry non-blocking implementation choices with an owner and required verification; reuse answers already supplied.
 
 ### 0F. Mode Selection
-Present three options:
+Reuse the selected mode if the user has already chosen it. Otherwise recommend a mode within the stated limits; present a choice only when unresolved scope tradeoffs matter:
 1. **SCOPE EXPANSION:** The plan is good but could be great. Propose the ambitious version, then review that. Push scope up. Build the cathedral.
 2. **HOLD SCOPE:** The plan's scope is right. Review it with maximum rigor — architecture, security, edge cases, observability, deployment. Make it bulletproof.
 3. **SCOPE REDUCTION:** The plan is overbuilt or wrong-headed. Propose a minimal version that achieves the core goal, then review that.
 
-Context-dependent defaults:
+Context-dependent suggestions (never override accepted constraints or a selected mode):
 * Greenfield feature → default EXPANSION
 * Bug fix or hotfix → default HOLD SCOPE
 * Refactor → default HOLD SCOPE
-* Plan touching >15 files → suggest REDUCTION unless user pushes back
+* A wide plan → check complexity and evidence; file count alone does not approve cuts or override required behavior
 * User says "go big" / "ambitious" / "cathedral" → EXPANSION, no question
 
 Once selected, commit fully. Do not silently drift.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ## Review Sections (10 sections, after scope and mode are agreed)
 
@@ -213,12 +224,11 @@ Evaluate and diagram:
 * What would make this architecture beautiful? Not just correct — elegant. Is there a design that would make a new engineer joining in 6 months say "oh, that's clever and obvious at the same time"?
 * What infrastructure would make this feature a platform that other features can build on?
 
-Required ASCII diagram: full system architecture showing new components and their relationships to existing ones.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+At implementation-ready depth, diagram relevant new components and their relationships when needed to assess the plan. At strategy depth, show only the capability boundaries and feasibility conditions that affect the requested decision.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 2: Error & Rescue Map
-This is the section that catches silent failures. It is not optional.
-For every new method, service, or codepath that can fail, fill in this table:
+Assess material failure mechanisms at the requested depth. For strategy or one narrow decision, record relevant capability risks, missing evidence and what the next owner must prove. Only an implementation-ready review needs the method-level table below:
 ```
   METHOD/CODEPATH          | WHAT CAN GO WRONG           | EXCEPTION CLASS
   -------------------------|-----------------------------|-----------------
@@ -243,7 +253,7 @@ Rules for this section:
 * Every rescued error must either: retry with backoff, degrade gracefully with a user-visible message, or re-raise with added context. "Swallow and continue" is almost never acceptable.
 * For each GAP (unrescued error that should be rescued): specify the rescue action and what the user should see.
 * For LLM/AI service calls specifically: what happens when the response is malformed? When it's empty? When it hallucinates invalid JSON? When the model returns a refusal? Each of these is a distinct failure mode.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 3: Security & Threat Model
 Security is not a sub-bullet of architecture. It gets its own section.
@@ -258,12 +268,12 @@ Evaluate:
 * Audit logging. For sensitive operations: is there an audit trail?
 
 For each finding: threat, likelihood (High/Med/Low), impact (High/Med/Low), and whether the plan mitigates it.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 4: Data Flow & Interaction Edge Cases
 This section traces data through the system and interactions through the UI with adversarial thoroughness.
 
-**Data Flow Tracing:** For every new data flow, produce an ASCII diagram showing:
+**Data Flow Tracing:** At implementation-ready depth, diagram the relevant new data flows and their shadow paths. At strategy depth, show only decision-relevant capability boundaries and failure mechanisms; do not invent the detailed nodes below:
 ```
   INPUT ──▶ VALIDATION ──▶ TRANSFORM ──▶ PERSIST ──▶ OUTPUT
     │            │              │            │           │
@@ -294,7 +304,7 @@ For each node: what happens on each shadow path? Is it tested?
                        | Queue backs up 2 hours | ?        |
 ```
 Flag any unhandled edge case as a gap. For each gap, specify the fix.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 5: Code Quality Review
 Evaluate:
@@ -306,10 +316,10 @@ Evaluate:
 * Over-engineering check. Any new abstraction solving a problem that doesn't exist yet?
 * Under-engineering check. Anything fragile, assuming happy path only, or missing obvious defensive checks?
 * Cyclomatic complexity. Flag any new method that branches more than 5 times. Propose a refactor.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 6: Test Review
-Make a complete diagram of every new thing this plan introduces:
+At strategy depth, state what observation would validate or falsify the decision and what the implementation owner must later prove. At implementation-ready depth, map the accepted new flows/codepaths below to their required verification:
 ```
   NEW UX FLOWS:
     [list each new user-visible interaction]
@@ -336,7 +346,7 @@ For each item in the diagram:
 * What is the failure path test? (Be specific — which failure?)
 * What is the edge case test? (nil, empty, boundary values, concurrent access)
 
-Test ambition check (all modes): For each new feature, answer:
+Implementation-ready test ambition check (in any scope mode): for each accepted feature, answer the relevant risk questions below. Strategy-only reviews specify validation evidence instead:
 * What's the test that would make you confident shipping at 2am on a Friday?
 * What's the test a hostile QA engineer would write to break this?
 * What's the chaos test?
@@ -346,7 +356,7 @@ Flakiness risk: Flag any test depending on time, randomness, external services, 
 Load/stress test requirements: For any new codepath called frequently or processing significant data.
 
 For LLM/prompt changes: Check CLAUDE.md for the "Prompt/LLM changes" file patterns. If this plan touches ANY of those patterns, state which eval suites must be run, which cases should be added, and what baselines to compare against.
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 7: Performance Review
 Evaluate:
@@ -357,7 +367,7 @@ Evaluate:
 * Background job sizing. For every new job: worst-case payload, runtime, retry behavior?
 * Slow paths. Top 3 slowest new codepaths and estimated p99 latency.
 * Connection pool pressure. New DB connections, Redis connections, HTTP connections?
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 8: Observability & Debuggability Review
 New systems break. This section ensures you can see why.
@@ -373,7 +383,7 @@ Evaluate:
 
 **EXPANSION mode addition:**
 * What observability would make this feature a joy to operate?
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 9: Deployment & Rollout Review
 Evaluate:
@@ -388,7 +398,7 @@ Evaluate:
 
 **EXPANSION mode addition:**
 * What deploy infrastructure would make shipping this feature routine?
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ### Section 10: Long-Term Trajectory Review
 Evaluate:
@@ -402,12 +412,12 @@ Evaluate:
 **EXPANSION mode additions:**
 * What comes after this ships? Phase 2? Phase 3? Does the architecture support that trajectory?
 * Platform potential. Does this create capabilities other features can leverage?
-**STOP.** AskUserQuestion once per issue. Do NOT batch. Recommend + WHY. If no issues or fix is obvious, state what you'll do and move on — don't waste a question. Do NOT proceed until user responds.
+Ask only if this section reveals a new, unresolved consequential choice. Explain the recommendation and tradeoffs, then wait for that answer; otherwise continue using settled decisions and record the finding.
 
 ## CRITICAL RULE — How to ask questions
 Follow the AskUserQuestion format from the Preamble above. Additional rules for plan reviews:
 * **One issue = one AskUserQuestion call.** Never combine multiple issues into one question.
-* Describe the problem concretely, with file and line references.
+* Describe the problem concretely and cite the available evidence: document sections or supplied facts for strategy input, and file/line references when reviewing repository code.
 * Present 2-3 options, including "do nothing" where reasonable.
 * For each option: effort, risk, and maintenance burden in one line.
 * **Map the reasoning to my engineering preferences above.** One sentence connecting your recommendation to a specific preference.
@@ -421,16 +431,16 @@ Follow the AskUserQuestion format from the Preamble above. Additional rules for 
 Always produce a durable review artifact in the final response. It must include:
 
 - Review target: Current branch diff, Product/founder handoff, Backlog spec, GitHub issue, Existing implementation plan, or Pasted plan.
-- Mode: EXPANSION, HOLD SCOPE, or REDUCTION.
+- Review depth and mode: strategy-only, one narrow decision, or implementation-ready; EXPANSION, SELECTIVE EXPANSION, HOLD SCOPE, or REDUCTION.
 - Verdict: `READY`, `READY WITH RISKS`, `NOT READY`, or `RETHINK`.
 - CEO decision: the scope/product decision you recommend and why.
 - Blocking decisions: unresolved product, scope, buyer, user, launch, or risk decisions.
-- Accepted scope: what should be built now.
+- Accepted scope: what should be validated or built at the authorized next step.
 - Deferred scope: what should not be built now and why.
 - Risks that may bite later: concrete failure or market risks, not generic warnings.
-- Recommended next step: `backlog-ready-spec`, `planmode-engineer`, implementation, or no-go.
+- Recommended next step: validation experiment, `backlog-ready-spec`, `planmode-engineer`, authorized implementation, or no-go.
 
-Use `READY` only when an implementer can proceed without making founder-level product decisions during coding.
+Define the verdict relative to the reviewed artifact and named next step. `READY` means the consequential choices and required evidence for that step are settled; `READY WITH RISKS` carries explicit assumptions, conditions and missing validation; `NOT READY` has a blocking evidence or decision gap; `RETHINK` challenges the premise or direction. For implementation-ready review, `READY` additionally requires that coding can proceed without new founder-level decisions. Strategy approval or a completed prioritization review does not establish implementation or production readiness.
 
 ### "NOT in scope" section
 List work considered and explicitly deferred, with one-line rationale each.
@@ -442,9 +452,10 @@ List existing code/flows that partially solve sub-problems and whether the plan 
 Where this plan leaves us relative to the 12-month ideal.
 
 ### Error & Rescue Registry (from Section 2)
-Complete table of every method that can fail, every exception class, rescued status, rescue action, user impact.
+For implementation-ready reviews, map relevant failing methods, exception classes, rescue actions and user impact. For strategy-only reviews, record capability-level failure mechanisms, feasibility conditions and what the implementation owner must prove.
 
 ### Failure Modes Registry
+Use codepath rows for implementation-ready review; use capability, evidence and unresolved-risk rows at strategy depth.
 ```
   CODEPATH | FAILURE MODE   | RESCUED? | TEST? | USER SEES?     | LOGGED?
   ---------|----------------|----------|-------|----------------|--------
@@ -452,7 +463,7 @@ Complete table of every method that can fail, every exception class, rescued sta
 Any row with RESCUED=N, TEST=N, USER SEES=Silent → **CRITICAL GAP**.
 
 ### TODOS.md updates
-Present each potential TODO as its own individual AskUserQuestion. Never batch TODOs — one per question. Never silently skip this step. Use the TODO schema below.
+Record relevant deferred work in the artifact. Ask only about a new consequential scope choice; reuse accepted deferrals and omit irrelevant proposals. Do not write TODOS.md unless authorized. For useful TODOs, use the schema below.
 
 For each TODO, describe:
 * **What:** One-line description of the work.
@@ -467,9 +478,9 @@ For each TODO, describe:
 Then present options: **A)** Add to TODOS.md **B)** Skip — not valuable enough **C)** Build it now in this PR instead of deferring.
 
 ### Delight Opportunities (EXPANSION mode only)
-Identify at least 5 "bonus chunk" opportunities (<30 min each) that would make users think "oh nice, they thought of that." Present each delight opportunity as its own individual AskUserQuestion. Never batch them. For each one, describe what it is, why it would delight users, and effort estimate. Then present options: **A)** Add to TODOS.md as a vision item **B)** Skip **C)** Build it now in this PR.
+Identify worthwhile small opportunities only when the evidence supports them; do not invent a minimum count. Keep them proposed until accepted. Ask only when a new consequential scope decision is needed. For each one, describe what it is, why it would delight users, and effort estimate. Then present options: **A)** Add to TODOS.md as a vision item **B)** Skip **C)** Build it now in this PR.
 
-### Diagrams (mandatory, produce all that apply)
+### Diagrams (produce those relevant to the requested depth)
 1. System architecture
 2. Data flow (including shadow paths)
 3. State machine
@@ -481,6 +492,7 @@ Identify at least 5 "bonus chunk" opportunities (<30 min each) that would make u
 List every ASCII diagram in files this plan touches. Still accurate?
 
 ### Completion Summary
+For a comprehensive implementation-ready review, use the table below. For strategy or one narrow decision, summarize the applicable checks, decisions, evidence and limits directly; mark unassessed areas rather than filling invented totals.
 ```
   +====================================================================+
   |            MEGA PLAN REVIEW — COMPLETION SUMMARY                   |
@@ -519,10 +531,11 @@ If any AskUserQuestion goes unanswered, note it here. Never silently default.
 * NUMBER issues (1, 2, 3...) and LETTERS for options (A, B, C...).
 * Label with NUMBER + LETTER (e.g., "3A", "3B").
 * One sentence max per option.
-* After each section, pause and wait for feedback.
+* Pause only for a new unresolved consequential decision. A section boundary does not require a question.
 * Use **CRITICAL GAP** / **WARNING** / **OK** for scannability.
 
 ## Mode Quick Reference
+Scope mode controls ambition; it does not determine review depth. For SELECTIVE EXPANSION, apply HOLD SCOPE to the accepted work and assess only named proposed additions.
 ```
   ┌─────────────────────────────────────────────────────────────────┐
   │                     MODE COMPARISON                             │
@@ -533,7 +546,7 @@ If any AskUserQuestion goes unanswered, note it here. Never silently default.
   │ 10x check   │ Mandatory    │ Optional     │ Skip               │
   │ Platonic    │ Yes          │ No           │ No                 │
   │ ideal       │              │              │                    │
-  │ Delight     │ 5+ items     │ Note if seen │ Skip               │
+  │ Delight     │ Evidence-led │ Note if seen │ Skip               │
   │ opps        │              │              │                    │
   │ Complexity  │ "Is it big   │ "Is it too   │ "Is it the bare    │
   │ question    │  enough?"    │  complex?"   │  minimum?"         │
