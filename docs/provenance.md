@@ -9,6 +9,8 @@ This repository is intended for public publication, so skill provenance matters.
 
 ## Other Provenance Records
 
+- The nine tstack skills are distributed from [Coding Engineer Skills 0.5.1 at `03fe59c`](https://github.com/cogine-ai/marketplace/tree/03fe59c5d42bba98fa747c50a7298a3b23b53f5d/plugins/coding-engineer-skills), with upstream provenance in that bundle's third-party notices. Maintain the skills in Marketplace and refresh these standalone copies from a reviewed revision. The standalone `babysit-pr` uses the unqualified `leaving-pr-comments` name so it can find the sibling skill without the Marketplace plugin. All other skill text and Codex invocation metadata match the pinned bundle. Each copy includes Theo Browne's MIT notice.
+
 - `gh-issue-priority-handoff`, `investigate`, `peer-review`, and `slow-is-fast` were copied from local development skills; their original source and redistribution history remain unverified.
 - `founder-office-hours`, `backlog-ready-spec`, `ai-app-security-audit`, `qa-only`, `devex-review`, and `plan-devex-review` are Cogine-authored adaptations informed by selected GStack workflows, not direct copies. Retain GStack attribution in `THIRD_PARTY_NOTICES.md`.
 - `clawpacker` is intentionally a thin entrypoint skill that delegates to the canonical `cogine-ai/clawpack` repository for current command instructions.

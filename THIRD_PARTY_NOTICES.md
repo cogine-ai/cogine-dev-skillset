@@ -8,6 +8,11 @@ Unless otherwise noted, original material in this repository is licensed under A
 
 ## Third-Party Material
 
+- `skills/babysit-pr/`, `skills/council/`, `skills/file-pr/`, `skills/full-send/`, `skills/full-stop/`, `skills/leaving-pr-comments/`, `skills/modernize/`, `skills/sol-loop/`, and `skills/takeover/`
+  Source: [Theo Browne's tstack at 11e37a7](https://github.com/t3dotgg/tstack/tree/11e37a74d0a6868c121cd0910ab2b3bd9873b92a), via the [Coding Engineer Marketplace bundle](https://github.com/cogine-ai/marketplace/tree/03fe59c5d42bba98fa747c50a7298a3b23b53f5d/plugins/coding-engineer-skills).
+  Upstream copyright: Copyright (c) 2026 Theo Browne
+  License: MIT. The upstream notice is included as `LICENSE` in each skill directory so it accompanies single-skill installs.
+
 - `skills/check-compiler-errors/`, `skills/deslop/`, `skills/fix-ci/`, `skills/fix-merge-conflicts/`, `skills/get-pr-comments/`, `skills/loop-on-ci/`, `skills/new-branch-and-pr/`, `skills/review-and-ship/`, and `skills/run-smoke-tests/`
   Source: `cursor/plugins`, `cursor-team-kit`, commit `c1c0a32802223f4be824112dd83d33ad29a8b26c`
   Upstream copyright: Copyright (c) 2026 Cursor
