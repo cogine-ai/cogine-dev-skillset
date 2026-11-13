@@ -1,0 +1,4 @@
+interface:
+  display_name: "Take Over Work"
+  short_description: "Continue an existing PR, branch, or agent task"
+  default_prompt: "Use $takeover to continue this work and preserve the original contributors' credit."

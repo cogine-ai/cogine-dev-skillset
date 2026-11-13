@@ -1,0 +1,4 @@
+interface:
+  display_name: "Council"
+  short_description: "Get independent reviews across model providers"
+  default_prompt: "Use $council to get independent reviews from three model providers."

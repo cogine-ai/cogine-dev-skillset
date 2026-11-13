@@ -1,0 +1,4 @@
+interface:
+  display_name: "File PR"
+  short_description: "Open or update a PR for a prepared branch"
+  default_prompt: "Use $file-pr to open or update the pull request for this prepared branch."

@@ -33,6 +33,18 @@ npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill plan-dev
 
 The `skills` CLI supports installing a whole repository collection with `npx skills add owner/repo` or `npx skills add <github-url>`. See the official [CLI docs](https://skills.sh/docs/cli), [FAQ](https://skills.sh/docs/faq), and a concrete collection example in [Trigger.dev's docs](https://trigger.dev/docs/skills).
 
+To install the tstack workflows on their own, select all nine so dependent skills
+are available together:
+
+```bash
+npx skills add cogine-ai/cogine-dev-skillset \
+  --skill babysit-pr council file-pr full-send full-stop leaving-pr-comments modernize sol-loop takeover
+```
+
+The tstack skills are maintained in the
+[Coding Engineer Marketplace bundle](https://github.com/cogine-ai/marketplace/tree/main/plugins/coding-engineer-skills).
+Use its plugin installation if it is already your source for these skills.
+
 ## Repository Layout
 
 ```text
@@ -81,6 +93,15 @@ Recommended order for day-to-day engineering work:
 | `loop-on-ci` | Watch CI and iterate to green | included |
 | `peer-review` | Run an independent Codex CLI second-opinion review | included |
 | `review-and-ship` | Review, fix, and ship via PR | included |
+| `babysit-pr` | Follow a PR through CI and review to a requested outcome | included |
+| `council` | Get independent reviews from three model providers | included |
+| `file-pr` | Open or update a PR for a prepared branch | included |
+| `full-send` | Complete, verify, review, and merge a change | included |
+| `full-stop` | Explicitly prepare a PR for the user to merge | included |
+| `leaving-pr-comments` | Format comments posted on a user's behalf | included |
+| `modernize` | Reassess an old PR and rebase it when still useful | included |
+| `sol-loop` | Refine a change through iterative GPT Sol review | included |
+| `takeover` | Continue an existing PR, branch, or agent task | included |
 | `clawpacker` | Package, export, import, and restore portable OpenClaw agents | included |
 | `npm-release-pipeline` | Safe npm package release workflow with readiness checks, pack/publish verification, tags, GitHub Releases, and issue/epic closure | included |
 | `image2-with-codex` | Route image generation to the local image2-with-codex HTTP service (Codex CLI image generation) | included |
