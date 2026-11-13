@@ -8,12 +8,12 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `backlog-ready-spec`: Good for turning vague requests, roadmap bullets, and rough issues into ready implementation specs or GitHub issue bodies.
 - `get-pr-comments`: Useful for PR iteration and feedback intake.
 - `local-ultra-review`: Useful for deep pre-merge local code review with isolated worktrees, reviewer lenses, verification, dedupe, and severity-ranked findings.
-- `loop-on-pr-review-and-fix`: Useful for running a stateful post-PR-review loop that verifies new review comments, fixes only still-valid issues, validates, pushes, and records handled feedback.
+- `babysit-pr`: Follow a PR through checks and review to the requested outcome. Uses `leaving-pr-comments` for authorized replies.
 - `founder-office-hours`: Useful for founder-level product interrogation, target user selection, product-form decisions, and handoff before spec or architecture.
 - `planmode-engineer`: High-value plan review workflow for engineering execution.
 - `planmode-ceo`: High-value plan review workflow for founder or product direction when scope decisions matter.
 - `plan-devex-review`: Useful for plan-stage review of API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design.
-- `new-branch-and-pr`: Good for standard branch and PR workflow.
+- `file-pr`: Open or update a PR for a prepared branch.
 - `check-compiler-errors`: Strong general development utility.
 - `deslop`: Useful for cleaning generated or messy code.
 - `slow-is-fast`: Good evidence-first workflow for moderate and complex engineering tasks.
@@ -30,7 +30,6 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `ai-app-security-audit`: Useful for AI application security audits covering prompt, tool-call, RAG, model-output, credential, cost, and agent/skill supply-chain risks.
 - `fix-ci`: High-frequency engineering workflow.
 - `fix-merge-conflicts`: High-frequency engineering workflow.
-- `loop-on-ci`: Strong CI closure loop.
 - `peer-review`: Useful second-opinion review workflow using Codex CLI.
 - `review-and-ship`: Good end-to-end shipping flow.
 - `clawpacker`: Useful for packaging and transferring portable OpenClaw agent bundles.
@@ -40,6 +39,11 @@ This document records which local skills should be part of `cogine-dev-skillset`
 - `xianyu-automation-skill`: Xianyu automation workflow for store operations, monitoring, and lifecycle automation built on the API and product-management skills.
 - `image2-with-codex`: Routes image-generation requests to the local image2-with-codex HTTP service (Codex CLI backend).
 - `ai-slide-templates`: Guides agents through the Cogine AI slide-template workflow: clone/read the template repository, select a template by metadata, assemble a browser-openable HTML deck, and verify the result.
+
+## Retired From The Collection
+
+- `loop-on-ci` and `new-branch-and-pr` were retired in favor of `babysit-pr`, `fix-ci`, and `file-pr`. See [historical provenance](./provenance.md#verified-sources--2026-09-16) for their Cursor source.
+- `loop-on-pr-review-and-fix` was retired in favor of `babysit-pr` for day-to-day PR follow-up. The [standalone repository](https://github.com/cogine-ai/loop-on-pr-review-and-fix) still provides the scheduled review loop.
 
 ## Archived
 

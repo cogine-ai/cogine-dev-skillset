@@ -16,14 +16,15 @@ Recommended for the team: install the whole collection.
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset
 ```
 
-Install a single skill when you only want a narrow workflow:
+Install only the skills you need for a workflow:
 
 ```bash
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill gh-issue-priority-handoff
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill check-compiler-errors
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill fix-ci
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill local-ultra-review
-npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill loop-on-pr-review-and-fix
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill babysit-pr leaving-pr-comments
+npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill file-pr
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill ai-slide-templates
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill founder-office-hours
 npx skills add https://github.com/cogine-ai/cogine-dev-skillset --skill backlog-ready-spec
@@ -44,6 +45,12 @@ npx skills add cogine-ai/cogine-dev-skillset \
 The tstack skills are maintained in the
 [Coding Engineer Marketplace bundle](https://github.com/cogine-ai/marketplace/tree/main/plugins/coding-engineer-skills).
 Use its plugin installation if it is already your source for these skills.
+
+### Retired PR workflows
+
+- Use `babysit-pr` to follow PR checks and reviews and `fix-ci` to repair failing checks in place of `loop-on-ci`.
+- Create your branch and commit your changes as usual, then use `file-pr` to open the PR in place of `new-branch-and-pr`.
+- Use `babysit-pr` to follow a PR through review. Scheduled review loops with persistent tracking of handled feedback are still available from the [standalone `loop-on-pr-review-and-fix` repository](https://github.com/cogine-ai/loop-on-pr-review-and-fix).
 
 ## Repository Layout
 
@@ -68,12 +75,10 @@ Recommended order for day-to-day engineering work:
 | `backlog-ready-spec` | Turn vague product requests or issues into implementation-ready specs | included |
 | `get-pr-comments` | Fetch and summarize PR feedback | included |
 | `local-ultra-review` | Run Ultra Review-style local code review with worktrees, reviewer lenses, verifier gating, dedupe, and ranked findings | included |
-| `loop-on-pr-review-and-fix` | Watch PR review feedback, verify new comments, fix still-valid issues, validate, push, and persist handled state | included |
 | `founder-office-hours` | Stress-test founder product ideas and produce planning handoffs | included |
 | `planmode-engineer` | Engineering plan review | included |
 | `planmode-ceo` | Founder/CEO-style plan review when product direction matters | included |
 | `plan-devex-review` | Plan-stage review for API, CLI, SDK, MCP, plugin, integration guide, getting-started documentation, and developer onboarding design | included |
-| `new-branch-and-pr` | Standard branch and PR workflow | included |
 | `check-compiler-errors` | Compile and type-check validation loop | included |
 | `deslop` | Clean up AI-generated code slop | included |
 | `slow-is-fast` | Research, plan, then code with evidence-based workflow | included |
@@ -90,7 +95,6 @@ Recommended order for day-to-day engineering work:
 | `ai-app-security-audit` | AI application security review for LLM, agent, RAG, tool, and cost risks | included |
 | `fix-ci` | Diagnose and fix failing CI jobs | included |
 | `fix-merge-conflicts` | Resolve merge conflicts safely | included |
-| `loop-on-ci` | Watch CI and iterate to green | included |
 | `peer-review` | Run an independent Codex CLI second-opinion review | included |
 | `review-and-ship` | Review, fix, and ship via PR | included |
 | `babysit-pr` | Follow a PR through CI and review to a requested outcome | included |

@@ -13,7 +13,7 @@ Unless otherwise noted, original material in this repository is licensed under A
   Upstream copyright: Copyright (c) 2026 Theo Browne
   License: MIT. The upstream notice is included as `LICENSE` in each skill directory so it accompanies single-skill installs.
 
-- `skills/check-compiler-errors/`, `skills/deslop/`, `skills/fix-ci/`, `skills/fix-merge-conflicts/`, `skills/get-pr-comments/`, `skills/loop-on-ci/`, `skills/new-branch-and-pr/`, `skills/review-and-ship/`, and `skills/run-smoke-tests/`
+- `skills/check-compiler-errors/`, `skills/deslop/`, `skills/fix-ci/`, `skills/fix-merge-conflicts/`, `skills/get-pr-comments/`, `skills/review-and-ship/`, and `skills/run-smoke-tests/`
   Source: `cursor/plugins`, `cursor-team-kit`, commit `c1c0a32802223f4be824112dd83d33ad29a8b26c`
   Upstream copyright: Copyright (c) 2026 Cursor
   License: [MIT](./licenses/cursor-team-kit-MIT.txt)
